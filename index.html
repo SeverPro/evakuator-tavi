@@ -1,52 +1,76 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Эвакуатор и шиномонтаж в Караиделе</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эвакуатор и шиномонтаж Караидель</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: #111;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .service-box {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .service-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        footer {
+            background: #111;
+            color: #ccc;
+            text-align: center;
+            padding: 20px;
+        }
+        a {
+            color: #4fc3f7;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body class="bg-white text-gray-800 font-[Inter]">
-  <header class="bg-black text-white text-center py-6">
-    <h1 class="text-2xl font-semibold">Эвакуатор и шиномонтаж в Караиделе</h1>
-    <p class="text-sm mt-1">Работаем 24/7 — быстро, надёжно</p>
-  </header>
-
-  <main class="max-w-4xl mx-auto p-4">
-    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <div class="border rounded-xl p-4 shadow">
-        <h2 class="font-semibold text-lg mb-1">🚗 Эвакуатор</h2>
-        <p>Круглосуточный выезд по Караидельскому району и трассе Тастуба-Караидель. Быстро приедем и аккуратно доставим.</p>
-      </div>
-      <div class="border rounded-xl p-4 shadow">
-        <h2 class="font-semibold text-lg mb-1">🛞 Шиномонтаж</h2>
-        <p>Замена, ремонт и балансировка шин. Работаем без очередей, честно и быстро.</p>
-      </div>
-      <div class="border rounded-xl p-4 shadow">
-        <h2 class="font-semibold text-lg mb-1">🚜 Трактор / Погрузчик</h2>
-        <p>Трактор: вспашка огородов, уборка снега.<br/>Погрузчик: перевозка и поднятие груза (газик с краном).</p>
-      </div>
-      <div class="border rounded-xl p-4 shadow">
-        <h2 class="font-semibold text-lg mb-1">📍 Находимся в Караиделе</h2>
-        <p>Подъезд удобный. Возможен выезд к вам. Ориентир: <em>уточнить при звонке.</em></p>
-      </div>
-    </section>
-
-    <section class="mt-10">
-      <h2 class="text-xl font-semibold mb-4">📸 Наш автопарк и мастерская</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-        <div class="bg-gray-100 rounded-lg p-3">Шиномонтаж</div>
-        <div class="bg-gray-100 rounded-lg p-3">Эвакуатор с машиной</div>
-        <div class="bg-gray-100 rounded-lg p-3">Эвакуатор с погрузчиком</div>
-        <div class="bg-gray-100 rounded-lg p-3">Эвакуатор с легковушкой</div>
-        <div class="bg-gray-100 rounded-lg p-3">Эвакуатор с джипом</div>
-        <div class="bg-gray-100 rounded-lg p-3">Эвакуатор с трактором зимой</div>
-        <div class="bg-gray-100 rounded-lg p-3">Шиномонтаж в работе</div>
-        <div class="bg-gray-100 rounded-lg p-3">Трактор — уборка и вспашка</div>
-      </div>
-    </section>
-  </main>
-
+<body>
+    <header>
+        <h1>Эвакуатор и шиномонтаж в Караиделе</h1>
+        <p>Работаем 24/7 — быстро, надёжно</p>
+    </header>
+    <div class="container">
+        <div class="service-box">
+            <h2>Эвакуатор</h2>
+            <p>Круглосуточный выезд по Караидельскому району и трассе Тастуба-Караидель. Быстро приедем и аккуратно доставим.</p>
+            <img src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/photo_2025-04-04_15-17-43.jpg" alt="Эвакуатор">
+        </div>
+        <div class="service-box">
+            <h2>Шиномонтаж</h2>
+            <p>Замена, ремонт и балансировка шин. Работаем без очередей, честно и быстро.</p>
+            <img src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/images.jpeg" alt="Шиномонтаж">
+        </div>
+    </div>
+    <footer>
+        <p><a href="tel:+79997414755">+7 (999) 741-47-55</a> | <a href="https://wa.me/79997414755" target="_blank">WhatsApp</a></p>
+        <p>Российская Федерация, Республика Башкортостан, с. Караидель, ул. Салавата Юлаева 28</p>
+    </footer>
 </body>
 </html>
