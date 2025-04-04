@@ -1,76 +1,95 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Эвакуатор и шиномонтаж Караидель</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f9f9f9;
-            color: #333;
-        }
-        header {
-            background: #111;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        .container {
-            padding: 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        .service-box {
-            background: white;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 10px;
-        }
-        .service-box img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-        footer {
-            background: #111;
-            color: #ccc;
-            text-align: center;
-            padding: 20px;
-        }
-        a {
-            color: #4fc3f7;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эвакуатор и шиномонтаж в Караиделе</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #20232a;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    header p {
+      margin: 8px 0 0;
+      font-size: 16px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .service {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.2s ease-in-out;
+    }
+    .service:hover {
+      transform: translateY(-5px);
+    }
+    .service img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .service h2 {
+      font-size: 22px;
+      margin: 16px;
+    }
+    .service p {
+      font-size: 16px;
+      margin: 0 16px 20px;
+      line-height: 1.5;
+    }
+    footer {
+      background-color: #20232a;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 15px;
+    }
+    footer a {
+      color: #00c4ff;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Эвакуатор и шиномонтаж в Караиделе</h1>
-        <p>Работаем 24/7 — быстро, надёжно</p>
-    </header>
-    <div class="container">
-        <div class="service-box">
-            <h2>Эвакуатор</h2>
-            <p>Круглосуточный выезд по Караидельскому району и трассе Тастуба-Караидель. Быстро приедем и аккуратно доставим.</p>
-            <img src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/photo_2025-04-04_15-17-43.jpg" alt="Эвакуатор">
-        </div>
-        <div class="service-box">
-            <h2>Шиномонтаж</h2>
-            <p>Замена, ремонт и балансировка шин. Работаем без очередей, честно и быстро.</p>
-            <img src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/images.jpeg" alt="Шиномонтаж">
-        </div>
+  <header>
+    <h1>Эвакуатор и шиномонтаж в Караиделе</h1>
+    <p>Работаем 24/7 — быстро, надёжно</p>
+  </header>
+  <main class="container">
+    <div class="service">
+      <img src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/images/evak.jpg" alt="Эвакуатор">
+      <h2>Эвакуатор</h2>
+      <p>Круглосуточный выезд по Караидельскому району и трассе Тастуба-Караидель. Быстро приедем и аккуратно доставим.</p>
     </div>
-    <footer>
-        <p><a href="tel:+79997414755">+7 (999) 741-47-55</a> | <a href="https://wa.me/79997414755" target="_blank">WhatsApp</a></p>
-        <p>Российская Федерация, Республика Башкортостан, с. Караидель, ул. Салавата Юлаева 28</p>
-    </footer>
+    <div class="service">
+      <img src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/images/shina.jpg" alt="Шиномонтаж">
+      <h2>Шиномонтаж</h2>
+      <p>Замена, ремонт и балансировка шин. Работаем без очередей, честно и быстро. Всё для вашего комфорта.</p>
+    </div>
+  </main>
+  <footer>
+    <p><a href="tel:+79997414755">+7 (999) 741-47-55</a> | <a href="https://wa.me/79997414755" target="_blank">WhatsApp</a></p>
+    <p>Российская Федерация, Республика Башкортостан, с. Караидель, ул. Салавата Юлаева 28</p>
+  </footer>
 </body>
 </html>
