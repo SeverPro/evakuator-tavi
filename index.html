@@ -48,31 +48,6 @@
       border-radius: 10px;
       margin-top: 15px;
     }
-    .map-block {
-      width: 100%;
-      max-width: 1000px;
-      margin: 40px auto;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-    .route-button {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .route-button a {
-      display: inline-block;
-      background: #00c8ff;
-      color: #fff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
     footer {
       background: #1c1c1c;
       color: #ddd;
@@ -85,13 +60,38 @@
       color: #00c8ff;
       text-decoration: none;
     }
+    .map-container {
+      width: 100%;
+      padding: 40px 0;
+      background: #000;
+      text-align: center;
+    }
+    .map-container iframe {
+      width: 90%;
+      max-width: 900px;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+    .route-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #00bfff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
 
 <header>
   <h1>Шиномонтаж и эвакуатор в Караиделе</h1>
-  <p>Эвакуатор работает 24/7, шиномонтаж — с 09:00 до 20:00</p>
+  <p>Эвакуатор — круглосуточно | Шиномонтаж — с 9:00 до 20:00</p>
 </header>
 
 <div class="container">
@@ -102,16 +102,15 @@
   </div>
   <div class="block">
     <h2>Шиномонтаж в Караиделе</h2>
-    <p>Замена, ремонт и балансировка шин. Дошиповка зимней резины, ремонт боковых порезов, правка литых и штампованных дисков. Всё честно, без очередей и по адекватной цене. Ждём вас с 09:00 до 20:00 каждый день.</p>
+    <p>Замена, ремонт и балансировка шин. Дошиповка зимней резины, ремонт боковых порезов, правка литых и штампованных дисков. Всё честно, без очередей и по адекватной цене. Ждём вас каждый день с 9:00 до 20:00.</p>
     <img src="IMG_6030.JPG" alt="Шиномонтаж Караидель">
   </div>
 </div>
 
-<div class="map-block">
-  <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A9a318df140f3c90d166b157eeb43d27cf86d7e8a0c9fd44391c55ed0ee3214f1&amp;source=constructor" allowfullscreen></iframe>
-</div>
-<div class="route-button">
-  <a href="https://yandex.ru/maps/?rtext=~55.852171%2C56.888390&rtt=auto" target="_blank">Проложить маршрут</a>
+<div class="map-container">
+  <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aeb73e0e6dc0f0c93ee278e05d914b79e0a0d99e5fcf79b2c9b6c524f6e8c0b61&amp;source=constructor" allowfullscreen></iframe>
+  <br>
+  <a href="https://yandex.ru/maps/?rtext=~село Караидель, ул. Салавата Юлаева 28" target="_blank" class="route-btn">Проложить маршрут</a>
 </div>
 
 <footer>
