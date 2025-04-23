@@ -86,18 +86,34 @@
       list-style-type: disc;
       line-height: 1.6;
     }
+    .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .logo {
+    height: 80px;
+    width: auto;
+  }
+
+  .header-text h1 {
+    margin: 0;
+  }
   </style>
 </head>
 <body>
 
 <header>
-  <div style="background-color: #000; padding: 20px; text-align: center;">
-    <img src="Лого.png" alt="Логотип" style="height: 160px; margin-bottom: 10px;">
-    <h1 style="margin: 0; font-size: 32px; color: #fff;">Шиномонтаж и эвакуатор в Караиделе</h1>
-    <p style="margin: 0; font-size: 16px; color: #ccc;">Эвакуатор работает круглосуточно, шиномонтаж — с 9:00 до 20:00</p>
+  <div class="header-content">
+    <img src="логотип.png" alt="Логотип" class="logo">
+    <div class="header-text">
+      <h1>Шиномонтаж и эвакуатор в Караиделе</h1>
+    </div>
   </div>
 </header>
-
+  
 <div class="container">
   <div class="block">
     <h2>Эвакуатор</h2>
@@ -118,7 +134,6 @@
       <li>Дошиповка зимней резины</li>
       <li>Ремонт боковых порезов</li>
       <li>Правка литых и штампованных дисков</li>
-      <li>Без очередей, честные цены</li>
       <li>Работаем с 9:00 до 20:00</li>
     </ul>
     <img src="IMG_6030.JPG" alt="Шиномонтаж Караидель">
