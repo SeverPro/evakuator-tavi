@@ -2,207 +2,136 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Круглосуточный эвакуатор и шиномонтаж в Караиделе. Быстро, надёжно, без очередей. Работаем 24/7 по району и трассам." />
-  <meta name="keywords" content="эвакуатор Караидель, шиномонтаж Караидель, эвакуатор 24/7, ремонт шин Караидель, помощь на дороге Караидель, дешёвый эвакуатор, шиномонтаж без очередей" />
-  <title>Шиномонтаж и эвакуатор в Караиделе 24/7 — Быстро и надёжно</title>
-
-  <link rel="icon" type="image/png" href="Лого.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Эвакуатор и шиномонтаж Караидель</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #ffffff;
-      color: #111111;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #111;
     }
     header {
-      background: #ffffff;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #ddd;
-    }
-    .header-content {
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
+      padding: 1em;
+      border-bottom: 1px solid #ccc;
     }
-    .logo {
-      height: 70px;
+    header img {
+      height: 60px;
+      margin-right: 1em;
     }
-    h1, h2 {
+    h1 {
+      font-size: 1.5em;
       margin: 0;
     }
-    .quick-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 20px 0;
-    }
-    .quick-buttons a {
-      background: #00c8ff;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .quick-buttons a:hover {
-      background: #0099cc;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      padding: 40px 20px;
-    }
-    .block {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 450px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      border: 1px solid #eee;
-    }
-    .block img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 15px;
-    }
-    .advantages {
-      background: #ffffff;
-      color: #111111;
-      padding: 40px 20px;
+    h2 {
       text-align: center;
     }
-    .advantages ul {
-      list-style: none;
-      padding: 0;
-      font-size: 17px;
-      line-height: 1.7;
-    }
-    .advantages li::before {
-      content: "✔️ ";
-    }
-    .map {
+    .buttons {
       text-align: center;
-      margin: 50px 0;
+      margin: 1em 0;
     }
-    .map iframe {
-      width: 90%;
-      height: 400px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-    }
-    .map a.button {
-      margin-top: 15px;
+    .buttons a {
       display: inline-block;
-      background: #00c8ff;
-      padding: 12px 24px;
+      margin: 0.5em;
+      padding: 0.75em 1.5em;
+      background: #00bfff;
       color: white;
-      border-radius: 8px;
       text-decoration: none;
-      transition: 0.3s;
+      border-radius: 5px;
     }
-    .map a.button:hover {
-      background: #0099cc;
+    .features, .trust, .map, .reviews {
+      max-width: 960px;
+      margin: 2em auto;
+      padding: 1em;
+      background: #f5f5f5;
+      border-radius: 8px;
+    }
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .feature {
+      width: 45%;
+      margin-bottom: 1em;
+    }
+    .trust a, .reviews a {
+      margin-right: 1em;
+      text-decoration: none;
+      color: #00bfff;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 8px;
     }
     footer {
-      background: #f7f7f7;
-      color: #555;
       text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid #ddd;
-    }
-    a {
-      color: #00c8ff;
-      transition: 0.3s;
-    }
-    a:hover {
-      color: #0099cc;
+      font-size: 0.9em;
+      padding: 1em;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-content">
-      <img src="Лого.png" alt="Лого" class="logo">
-      <div>
-        <h1>Эвакуатор 24/7 по району и трассам</h1>
-        <h2 style="font-weight: normal; font-size: 20px;">Шиномонтаж — с. Караидель</h2>
-      </div>
+    <img src="Лого.png" alt="Логотип" />
+    <div>
+      <h1>Эвакуатор 24/7 по району и трассам</h1>
+      <div>Шиномонтаж — с. Караидель</div>
     </div>
   </header>
 
-  <div class="quick-buttons">
-    <a href="tel:+79997414755">Позвонить</a>
-    <a href="https://wa.me/79997414755" target="_blank">Написать в WhatsApp</a>
+  <div class="buttons">
+    <a href="tel:+79999999999">Позвонить</a>
+    <a href="https://wa.me/79999999999" target="_blank">Написать в WhatsApp</a>
   </div>
 
-  <div class="container">
-    <div class="block">
-      <h2>Эвакуатор</h2>
-      <ul>
-        <li>Грузоподъёмность до 4 тонн</li>
-        <li>Подача в любую точку района и трассы</li>
-        <li>Доставка автомобиля без повреждений</li>
-        <li>Работаем круглосуточно</li>
-      </ul>
-      <img src="photo_2025-04-04_15-17-43.jpg" alt="Эвакуатор">
+  <section class="features">
+    <div class="flex">
+      <div class="feature">
+        <h2>Эвакуатор</h2>
+        <ul>
+          <li>Грузоподъёмность до 4 тонн</li>
+          <li>Подача в любую точку района и трассы</li>
+          <li>Доставка автомобиля без повреждений</li>
+          <li>Работаем круглосуточно</li>
+        </ul>
+      </div>
+      <div class="feature">
+        <h2>Шиномонтаж</h2>
+        <ul>
+          <li>Замена и балансировка шин</li>
+          <li>Дошиповка зимней резины</li>
+          <li>Ремонт боковых порезов</li>
+          <li>Правка литых и штампованных дисков</li>
+          <li>Работаем с 9:00 до 20:00</li>
+        </ul>
+      </div>
     </div>
-    <div class="block">
-      <h2>Шиномонтаж</h2>
-      <ul>
-        <li>Замена и балансировка шин</li>
-        <li>Дошиповка зимней резины</li>
-        <li>Ремонт боковых порезов</li>
-        <li>Правка литых и штампованных дисков</li>
-        <li>Работаем с 9:00 до 20:00</li>
-      </ul>
-      <img src="IMG_6030.JPG" alt="Шиномонтаж Караидель">
-    </div>
-  </div>
+  </section>
 
-  <div class="advantages">
-    <h2>Почему выбирают нас</h2>
-    <ul>
-      <li>Круглосуточный эвакуатор — 24/7</li>
-      <li>Быстрая подача без выходных</li>
-      <li>Без повреждений и скрытых доплат</li>
-      <li>Шиномонтаж без очередей</li>
-      <li>Удобное расположение, можно проложить маршрут</li>
-      <li>Быстрая связь: звонок или WhatsApp</li>
-    </ul>
-  </div>
+  <section class="trust">
+    <h2>Нам доверяют</h2>
+    <p>Наша организация представлена на популярных платформах:</p>
+    <a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank">Zoon</a>
+    <a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank">Avito</a>
+  </section>
 
-  <div class="container">
-    <div class="block" style="text-align:center;">
-      <h2>Нам доверяют</h2>
-      <p>Наша организация есть на популярных платформах:</p>
-      <p>
-        <a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank">Zoon</a> |
-        <a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank">Avito</a>
-      </p>
-    </div>
-  </div>
+  <section class="reviews">
+    <h2>Отзывы</h2>
+    <a href="https://yandex.ru/maps/org/evakuator_i_shinomontazh/" target="_blank">Посмотреть отзывы на Яндекс.Картах</a>
+  </section>
 
-  <div class="map">
-    <iframe src="https://yandex.ru/map-widget/v1/?ll=56.876096%2C55.855856&z=16&pt=56.876096%2C55.855856,pm2rdm&l=map" allowfullscreen></iframe>
-    <a class="button" href="https://yandex.ru/maps/?mode=routes&rtext=~55.855856,56.876096" target="_blank">
-      Проложить маршрут
-    </a>
-  </div>
+  <section class="map">
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A25acdcf9ef6f79c4e8c913ad29f7ee6c02ff2ee554e2156e3a4db9c9f184bc4c&amp;source=constructor"></iframe>
+  </section>
 
   <footer>
-    <p>
-      <a href="tel:+79997414755">+7 (999) 741-47-55</a> |
-      <a href="https://wa.me/79997414755" target="_blank">WhatsApp</a>
-    </p>
-    <p>с. Караидель, ул. Салавата Юлаева, 28</p>
+    <p>&copy; 2025 Эвакуатор и Шиномонтаж — Караидель | <a href="https://vk.com/id792775410" target="_blank">Мы в ВКонтакте</a></p>
   </footer>
 </body>
 </html>
