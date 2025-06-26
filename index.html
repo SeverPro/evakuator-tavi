@@ -13,13 +13,14 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #1c1c1c;
-      color: #f9f9f9;
+      background: #ffffff;
+      color: #111111;
     }
     header {
-      background: #000;
+      background: #ffffff;
       padding: 20px;
       text-align: center;
+      border-bottom: 1px solid #ddd;
     }
     .header-content {
       display: flex;
@@ -58,15 +59,14 @@
       justify-content: center;
       gap: 40px;
       padding: 40px 20px;
-      background: #f5f5f5;
-      color: #111;
     }
     .block {
-      background: white;
+      background: #ffffff;
       padding: 20px;
       border-radius: 12px;
       max-width: 450px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
     }
     .block img {
       width: 100%;
@@ -74,8 +74,8 @@
       margin-top: 15px;
     }
     .advantages {
-      background: #1c1c1c;
-      color: white;
+      background: #ffffff;
+      color: #111111;
       padding: 40px 20px;
       text-align: center;
     }
@@ -85,6 +85,9 @@
       font-size: 17px;
       line-height: 1.7;
     }
+    .advantages li::before {
+      content: "✔️ ";
+    }
     .map {
       text-align: center;
       margin: 50px 0;
@@ -93,6 +96,7 @@
       width: 90%;
       height: 400px;
       border-radius: 10px;
+      border: 1px solid #ccc;
     }
     .map a.button {
       margin-top: 15px;
@@ -108,17 +112,18 @@
       background: #0099cc;
     }
     footer {
-      background: #111;
-      color: #ccc;
+      background: #f7f7f7;
+      color: #555;
       text-align: center;
       padding: 30px 20px;
+      border-top: 1px solid #ddd;
     }
     a {
       color: #00c8ff;
       transition: 0.3s;
     }
     a:hover {
-      color: #00bfff;
+      color: #0099cc;
     }
   </style>
 </head>
@@ -165,25 +170,23 @@
   <div class="advantages">
     <h2>Почему выбирают нас</h2>
     <ul>
-      <li>✅ Круглосуточный эвакуатор — 24/7</li>
-      <li>✅ Быстрая подача без выходных</li>
-      <li>✅ Без повреждений и скрытых доплат</li>
-      <li>✅ Шиномонтаж без очередей</li>
-      <li>✅ Удобное расположение, можно проложить маршрут</li>
-      <li>✅ Быстрая связь: звонок или WhatsApp</li>
+      <li>Круглосуточный эвакуатор — 24/7</li>
+      <li>Быстрая подача без выходных</li>
+      <li>Без повреждений и скрытых доплат</li>
+      <li>Шиномонтаж без очередей</li>
+      <li>Удобное расположение, можно проложить маршрут</li>
+      <li>Быстрая связь: звонок или WhatsApp</li>
     </ul>
   </div>
 
   <div class="container">
-    <div class="block">
+    <div class="block" style="text-align:center;">
       <h2>Нам доверяют</h2>
       <p>Наша организация есть на популярных платформах:</p>
-      <a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Zoon.ru_logo.svg/2560px-Zoon.ru_logo.svg.png" alt="Zoon" style="margin-bottom: 15px;">
-      </a>
-      <a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank">
-        <img src="https://static.avito.ru/static/2/avito/desktop/logo/logo_blue.svg" alt="Avito" style="background:#f5f5f5; padding:10px; border-radius:10px;">
-      </a>
+      <p>
+        <a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank">Zoon</a> |
+        <a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank">Avito</a>
+      </p>
     </div>
   </div>
 
