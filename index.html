@@ -1,137 +1,82 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Эвакуатор и шиномонтаж Караидель</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эвакуатор и Шиномонтаж Караидель</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #111;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      padding: 1em;
-      border-bottom: 1px solid #ccc;
-    }
-    header img {
-      height: 60px;
-      margin-right: 1em;
-    }
-    h1 {
-      font-size: 1.5em;
-      margin: 0;
-    }
-    h2 {
-      text-align: center;
-    }
-    .buttons {
-      text-align: center;
-      margin: 1em 0;
-    }
-    .buttons a {
-      display: inline-block;
-      margin: 0.5em;
-      padding: 0.75em 1.5em;
-      background: #00bfff;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    .features, .trust, .map, .reviews {
-      max-width: 960px;
-      margin: 2em auto;
-      padding: 1em;
-      background: #f5f5f5;
-      border-radius: 8px;
-    }
-    .flex {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-    }
-    .feature {
-      width: 45%;
-      margin-bottom: 1em;
-    }
-    .trust a, .reviews a {
-      margin-right: 1em;
-      text-decoration: none;
-      color: #00bfff;
-    }
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 8px;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      padding: 1em;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: #000; }
+    header { display: flex; align-items: center; padding: 10px 20px; background: #fff; border-bottom: 1px solid #ccc; }
+    header img { height: 50px; margin-right: 15px; }
+    header h1 { font-size: 1.3em; margin: 0; }
+    .subheader { font-size: 0.9em; color: #555; margin-left: 65px; }
+    .buttons { display: flex; justify-content: center; gap: 20px; padding: 20px; }
+    .buttons a { padding: 10px 20px; background: #00bfff; color: white; border-radius: 8px; text-decoration: none; font-weight: bold; }
+    .services { display: flex; flex-wrap: wrap; justify-content: center; background: #f7f7f7; padding: 20px; }
+    .block { flex: 1 1 300px; margin: 10px; padding: 20px; background: #f1f1f1; border-radius: 8px; }
+    .block h2 { text-align: center; }
+    .trust, .reviews, .social { text-align: center; margin: 30px auto; background: #f7f7f7; padding: 20px; border-radius: 8px; max-width: 800px; }
+    .trust a, .reviews a, .social a { margin: 0 10px; color: #00bfff; text-decoration: none; }
+    .images { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 20px; }
+    .images img { max-width: 100%; max-height: 300px; border-radius: 10px; }
   </style>
 </head>
 <body>
   <header>
-    <img src="Лого.png" alt="Логотип" />
+    <img src="8ef4bcad-491b-479c-9fcf-478f8a63b96d.png" alt="Логотип">
     <div>
       <h1>Эвакуатор 24/7 по району и трассам</h1>
-      <div>Шиномонтаж — с. Караидель</div>
+      <div class="subheader">Шиномонтаж — с. Караидель</div>
     </div>
   </header>
 
   <div class="buttons">
     <a href="tel:+79999999999">Позвонить</a>
-    <a href="https://wa.me/79999999999" target="_blank">Написать в WhatsApp</a>
+    <a href="https://wa.me/79999999999">Написать в WhatsApp</a>
   </div>
 
-  <section class="features">
-    <div class="flex">
-      <div class="feature">
-        <h2>Эвакуатор</h2>
-        <ul>
-          <li>Грузоподъёмность до 4 тонн</li>
-          <li>Подача в любую точку района и трассы</li>
-          <li>Доставка автомобиля без повреждений</li>
-          <li>Работаем круглосуточно</li>
-        </ul>
-      </div>
-      <div class="feature">
-        <h2>Шиномонтаж</h2>
-        <ul>
-          <li>Замена и балансировка шин</li>
-          <li>Дошиповка зимней резины</li>
-          <li>Ремонт боковых порезов</li>
-          <li>Правка литых и штампованных дисков</li>
-          <li>Работаем с 9:00 до 20:00</li>
-        </ul>
-      </div>
+  <div class="services">
+    <div class="block">
+      <h2>Эвакуатор</h2>
+      <ul>
+        <li>Грузоподъёмность до 4 тонн</li>
+        <li>Подача в любую точку района и трассы</li>
+        <li>Доставка автомобиля без повреждений</li>
+        <li>Работаем круглосуточно</li>
+      </ul>
     </div>
-  </section>
+    <div class="block">
+      <h2>Шиномонтаж</h2>
+      <ul>
+        <li>Замена и балансировка шин</li>
+        <li>Дошиповка зимней резины</li>
+        <li>Ремонт боковых порезов</li>
+        <li>Правка литых и штампованных дисков</li>
+        <li>Работаем с 9:00 до 20:00</li>
+      </ul>
+    </div>
+  </div>
 
-  <section class="trust">
+  <div class="images">
+    <img src="e4272215-f8bf-4b95-bffd-1edba834fdd0.png" alt="Фото эвакуатора">
+    <img src="03b8a899-5820-4846-9a92-044bd75e70b8.png" alt="Шиномонтаж">
+  </div>
+
+  <div class="trust">
     <h2>Нам доверяют</h2>
     <p>Наша организация представлена на популярных платформах:</p>
     <a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank">Zoon</a>
     <a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank">Avito</a>
-  </section>
+  </div>
 
-  <section class="reviews">
+  <div class="reviews">
     <h2>Отзывы</h2>
-    <a href="https://yandex.ru/maps/org/evakuator_i_shinomontazh/" target="_blank">Посмотреть отзывы на Яндекс.Картах</a>
-  </section>
+    <a href="https://yandex.ru/maps/org/2260317660" target="_blank">Посмотреть отзывы на Яндекс.Картах</a>
+  </div>
 
-  <section class="map">
-    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A25acdcf9ef6f79c4e8c913ad29f7ee6c02ff2ee554e2156e3a4db9c9f184bc4c&amp;source=constructor"></iframe>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Эвакуатор и Шиномонтаж — Караидель | <a href="https://vk.com/id792775410" target="_blank">Мы в ВКонтакте</a></p>
-  </footer>
+  <div class="social">
+    <h2>Мы в социальных сетях</h2>
+    <a href="https://vk.com/id792775410" target="_blank">ВКонтакте</a>
+  </div>
 </body>
 </html>
