@@ -1,233 +1,1548 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105880355', 'ym');
-
-    ym(105880355, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/105880355" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Круглосуточный эвакуатор и шиномонтаж в Караиделе. Быстро, надёжно, без очередей. Работаем 24/7 по району и трассам." />
-  <meta name="keywords" content="эвакуатор Караидель, шиномонтаж Караидель, эвакуатор 24/7, ремонт шин Караидель, помощь на дороге Караидель, дешёвый эвакуатор, шиномонтаж без очередей" />
-  <title>Шиномонтаж и эвакуатор в Караиделе 24/7 — Быстро и надёжно</title>
-
-  <link rel="icon" type="image/png" href="Лого.png">
+  <meta name="description" content="Аслямов — эвакуатор 24/7 и шиномонтаж в Караиделе. Работаем по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе. Грузовой шиномонтаж — единственный в районе." />
+  <meta name="keywords" content="эвакуатор Караидель, шиномонтаж Караидель, эвакуатор 24/7, грузовой шиномонтаж Башкортостан, эвакуатор Мишкинский район, шиномонтаж Аскинский район, Тастуба эвакуатор, Аслямов" />
+  <title>Аслямов — Эвакуатор и шиномонтаж, Караидель</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Golos+Text:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111110;
+      --white: #F8F6F1;
+      --accent: #E85D24;
+      --accent-dark: #C44A18;
+      --gray-100: #F0EDE6;
+      --gray-200: #E0DDD6;
+      --gray-400: #9C9A94;
+      --gray-600: #5C5A56;
+      --font-display: 'Unbounded', sans-serif;
+      --font-body: 'Golos Text', sans-serif;
+      --radius: 4px;
+      --radius-lg: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      color: #111111;
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
     }
-    header {
-      background: #ffffff;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #ddd;
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(248,246,241,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
     }
-    .header-content {
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      background: var(--black);
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
+      flex-shrink: 0;
     }
-    .logo {
-      height: 70px;
-    }
-    h1, h2 {
-      margin: 0;
-    }
-    .quick-buttons {
+
+    .logo-text {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 20px 0;
+      flex-direction: column;
     }
-    .quick-buttons a {
-      background: #00c8ff;
+
+    .logo-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 2px;
+      color: var(--black);
+      text-transform: uppercase;
+    }
+
+    .logo-tagline {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--gray-600);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
       color: white;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.5px;
       padding: 12px 24px;
-      border-radius: 8px;
+      border-radius: var(--radius);
       text-decoration: none;
-      transition: 0.3s;
+      transition: background 0.2s;
     }
-    .quick-buttons a:hover {
-      background: #0099cc;
+
+    .btn-call:hover { background: var(--accent-dark); }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--black);
+      color: var(--black);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      padding: 11px 20px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
     }
-    .container {
+
+    .btn-wa:hover { background: var(--black); color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 84px;
+    }
+
+    .hero-left {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       justify-content: center;
-      gap: 40px;
-      padding: 40px 20px;
+      padding: 80px 60px 80px 40px;
     }
-    .block {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 450px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      border: 1px solid #eee;
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
     }
-    .block img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 15px;
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--accent);
     }
-    .advantages {
-      background: #ffffff;
-      color: #111111;
-      padding: 40px 20px;
-      text-align: center;
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
     }
-    .advantages ul {
-      list-style: none;
-      padding: 0;
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-desc {
       font-size: 17px;
       line-height: 1.7;
+      color: var(--gray-600);
+      max-width: 420px;
+      margin-bottom: 40px;
     }
-    .advantages li::before {
-      content: "✔️ ";
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-    .map {
-      text-align: center;
-      margin: 50px 0;
-    }
-    .map iframe {
-      width: 90%;
-      height: 400px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-    }
-    .map a.button {
-      margin-top: 15px;
-      display: inline-block;
-      background: #00c8ff;
-      padding: 12px 24px;
-      color: white;
-      border-radius: 8px;
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 16px 32px;
+      border-radius: var(--radius);
       text-decoration: none;
-      transition: 0.3s;
+      transition: background 0.2s;
     }
-    .map a.button:hover {
-      background: #0099cc;
+
+    .btn-primary:hover { background: var(--accent); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid var(--gray-200);
+      color: var(--black);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 15px 28px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: border-color 0.2s;
     }
-    footer {
-      background: #f7f7f7;
-      color: #555;
+
+    .btn-secondary:hover { border-color: var(--black); }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .stat-item {}
+    .stat-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 32px;
+      color: var(--black);
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--gray-400);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero-right {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      mix-blend-mode: normal;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      background: var(--accent);
+      color: white;
+      padding: 16px 24px;
+      border-radius: var(--radius-lg);
+    }
+
+    .hero-badge-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .hero-badge-sub {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+
+    .hero-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 500px;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--gray-400);
+    }
+
+    .hero-placeholder svg { opacity: 0.3; }
+    .hero-placeholder p { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--accent);
+      color: white;
+      overflow: hidden;
+      padding: 14px 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      animation: ticker 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-item {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .ticker-item::after {
+      content: '◆';
+      font-size: 8px;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── SERVICES ── */
+    .section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 60px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 56px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--accent);
+      transition: height 0.4s ease;
+    }
+
+    .service-card:hover::before { height: 100%; }
+
+    .service-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 80px;
+      line-height: 1;
+      color: var(--gray-100);
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      transition: color 0.3s;
+    }
+
+    .service-card:hover .service-num { color: var(--gray-200); }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 28px;
+    }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 22px;
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .service-list li {
+      font-size: 15px;
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .service-list li::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .service-hours {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 28px;
+      background: var(--gray-100);
+      padding: 8px 14px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gray-600);
+      letter-spacing: 0.5px;
+    }
+
+    .service-hours .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22C55E;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── WHY ── */
+    .why-section {
+      background: var(--black);
+      color: var(--white);
+      padding: 100px 40px;
+    }
+
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+      background: #2A2A28;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .why-card {
+      background: #1A1A18;
+      padding: 48px 36px;
+      position: relative;
+    }
+
+    .why-card:hover { background: #222220; }
+
+    .why-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .why-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+
+    .why-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #888885;
+    }
+
+    /* ── TELEGRAM ── */
+    .tg-section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tg-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .tg-info {}
+
+    .tg-channel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      padding: 10px 16px;
+      border-radius: 99px;
+      margin-top: 28px;
+      text-decoration: none;
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .tg-channel-badge:hover { background: var(--gray-200); }
+
+    .tg-channel-badge svg { flex-shrink: 0; }
+
+    .tg-feed {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .tg-feed-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--gray-200);
+      background: var(--gray-100);
+    }
+
+    .tg-avatar {
+      width: 36px;
+      height: 36px;
+      background: var(--black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tg-channel-name {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .tg-channel-sub {
+      font-size: 11px;
+      color: var(--gray-400);
+    }
+
+    .tg-widget-container {
+      min-height: 400px;
+    }
+
+    /* ── MAP ── */
+    .map-section {
+      background: var(--gray-100);
+      padding: 100px 40px;
+    }
+
+    .map-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      margin-top: 60px;
+      align-items: start;
+    }
+
+    .map-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .map-detail {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .map-detail-icon {
+      width: 36px;
+      height: 36px;
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .map-detail-label {
+      font-size: 11px;
+      color: var(--gray-400);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .map-detail-value {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    .map-detail-value a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .map-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 420px;
+      border: 1px solid var(--gray-200);
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ── REVIEWS ── */
+    .reviews-section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
       text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid #ddd;
     }
-    a {
-      color: #00c8ff;
-      transition: 0.3s;
+
+    .reviews-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 40px;
+      border: 1.5px solid var(--black);
+      color: var(--black);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 16px 32px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
     }
-    a:hover {
-      color: #0099cc;
+
+    .reviews-link:hover { background: var(--black); color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 60px 40px 40px;
     }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 48px;
+      border-bottom: 1px solid #2A2A28;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-logo-badge {
+      width: 48px;
+      height: 48px;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer-sub {
+      font-size: 12px;
+      color: #666660;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link-group {}
+    .footer-link-title {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #666660;
+      margin-bottom: 16px;
+    }
+
+    .footer-link-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link-list a {
+      font-size: 14px;
+      color: #AAAAAA;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link-list a:hover { color: white; }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: #555550;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social {
+      width: 36px;
+      height: 36px;
+      background: #2A2A28;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .footer-social:hover { background: var(--accent); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 20px; }
+      .nav-cta .btn-wa { display: none; }
+      .btn-call { padding: 10px 18px; font-size: 12px; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 60px 20px 40px; }
+      .hero-right { min-height: 300px; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { padding: 40px 28px; }
+
+      .why-grid { grid-template-columns: 1fr; }
+
+      .tg-wrapper { grid-template-columns: 1fr; gap: 32px; }
+
+      .map-grid { grid-template-columns: 1fr; }
+
+      .section { padding: 60px 20px; }
+      .why-section { padding: 60px 20px; }
+      .map-section { padding: 60px 20px; }
+      .tg-section { padding: 60px 20px; }
+      .reviews-section { padding: 60px 20px; }
+
+      footer { padding: 48px 20px 32px; }
+      .footer-top { gap: 32px; }
+
+      .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+
+    /* ── TRUCK ── */
+    .truck-section {
+      background: var(--black);
+      color: var(--white);
+      padding: 100px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .truck-section::before {
+      content: '18+';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 180px;
+      color: rgba(255,255,255,0.03);
+      pointer-events: none;
+      letter-spacing: -8px;
+    }
+
+    .truck-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .truck-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .truck-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: white;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 99px;
+      margin-bottom: 28px;
+    }
+
+    .truck-badge::before {
+      content: '';
+      display: block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: white;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .truck-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .truck-title span { color: var(--accent); }
+
+    .truck-desc {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #888885;
+      margin-bottom: 36px;
+    }
+
+    .truck-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .truck-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: #CCCCCA;
+      line-height: 1.5;
+    }
+
+    .truck-list li::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--accent);
+      margin-top: 11px;
+      flex-shrink: 0;
+    }
+
+    .truck-visual {
+      position: relative;
+    }
+
+    .truck-photo {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+
+    .truck-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #1A1A18;
+      border-radius: var(--radius-lg);
+      border: 1px solid #2A2A28;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #444;
+    }
+
+    .truck-stat-pill {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--accent);
+      color: white;
+      padding: 20px 28px;
+      border-radius: var(--radius-lg);
+    }
+
+    .truck-stat-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 1;
+    }
+
+    .truck-stat-label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .truck-section { padding: 60px 20px; }
+      .truck-grid { grid-template-columns: 1fr; gap: 40px; }
+      .truck-stat-pill { bottom: -12px; left: 12px; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <img src="Лого.png" alt="Лого" class="logo">
-      <div>
-        <h1>Эвакуатор 24/7 по району и трассам</h1>
-        <h2 style="font-weight: normal; font-size: 20px;">Шиномонтаж — с. Караидель</h2>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-badge">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M6 22 L14 6 L22 22" stroke="white" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M9.5 16 L18.5 16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="14" cy="22" r="2.5" fill="#E85D24"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <span class="logo-name">Аслямов</span>
+      <span class="logo-tagline">Эвакуатор · Шиномонтаж</span>
+    </div>
+  </a>
+  <div class="nav-cta">
+    <a href="https://wa.me/79997414755" target="_blank" class="btn-wa">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="tel:+79997414755" class="btn-call">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 9.93a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Позвонить
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Караидель · Круглосуточно</div>
+    <h1 class="hero-title">
+      Эвакуатор<br>и шино&shy;<em>монтаж</em>
+    </h1>
+    <p class="hero-desc">
+      Подача в любую точку: Караидельский, Мишкинский, Аскинский районы, Тастуба и трассы. Без повреждений, без скрытых доплат. Работаем 24/7 — звоните в любое время.
+    </p>
+    <div class="hero-actions">
+      <a href="tel:+79997414755" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 9.93a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +7 (999) 741-47-55
+      </a>
+      <a href="https://wa.me/79997414755" target="_blank" class="btn-secondary">
+        Написать в WhatsApp
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Эвакуатор</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4т</div>
+        <div class="stat-label">Грузоподъёмность</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0₽</div>
+        <div class="stat-label">Скрытых доплат</div>
       </div>
     </div>
-  </header>
-
-  <div class="quick-buttons">
-    <a href="tel:+79997414755">Позвонить</a>
-    <a href="https://wa.me/79997414755" target="_blank">Написать в WhatsApp</a>
   </div>
-
-  <div class="container">
-    <div class="block">
-      <h2>Эвакуатор</h2>
-      <ul>
-        <li>Грузоподъёмность до 4 тонн</li>
-        <li>Подача в любую точку района и трассы</li>
-        <li>Доставка автомобиля без повреждений</li>
-        <li>Работаем круглосуточно</li>
-      </ul>
-      <img src="photo_2025-04-04_15-17-43.webp" alt="Эвакуатор">
+  <div class="hero-right">
+    <div class="hero-placeholder" style="padding:0;overflow:hidden;min-height:500px;">
+      <img 
+        src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/photo_2025-04-04_15-17-43.webp" 
+        alt="Эвакуатор Аслямов Караидель"
+        class="hero-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+      >
+      <div style="display:none;width:100%;height:100%;min-height:500px;background:var(--black);flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#555">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <rect x="8" y="28" width="52" height="28" rx="4" stroke="white" stroke-width="2"/>
+          <rect x="44" y="18" width="24" height="22" rx="3" stroke="white" stroke-width="2"/>
+          <circle cx="22" cy="60" r="8" stroke="white" stroke-width="2"/>
+          <circle cx="22" cy="60" r="3.5" fill="white"/>
+          <circle cx="52" cy="60" r="8" stroke="white" stroke-width="2"/>
+          <circle cx="52" cy="60" r="3.5" fill="white"/>
+        </svg>
+        <p style="font-size:13px;letter-spacing:1px;text-transform:uppercase">Фото загружается</p>
+      </div>
     </div>
-    <div class="block">
-      <h2>Шиномонтаж</h2>
-      <ul>
+    <div class="hero-badge">
+      <div class="hero-badge-title">Аслямов</div>
+      <div class="hero-badge-sub">Надёжная помощь</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Эвакуатор 24/7</span>
+    <span class="ticker-item">Шиномонтаж без очередей</span>
+    <span class="ticker-item">До 4 тонн</span>
+    <span class="ticker-item">Без скрытых доплат</span>
+    <span class="ticker-item">Грузовой шиномонтаж</span>
+    <span class="ticker-item">Единственный в районе</span>
+    <span class="ticker-item">Ремонт боковых порезов</span>
+    <span class="ticker-item">Дошиповка зимней резины</span>
+    <span class="ticker-item">Спецтехника и тракторы</span>
+    <span class="ticker-item">Эвакуатор 24/7</span>
+    <span class="ticker-item">Шиномонтаж без очередей</span>
+    <span class="ticker-item">До 4 тонн</span>
+    <span class="ticker-item">Без скрытых доплат</span>
+    <span class="ticker-item">Грузовой шиномонтаж</span>
+    <span class="ticker-item">Единственный в районе</span>
+    <span class="ticker-item">Ремонт боковых порезов</span>
+    <span class="ticker-item">Дошиповка зимней резины</span>
+    <span class="ticker-item">Спецтехника и тракторы</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="services">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-label">Услуги</div>
+      <h2 class="section-title">Что мы делаем</h2>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+        <rect x="4" y="16" width="32" height="18" rx="3" stroke="#E85D24" stroke-width="2"/>
+        <rect x="28" y="10" width="16" height="14" rx="2" stroke="#E85D24" stroke-width="2"/>
+        <circle cx="11" cy="37" r="5" stroke="var(--black)" stroke-width="2"/>
+        <circle cx="11" cy="37" r="2" fill="var(--black)"/>
+        <circle cx="31" cy="37" r="5" stroke="var(--black)" stroke-width="2"/>
+        <circle cx="31" cy="37" r="2" fill="var(--black)"/>
+        <path d="M34 16 L44 6" stroke="#E85D24" stroke-width="2" stroke-linecap="round"/>
+        <path d="M44 6 L44 18" stroke="#E85D24" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2"/>
+      </svg>
+      <h3 class="service-title">Эвакуатор</h3>
+      <ul class="service-list">
+        <li>Грузоподъёмность до 4 тонн</li>
+        <li>Подача по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе</li>
+        <li>Доставка без повреждений</li>
+        <li>Работаем по всему Башкортостану</li>
+      </ul>
+      <div class="service-hours"><span class="dot"></span> Работаем круглосуточно</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">02</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="16" stroke="#E85D24" stroke-width="2"/>
+        <circle cx="24" cy="24" r="8" stroke="var(--black)" stroke-width="2"/>
+        <circle cx="24" cy="24" r="3" fill="#E85D24"/>
+        <path d="M24 8 L24 4" stroke="#E85D24" stroke-width="2" stroke-linecap="round"/>
+        <path d="M24 44 L24 40" stroke="#E85D24" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8 24 L4 24" stroke="#E85D24" stroke-width="2" stroke-linecap="round"/>
+        <path d="M44 24 L40 24" stroke="#E85D24" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <h3 class="service-title">Шиномонтаж</h3>
+      <ul class="service-list">
         <li>Замена и балансировка шин</li>
         <li>Дошиповка зимней резины</li>
         <li>Ремонт боковых порезов</li>
         <li>Правка литых и штампованных дисков</li>
-        <li>Работаем с 9:00 до 20:00</li>
+        <li>Грузовой шиномонтаж и спецтехника</li>
       </ul>
-      <img src="IMG_6030.webp" alt="Шиномонтаж Караидель">
+      <div style="margin-top: 16px;">
+        <img 
+          src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/IMG_6030.webp" 
+          alt="Шиномонтаж Аслямов Караидель"
+          style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:16/9;display:block"
+          onerror="this.style.display='none'"
+        >
+      </div>
+      <div class="service-hours"><span class="dot"></span> 9:00 — 20:00 ежедневно</div>
     </div>
   </div>
+</div>
 
-  <div class="advantages">
-    <h2>Почему выбирают нас</h2>
-    <ul>
-      <li>Круглосуточный эвакуатор — 24/7</li>
-      <li>Быстрая подача без выходных</li>
-      <li>Без повреждений и скрытых доплат</li>
-      <li>Шиномонтаж без очередей</li>
-      <li>Удобное расположение, можно проложить маршрут</li>
-      <li>Быстрая связь: звонок или WhatsApp</li>
-    </ul>
+<!-- TRUCK TIRE SERVICE -->
+<section class="truck-section" id="truck">
+  <div class="truck-inner">
+    <div class="truck-grid">
+      <div class="reveal">
+        <div class="truck-badge">Единственный в районе</div>
+        <h2 class="truck-title">Грузовой<br><span>шиномонтаж</span></h2>
+        <p class="truck-desc">
+          Обслуживаем грузовики, автобусы и спецтехнику. Современное оборудование, удобный заезд — всё для того, чтобы ваша техника быстро вернулась в работу.
+        </p>
+        <ul class="truck-list">
+          <li>Монтаж и демонтаж шин для грузовиков и спецтехники</li>
+          <li>Балансировка колёс — плавный ход и долгий ресурс</li>
+          <li>Ремонт шин, замена колёсных дисков</li>
+          <li>Проверка и регулировка давления в шинах</li>
+          <li>Тракторы, комбайны, строительная спецтехника</li>
+        </ul>
+        <a href="tel:+79997414755" class="btn-primary" style="display:inline-flex;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 9.93a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Записаться на грузовой шиномонтаж
+        </a>
+      </div>
+      <div class="truck-visual reveal reveal-delay-2">
+        <!-- Замените на фото грузового шиномонтажа когда будет -->
+        <div class="truck-photo-placeholder" style="padding:0;overflow:hidden;">
+          <img 
+            src="photo_2026-02-15_11-34-07.jpg"
+            alt="Грузовой шиномонтаж Аслямов Караидель — шиномонтаж трактора и спецтехники"
+            style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--radius-lg);"
+          >
+        </div>
+        <div class="truck-stat-pill">
+          <div class="truck-stat-num">1</div>
+          <div class="truck-stat-label">в районе</div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="container">
-    <div class="block" style="text-align:center;">
-      <h2>Нам доверяют</h2>
-      <p>Наша организация есть на популярных платформах:</p>
-      <p>
-        <a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank">Zoon</a> |
-        <a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank">Avito</a>
+<!-- WHY -->
+<section class="why-section" id="about">
+  <div class="why-inner">
+    <div class="reveal">
+      <div class="section-label" style="color: #E85D24;">Почему мы</div>
+      <h2 class="section-title" style="color: white;">Доверие строится<br>на деле</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="why-title">Круглосуточно</div>
+        <div class="why-desc">Эвакуатор работает без выходных и праздников. Ночь, ранее утро, праздник — позвоните, приедем.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="why-title">Без скрытых доплат</div>
+        <div class="why-desc">Цену называем сразу. Никаких сюрпризов по приезду — цена при звонке равна цене по факту.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="why-title">Бережная перевозка</div>
+        <div class="why-desc">Автомобиль загружается и перевозится без царапин. Платформа оборудована нужными крепежами.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="why-title">Знаем район</div>
+        <div class="why-desc">Работаем по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе. Быстро найдём вас и доберёмся по любой трассе.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-4">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 9.93a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="why-title">Быстрая связь</div>
+        <div class="why-desc">Звонок или WhatsApp — отвечаем сразу. Не нужно ждать — объясним стоимость и время подачи.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-5">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="why-title">Личная ответственность</div>
+        <div class="why-desc">Аслямов — не компания-посредник. Личная ответственность владельца за каждый выезд.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- НОВОСТИ -->
+<div class="tg-section" id="news">
+  <div class="tg-wrapper">
+    <div class="tg-info reveal">
+      <div class="section-label">Актуально</div>
+      <h2 class="section-title">Новости<br>и обновления</h2>
+      <p style="margin-top: 20px; font-size: 15px; line-height: 1.7; color: var(--gray-600);">
+        Следите за акциями, новинками и жизнью сервиса в нашем Telegram-канале.
       </p>
+      <a href="https://t.me/evakuator_karaidel" target="_blank" class="tg-channel-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#229ED9"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
+        @evakuator_karaidel
+      </a>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <article style="border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:24px;background:var(--white);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:32px;height:32px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:12px;font-weight:600;">Эвакуатор Аслямов</div>
+              <div style="font-size:11px;color:var(--gray-400);">15 февраля 2026</div>
+            </div>
+          </div>
+          <p style="font-size:14px;line-height:1.7;color:var(--gray-600);">
+            <strong style="color:var(--black);">Грузовой шиномонтаж в Караиделе</strong> — монтаж и демонтаж шин для грузовиков, автобусов и спецтехники. Балансировка колёс, ремонт шин, проверка давления. Современное оборудование, удобный заезд. Адрес: ул. Мира, 13/11.
+          </p>
+        </article>
+
+        <article style="border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:24px;background:var(--white);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:32px;height:32px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:12px;font-weight:600;">Эвакуатор Аслямов</div>
+              <div style="font-size:11px;color:var(--gray-400);">19 января 2026</div>
+            </div>
+          </div>
+          <p style="font-size:14px;line-height:1.7;color:var(--gray-600);">
+            <strong style="color:var(--black);">Сдаются тёплые производственные боксы</strong> в Караиделе, ул. Мира 13/11 — долгосрочно и посуточно. Бокс №1: 11×10 м, ворота 4×4 м. Бокс №2: 10×5 м, ворота 3×2,5 м. Подходит для автосервиса, кузовного ремонта, спецтехники. Звоните: 8 987 584-19-83.
+          </p>
+        </article>
+
+        <article style="border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:24px;background:var(--white);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:32px;height:32px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
+            </div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:12px;font-weight:600;">Эвакуатор Аслямов</div>
+              <div style="font-size:11px;color:var(--gray-400);">30 декабря 2025</div>
+            </div>
+          </div>
+          <p style="font-size:14px;line-height:1.7;color:var(--gray-600);">
+            <strong style="color:var(--black);">Переехали в новое помещение!</strong> Тёплый, светлый шиномонтаж с современным оборудованием — теперь на ул. Мира 13/11 в Караиделе. Работаем быстрее и комфортнее. Спасибо всем, кто с нами — в новом году ровных дорог и надёжной техники!
+          </p>
+        </article>
+
+        <a href="https://t.me/evakuator_karaidel" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border:1.5px dashed var(--gray-200);border-radius:var(--radius-lg);color:var(--gray-400);font-size:13px;text-decoration:none;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--gray-200)';this.style.color='var(--gray-400)'">
+          Все новости в Telegram-канале
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="map">
-    <!-- Изменен параметр z=10 (было 13) для меньшего масштабирования -->
-    <iframe src="https://yandex.ru/map-widget/v1/?ll=56.885389%2C55.845255&z=10&pt=56.885389%2C55.845255,pm2rdm&l=map" allowfullscreen></iframe>
-    <a class="button" href="https://yandex.ru/maps/?mode=routes&rtext=~55.845255,56.885389" target="_blank">
-      Проложить маршрут
+<!-- MAP -->
+<section class="map-section" id="contacts">
+  <div class="map-inner">
+    <div class="reveal">
+      <div class="section-label">Контакты</div>
+      <h2 class="section-title">Где нас найти</h2>
+    </div>
+    <div class="map-grid">
+      <div class="map-info">
+        <div class="map-detail reveal">
+          <div class="map-detail-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="map-detail-label">Адрес</div>
+            <div class="map-detail-value">с. Караидель, ул. Мира, 13/11</div>
+          </div>
+        </div>
+        <div class="map-detail reveal reveal-delay-1">
+          <div class="map-detail-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 9.93 19.79 19.79 0 01.83 5.26 2 2 0 012.81 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 10.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 18.92z"/></svg>
+          </div>
+          <div>
+            <div class="map-detail-label">Телефон</div>
+            <div class="map-detail-value"><a href="tel:+79997414755">+7 (999) 741-47-55</a></div>
+          </div>
+        </div>
+        <div class="map-detail reveal reveal-delay-2">
+          <div class="map-detail-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#229ED9"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
+          </div>
+          <div>
+            <div class="map-detail-label">Telegram / WhatsApp</div>
+            <div class="map-detail-value"><a href="https://wa.me/79997414755" target="_blank">+7 (999) 741-47-55</a></div>
+          </div>
+        </div>
+        <div class="map-detail reveal reveal-delay-3">
+          <div class="map-detail-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="map-detail-label">Часы работы</div>
+            <div class="map-detail-value">Эвакуатор — 24/7<br>Шиномонтаж — 9:00–20:00</div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-4" style="margin-top: 8px;">
+          <a href="https://yandex.ru/maps/?mode=routes&rtext=~55.845255,56.885389" target="_blank" class="btn-primary" style="display: inline-flex;">
+            Проложить маршрут
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="map-frame reveal reveal-delay-1">
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=56.885389%2C55.845255&z=15&pt=56.885389%2C55.845255,pm2rdm&l=map" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<div class="reviews-section reveal">
+  <div class="section-label">Отзывы</div>
+  <h2 class="section-title">Нам доверяют</h2>
+  <p style="margin-top: 16px; font-size: 16px; color: var(--gray-600); max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+    Читайте отзывы реальных клиентов на Яндекс Картах и других платформах.
+  </p>
+  <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
+    <a href="https://yandex.ru/maps/org/shinomontazh/163637405636/reviews/" target="_blank" class="reviews-link">
+      Отзывы на Яндекс Картах
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="https://2gis.ru/firm/70000001100425663" target="_blank" class="reviews-link">
+      Профиль в 2ГИС
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank" class="reviews-link">
+      Профиль на Zoon
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
   </div>
+</div>
 
-  <div style="text-align:center; margin: 30px 0;">
-    <h2>Отзывы</h2>
-    <a href="https://yandex.ru/maps/org/shinomontazh/163637405636/reviews/" target="_blank" class="button">
-      Посмотреть отзывы на Яндекс Картах
-    </a>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo-badge">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M6 22 L14 6 L22 22" stroke="#111110" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M9.5 16 L18.5 16" stroke="#111110" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="14" cy="22" r="2.5" fill="#E85D24"/>
+            </svg>
+          </div>
+          <div>
+            <div class="footer-name">Аслямов</div>
+            <div class="footer-sub">Эвакуатор · Шиномонтаж</div>
+          </div>
+        </div>
+        <p style="margin-top: 20px; font-size: 13px; color: #666660; max-width: 280px; line-height: 1.7;">
+          Надёжная помощь на дороге. Работаем по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе.
+        </p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <div class="footer-link-title">Услуги</div>
+          <ul class="footer-link-list">
+            <li><a href="#services">Эвакуатор 24/7</a></li>
+            <li><a href="#services">Шиномонтаж легковой</a></li>
+            <li><a href="#truck">Грузовой шиномонтаж</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <div class="footer-link-title">Контакты</div>
+          <ul class="footer-link-list">
+            <li><a href="tel:+79997414755">+7 (999) 741-47-55</a></li>
+            <li><a href="https://wa.me/79997414755" target="_blank">WhatsApp</a></li>
+            <li><a href="https://t.me/evakuator_karaidel" target="_blank">Telegram</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <div class="footer-link-title">Мы на платформах</div>
+          <ul class="footer-link-list">
+            <li><a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank">Zoon</a></li>
+            <li><a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank">Avito</a></li>
+            <li><a href="https://yandex.ru/maps/org/shinomontazh/163637405636/" target="_blank">Яндекс Карты</a></li>
+            <li><a href="https://2gis.ru/firm/70000001100425663" target="_blank">2ГИС</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Аслямов. Эвакуатор и шиномонтаж, Караидель</div>
+      <div class="footer-socials">
+        <a href="https://vk.com/id792775410" target="_blank" class="footer-social" title="ВКонтакте">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.79h-1.67c-.63 0-.82-.5-1.96-1.64-1-.96-1.44-.96-1.69-.96-.34 0-.44.1-.44.57v1.5c0 .41-.13.65-1.2.65-1.77 0-3.73-1.07-5.11-3.07C4.64 10.08 4.14 8 4.14 7.6c0-.25.1-.49.57-.49h1.67c.43 0 .59.19.75.65.82 2.38 2.19 4.47 2.76 4.47.21 0 .31-.1.31-.65V9.64c-.07-1.16-.68-1.26-.68-1.67 0-.2.16-.41.43-.41h2.63c.37 0 .49.2.49.62v3.33c0 .37.16.49.26.49.21 0 .38-.12.76-.5 1.18-1.32 2.02-3.35 2.02-3.35.11-.25.31-.49.74-.49h1.67c.5 0 .61.26.5.62-.21.96-2.25 3.86-2.25 3.86-.17.28-.23.41 0 .72.17.23.72.72 1.09 1.15.68.77 1.2 1.41 1.34 1.85.14.44-.09.67-.5.67z"/></svg>
+        </a>
+        <a href="https://t.me/evakuator_karaidel" target="_blank" class="footer-social" title="Telegram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
+        </a>
+        <a href="https://wa.me/79997414755" target="_blank" class="footer-social" title="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
+</footer>
 
-  <footer>
-    <p>
-      <a href="tel:+79997414755">+7 (999) 741-47-55</a> |
-      <a href="https://wa.me/79997414755" target="_blank">WhatsApp</a>
-    </p>
-    <p>с. Караидель, ул. Мира, 13/11</p>
-    <p>
-      <a href="https://vk.com/id792775410" target="_blank">Наша страница ВКонтакте</a>
-    </p>
-  </footer>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
