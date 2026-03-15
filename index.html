@@ -138,6 +138,13 @@
       grid-template-columns: 1fr 1fr;
       padding-top: 84px;
       overflow: hidden;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-wrapper {
+      overflow: hidden;
+      background: var(--white);
     }
 
     .hero-left {
@@ -841,6 +848,7 @@
       .btn-call { padding: 10px 18px; font-size: 12px; }
 
       .hero { grid-template-columns: 1fr; height: auto; min-height: auto; }
+      .hero-wrapper { padding: 0; }
       .hero-left { padding: 60px 20px 40px; }
       .hero-right { min-height: 300px; }
       .hero-stats { gap: 24px; flex-wrap: wrap; }
@@ -1077,6 +1085,7 @@
 </nav>
 
 <!-- HERO -->
+<div class="hero-wrapper">
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Караидель · Круглосуточно</div>
@@ -1136,6 +1145,7 @@
     </div>
   </div>
 </section>
+</div>
 
 <!-- TICKER -->
 <div class="ticker">
@@ -1193,7 +1203,7 @@
         <img 
           src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/photo_2025-04-04_15-17-43.webp"
           alt="Эвакуатор Аслямов Караидель"
-          style="width:100%;border-radius:8px;object-fit:cover;object-position:center top;height:220px;display:block"
+          style="width:100%;border-radius:8px;object-fit:cover;object-position:center 40%;height:260px;display:block"
           onerror="this.style.display='none'"
         >
       </div>
@@ -1222,7 +1232,7 @@
         <img 
           src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/IMG_6030.webp" 
           alt="Шиномонтаж Аслямов Караидель"
-          style="width:100%;border-radius:8px;object-fit:cover;object-position:center top;height:220px;display:block"
+          style="width:100%;border-radius:8px;object-fit:cover;object-position:center 40%;height:260px;display:block"
           onerror="this.style.display='none'"
         >
       </div>
