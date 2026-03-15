@@ -137,6 +137,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       padding-top: 84px;
+      max-height: 100vh;
     }
 
     .hero-left {
@@ -263,8 +264,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.7;
-      mix-blend-mode: normal;
+      object-position: center 30%;
+      opacity: 0.85;
     }
 
     .hero-badge {
@@ -1112,8 +1113,8 @@
   <div class="hero-right">
     <div class="hero-placeholder" style="padding:0;overflow:hidden;min-height:500px;">
       <img 
-        src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/photo_2025-04-04_15-17-43.webp" 
-        alt="Эвакуатор Аслямов Караидель"
+        src="photo_2025-12-16_21-18-00.jpg" 
+        alt="Эвакуатор Аслямов Караидель — Hyundai HD78 на дороге в лесу"
         class="hero-img"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
       >
@@ -1188,6 +1189,14 @@
         <li>Доставка без повреждений</li>
         <li>Работаем по всему Башкортостану</li>
       </ul>
+      <div style="margin-top: 16px;">
+        <img 
+          src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/photo_2025-04-04_15-17-43.webp"
+          alt="Эвакуатор Аслямов Караидель"
+          style="width:100%;border-radius:8px;object-fit:cover;object-position:center center;aspect-ratio:16/9;display:block"
+          onerror="this.style.display='none'"
+        >
+      </div>
       <div class="service-hours"><span class="dot"></span> Работаем круглосуточно</div>
     </div>
     <div class="service-card reveal reveal-delay-1">
@@ -1213,7 +1222,7 @@
         <img 
           src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/IMG_6030.webp" 
           alt="Шиномонтаж Аслямов Караидель"
-          style="width:100%;border-radius:8px;object-fit:cover;aspect-ratio:16/9;display:block"
+          style="width:100%;border-radius:8px;object-fit:cover;object-position:center bottom;aspect-ratio:16/9;display:block"
           onerror="this.style.display='none'"
         >
       </div>
