@@ -15,7 +15,7 @@
  * Для правок самой страницы этого делать не нужно: HTML идёт по сети.
  */
 
-var CACHE = 'aslyamov-v1';
+var CACHE = 'aslyamov-v2';
 
 /* Чужие адреса, к которым service worker не притрагивается */
 var SKIP = ['mc.yandex.ru', 'yandex.ru', 'yandex.net', 'yandex.com'];

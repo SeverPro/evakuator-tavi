@@ -533,7 +533,7 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
 .foot-pwa { flex: 1 1 100%; }
 .foot-pwa .btn--line { border-color: var(--pobelka); color: var(--pobelka); }
 .foot-pwa .btn--line:hover { background: var(--pobelka); color: var(--rezina); }
-#pwaIos { margin-top: 12px; font-size: 13px; line-height: 1.55; color: var(--beton-2); max-width: 56ch; }
+#pwaStatus { margin-top: 12px; font-size: 13px; line-height: 1.55; color: var(--beton-2); max-width: 56ch; }
 
 .foot-socials { display: flex; gap: 8px; }
 .foot-socials a {
@@ -1009,7 +1009,7 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
     <div class="foot-bottom">
       <div class="foot-pwa">
         <button class="btn btn--line" type="button" id="pwaBtn" hidden>Установить на телефон</button>
-        <p id="pwaIos" hidden>На iPhone: «Поделиться» → «На экран „Домой“».</p>
+        <p id="pwaStatus" role="status" hidden></p>
       </div>
 
       <span>© 2026 Аслямов · Эвакуатор, шиномонтаж и автомойка, Караидель</span>
@@ -1286,52 +1286,82 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
     });
   }
 
-  var deferred = null;
+  /* Кнопка установки. Правило одно: любое нажатие оставляет текст на экране.
+     Молча выйти из обработчика нельзя — иначе человек нажимает и не понимает,
+     сработало ли. Поэтому в ветке без сохранённого события всегда показываем
+     инструкцию под платформу, а не прячемся. */
   var pwaBtn = document.getElementById('pwaBtn');
-  var pwaHint = document.getElementById('pwaIos');
-  if (!pwaBtn) return;
+  var pwaStatus = document.getElementById('pwaStatus');
+  if (!pwaBtn || !pwaStatus) return;
+
+  function say(text) {
+    pwaStatus.hidden = false;
+    pwaStatus.textContent = text;
+  }
+
+  var ua = navigator.userAgent;
+  var isIos = /iphone|ipad|ipod/i.test(ua) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  /* Встроенные браузеры мессенджеров: установку не предлагают вообще */
+  var inApp = /Telegram|WhatsApp|Instagram|FBAN|FBAV|FB_IAB|VKAndroid|VKClient|OKAndroid/i.test(ua);
+  var isMobile = isIos || /Android/.test(ua) || /Mobi/.test(ua);
+
+  /* Уже открыто как приложение — ни кнопки, ни подсказок */
+  var standalone = window.navigator.standalone ||
+    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+  if (standalone) return;
+
+  function instruction() {
+    var parts = [];
+    if (inApp) parts.push('Откройте сайт в Chrome: ⋮ → Открыть в браузере.');
+    parts.push(isIos
+      ? 'На iPhone: «Поделиться» → «На экран „Домой“».'
+      : 'В меню браузера «⋮» выберите «Установить приложение».');
+    parts.push('Значок встанет рядом с остальными приложениями, а страница будет открываться даже без интернета.');
+    return parts.join(' ');
+  }
+
+  var deferred = null;
 
   window.addEventListener('beforeinstallprompt', function (e) {
     e.preventDefault();
     deferred = e;
     pwaBtn.hidden = false;
-    pwaBtn.textContent = 'Установить на телефон';
   });
+
+  window.addEventListener('appinstalled', function () {
+    deferred = null;
+    pwaBtn.hidden = true;
+    say('Установлено. Значок «Аслямов» на главном экране.');
+  });
+
+  if (isMobile) pwaBtn.hidden = false;
 
   pwaBtn.addEventListener('click', function () {
-    if (!deferred) { if (pwaHint) pwaHint.hidden = !pwaHint.hidden; return; }
-    deferred.prompt();
-    deferred.userChoice.then(function (r) {
-      if (window.ym) { window.ym(105880355, 'reachGoal', 'pwa_' + r.outcome); }
-      deferred = null;
-      pwaBtn.hidden = true;
+    var pending = deferred;
+    deferred = null;   /* повторно то же событие не сработает — дальше инструкция */
+
+    if (!pending) { say(instruction()); return; }
+
+    try {
+      pending.prompt();
+    } catch (err) {
+      say(instruction());
+      return;
+    }
+
+    if (!pending.userChoice) { say(instruction()); return; }
+
+    pending.userChoice.then(function (r) {
+      var outcome = r && r.outcome;
+      say(outcome === 'accepted'
+        ? 'Устанавливается. Значок появится на главном экране в течение минуты.'
+        : 'Установка отменена. Поставить можно через меню браузера: ⋮ → Установить приложение.');
+      if (window.ym) { window.ym(105880355, 'reachGoal', 'pwa_' + outcome); }
+    })['catch'](function () {
+      say(instruction());
     });
   });
-
-  window.addEventListener('appinstalled', function () { pwaBtn.hidden = true; });
-
-  var standalone = window.navigator.standalone ||
-    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
-  if (standalone) return;   /* уже открыто как приложение — предлагать нечего */
-
-  // iPhone: своя инструкция, установку из кода Apple не разрешает
-  var isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
-              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-  /* Встроенные браузеры Telegram, WhatsApp и ВКонтакте событие установки
-     не шлют никогда. Раньше кнопка в них просто не появлялась, и человек
-     не понимал, что делать. Поэтому на телефоне показываем её всегда,
-     а по нажатию раскрываем инструкцию. */
-  var isMobile = isIos || /Android/.test(navigator.userAgent) || /Mobi/.test(navigator.userAgent);
-  if (isMobile) {
-    pwaBtn.hidden = false;
-    if (pwaHint) {
-      pwaHint.textContent = isIos
-        ? 'На iPhone: «Поделиться» → «На экран „Домой“».'
-        : 'В меню браузера «⋮» выберите «Установить приложение». Если сайт открыт ' +
-          'в Telegram или WhatsApp, сначала нажмите «⋯» → «Открыть в браузере».';
-    }
-  }
 })();
 </script>
 
