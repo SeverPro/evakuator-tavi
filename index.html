@@ -2,11 +2,11 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <script>document.documentElement.className += ' js';</script>
 
 <title>Эвакуатор, шиномонтаж и автомойка в Караиделе — Аслямов</title>
-<meta name="description" content="Аслямов, Караидель: эвакуатор круглосуточно до 4 тонн, шиномонтаж легковой и грузовой, автомойка с 6:00 до 22:00. Ул. Мира, 13/11. Грузовой шиномонтаж — единственный в районе." />
+<meta name="description" content="Аслямов, Караидель: эвакуатор круглосуточно до 4 тонн, шиномонтаж легковой и грузовой, автомойка самообслуживания с 6:00 до 22:00, от 50 ₽. Ул. Мира, 13/11. Грузовой шиномонтаж — единственный в районе." />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#E9EAE6" />
 
@@ -14,11 +14,12 @@
 <meta property="og:locale" content="ru_RU" />
 <meta property="og:url" content="https://evakuator.aslyamov24.ru/" />
 <meta property="og:title" content="Эвакуатор, шиномонтаж и автомойка в Караиделе — Аслямов" />
-<meta property="og:description" content="Три службы в одном месте на ул. Мира, 13/11. Эвакуатор круглосуточно, шиномонтаж легковой и грузовой, автомойка до 22:00." />
+<meta property="og:description" content="Три службы в одном месте на ул. Мира, 13/11. Эвакуатор круглосуточно, шиномонтаж легковой и грузовой, автомойка самообслуживания с 6:00 до 22:00, от 50 ₽." />
 <meta property="og:image" content="https://evakuator.aslyamov24.ru/img/og.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
+<link rel="canonical" href="https://evakuator.aslyamov24.ru/" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 <link rel="manifest" href="manifest.webmanifest" />
@@ -172,36 +173,51 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
   display: flex; flex-direction: column;
 }
 
-/* Три услуги — строками, как позиции на перфопанели */
-.gate-h1 { display: grid; font-size: clamp(2.35rem, 7.2vw, 6rem); }
-.gate-row {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center; column-gap: clamp(16px, 3vw, 44px);
+/* Три услуги — строками, как позиции на перфопанели.
+   Внутри <h1> только три слова: пояснения и часы лежат рядом, в .gate-meta.
+   Обе обёртки — display: contents, поэтому все девять ячеек раскладывает
+   один общий грид .gate-list и строки сходятся по высоте сами. */
+.gate-list {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: repeat(3, auto);
+  column-gap: 0;
+}
+.gate-h1, .gate-meta { display: contents; }
+
+.gate-word, .gate-note, .plate-cell {
+  display: flex; align-items: center;
   padding: clamp(14px, 2.4vw, 34px) 0;
   border-bottom: var(--rule);
 }
-.gate-row:first-child { border-top: var(--rule); }
 .gate-word {
-  grid-column: 1; font-family: var(--mark); font-weight: 800;
-  font-size: inherit;
+  font-family: var(--mark); font-weight: 800;
+  font-size: clamp(2.35rem, 7.2vw, 6rem);
   line-height: 0.95; letter-spacing: -0.012em;
+  padding-right: clamp(20px, 3vw, 48px);
 }
 .gate-note {
-  grid-column: 1; margin-top: 5px; max-width: 48ch;
   font-family: var(--text); font-weight: 400;
   font-size: clamp(13px, 1.25vw, 15px); line-height: 1.5; color: var(--stal);
+  padding-right: clamp(20px, 3vw, 48px);
 }
-.gate-row .plate { grid-column: 2; grid-row: 1 / span 2; }
-/* на широком экране пояснение встаёт между названием и часами */
-@media (min-width: 1000px) {
-  .gate-row { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: clamp(20px, 3vw, 48px); }
-  .gate-word { grid-column: 1; grid-row: 1; }
-  .gate-note { grid-column: 2; grid-row: 1; margin-top: 0; max-width: 40ch; }
-  .gate-row .plate { grid-column: 3; grid-row: 1; }
-}
+.plate-cell { justify-content: flex-end; }
+
+/* три колонки: название — пояснение — часы */
+.gate-h1  > :nth-child(1) { grid-area: 1 / 1; }
+.gate-h1  > :nth-child(2) { grid-area: 2 / 1; }
+.gate-h1  > :nth-child(3) { grid-area: 3 / 1; }
+.gate-meta > :nth-child(1) { grid-area: 1 / 2; }
+.gate-meta > :nth-child(2) { grid-area: 1 / 3; }
+.gate-meta > :nth-child(3) { grid-area: 2 / 2; }
+.gate-meta > :nth-child(4) { grid-area: 2 / 3; }
+.gate-meta > :nth-child(5) { grid-area: 3 / 2; }
+.gate-meta > :nth-child(6) { grid-area: 3 / 3; }
+.gate-h1  > :nth-child(1),
+.gate-meta > :nth-child(1),
+.gate-meta > :nth-child(2) { border-top: var(--rule); }
 
 .plate {
-  justify-self: end;
   font-family: var(--mark); font-weight: 700; font-size: clamp(11px, 1.1vw, 13px);
   letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--rezina); background: var(--pobelka-2);
@@ -209,13 +225,46 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
   padding: 7px 10px; display: inline-flex; align-items: center; gap: 8px;
   font-variant-numeric: tabular-nums; white-space: nowrap;
 }
-/* на узких телефонах бирка уходит под пояснение и встаёт по левому краю */
-@media (max-width: 480px) {
-  .gate-row { grid-template-columns: minmax(0, 1fr); }
-  .gate-row .plate { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 10px; }
-}
 .lamp { width: 9px; height: 9px; border-radius: 50%; background: transparent; box-shadow: inset 0 0 0 1.5px var(--beton-2); flex-shrink: 0; }
 .lamp[data-on="1"] { background: var(--razmetka); box-shadow: none; }
+
+/* уже 1000 px: пояснение уходит под название, часы — справа на две строки */
+@media (max-width: 999px) {
+  .gate-list { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: repeat(6, auto); }
+  .gate-h1  > :nth-child(1) { grid-area: 1 / 1; }
+  .gate-h1  > :nth-child(2) { grid-area: 3 / 1; }
+  .gate-h1  > :nth-child(3) { grid-area: 5 / 1; }
+  .gate-meta > :nth-child(1) { grid-area: 2 / 1; }
+  .gate-meta > :nth-child(2) { grid-area: 1 / 2 / span 2 / auto; }
+  .gate-meta > :nth-child(3) { grid-area: 4 / 1; }
+  .gate-meta > :nth-child(4) { grid-area: 3 / 2 / span 2 / auto; }
+  .gate-meta > :nth-child(5) { grid-area: 6 / 1; }
+  .gate-meta > :nth-child(6) { grid-area: 5 / 2 / span 2 / auto; }
+  /* линия строки идёт под пояснением, а не между пояснением и названием */
+  .gate-word { border-bottom: 0; padding-bottom: 4px; }
+  .gate-note { padding-top: 0; }
+  .gate-h1  > :nth-child(1),
+  .gate-meta > :nth-child(2) { border-top: var(--rule); }
+  .gate-meta > :nth-child(1) { border-top: 0; }
+}
+
+/* узкий телефон: бирка встаёт под пояснение */
+@media (max-width: 480px) {
+  .gate-list { grid-template-columns: minmax(0, 1fr); grid-template-rows: repeat(9, auto); }
+  .gate-h1  > :nth-child(1) { grid-area: 1 / 1; }
+  .gate-h1  > :nth-child(2) { grid-area: 4 / 1; }
+  .gate-h1  > :nth-child(3) { grid-area: 7 / 1; }
+  .gate-meta > :nth-child(1) { grid-area: 2 / 1; }
+  .gate-meta > :nth-child(2) { grid-area: 3 / 1; }
+  .gate-meta > :nth-child(3) { grid-area: 5 / 1; }
+  .gate-meta > :nth-child(4) { grid-area: 6 / 1; }
+  .gate-meta > :nth-child(5) { grid-area: 8 / 1; }
+  .gate-meta > :nth-child(6) { grid-area: 9 / 1; }
+  .gate-note { border-bottom: 0; padding-bottom: 10px; }
+  .plate-cell { justify-content: flex-start; padding-top: 0; }
+  .gate-h1  > :nth-child(1) { border-top: var(--rule); }
+  .gate-meta > :nth-child(2) { border-top: 0; }
+}
 
 .gate-now {
   margin-top: auto; padding-top: clamp(26px, 3.4vw, 44px);
@@ -237,7 +286,9 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
    кнопки обязаны быть видны сразу, а не наполовину спрятаны под ней. */
 @media (max-width: 899px) {
   .gate-in { min-height: 0; padding-top: 18px; padding-bottom: 22px; }
-  .gate-row { padding: 12px 0; }
+  .gate-word, .gate-note, .plate-cell { padding-top: 12px; padding-bottom: 12px; }
+  .gate-word { padding-bottom: 4px; }
+  .gate-note { padding-top: 0; }
   .gate-now { padding-top: 20px; }
   .gate-foot { margin-top: 14px; padding-top: 14px; gap: 14px; }
   .gate-place span { display: none; }
@@ -438,10 +489,13 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
 /* Установка приложения на телефон */
 .install { margin-top: 18px; padding-top: 18px; border-top: var(--rule); }
 .install-hint {
-  margin-top: 14px; padding: 16px 18px; border: 1px solid var(--beton); border-radius: 2px;
-  background: var(--pobelka-2); font-size: 14px; line-height: 1.6; max-width: 52ch;
+  margin-top: 14px; padding: 18px 20px; border: 1px solid var(--beton); border-radius: 2px;
+  background: var(--pobelka-2); font-size: 14px; line-height: 1.6; max-width: 56ch;
 }
+.install-hint p + p, .install-hint ol + p { margin-top: 12px; }
 .install-hint b { font-weight: 500; }
+.install-hint ol { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; }
+.install-hint li { padding-left: 4px; }
 
 /* ─── ПОДВАЛ ────────────────────────────────────────── */
 .foot { background: var(--rezina); color: var(--pobelka); }
@@ -477,6 +531,7 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
   display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
   background: var(--beton); border-top: 1px solid var(--beton);
 }
+.callbar { padding-bottom: env(safe-area-inset-bottom); }
 .callbar a {
   display: flex; align-items: center; justify-content: center; gap: 9px;
   padding: 16px 10px; text-decoration: none;
@@ -487,7 +542,8 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
 .callbar .cb-call { background: var(--gruz); color: var(--rezina); }
 .callbar .cb-wa { background: var(--rezina); color: var(--pobelka); }
 @media (min-width: 900px) { .callbar { display: none; } }
-@media (max-width: 899px) { body { padding-bottom: 58px; } }
+/* закреплённая панель звонка плюс полоска жестов на iPhone */
+@media (max-width: 899px) { body { padding-bottom: calc(58px + env(safe-area-inset-bottom)); } }
 
 /* ─── ПОЯВЛЕНИЕ ФОТО ────────────────────────────────── */
 /* Скрываем только при работающем JS: без него фотографии обязаны быть видны */
@@ -546,23 +602,24 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
 <!-- ═══ ПЕРВЫЙ ЭКРАН ═══ -->
 <section class="gate" id="top">
   <div class="gate-in">
-    <h1 class="gate-h1" aria-label="Аслямов — эвакуатор, шиномонтаж и автомойка в Караиделе">
-      <span class="gate-row">
+    <div class="gate-list">
+      <h1 class="gate-h1">
         <span class="gate-word">Эвакуатор</span>
-        <span class="gate-note">До 4 тонн. По Караидельскому, Мишкинскому и Аскинскому районам, Тастубе и трассам</span>
-        <span class="plate">круглосуточно <span class="lamp" data-lamp="tow"></span></span>
-      </span>
-      <span class="gate-row">
         <span class="gate-word">Шиномонтаж</span>
-        <span class="gate-note">Легковой и грузовой. Грузовой — единственный в районе</span>
-        <span class="plate">9:00–18:00 <span class="lamp" data-lamp="tire"></span></span>
-      </span>
-      <span class="gate-row">
         <span class="gate-word">Автомойка</span>
-        <span class="gate-note">Легковые и грузовые. Пылесос к любой мойке — бесплатно</span>
-        <span class="plate">6:00–22:00 <span class="lamp" data-lamp="wash"></span></span>
-      </span>
-    </h1>
+      </h1>
+
+      <div class="gate-meta">
+        <span class="gate-note">До 4 тонн. По Караидельскому, Мишкинскому и Аскинскому районам, Тастубе и трассам</span>
+        <span class="plate-cell"><span class="plate">круглосуточно <span class="lamp" data-lamp="tow"></span></span></span>
+
+        <span class="gate-note">Легковой и грузовой. Грузовой — единственный в районе</span>
+        <span class="plate-cell"><span class="plate">9:00–18:00 <span class="lamp" data-lamp="tire"></span></span></span>
+
+        <span class="gate-note">Самообслуживание, от 50 ₽. Проходят грузовики и автобусы</span>
+        <span class="plate-cell"><span class="plate">6:00–22:00 <span class="lamp" data-lamp="wash"></span></span></span>
+      </div>
+    </div>
 
     <p class="gate-now" id="nowLine">
       <b>Эвакуатор</b> — круглосуточно, без выходных. <b>Шиномонтаж</b> — с 9:00 до 18:00.
@@ -696,21 +753,30 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
 <section class="bay" id="avtomoyka">
   <div class="bay-in">
     <div class="bay-head">
-      <h2 class="bay-name">Автомойка</h2>
+      <h2 class="bay-name">Автомойка самообслуживания</h2>
       <p class="bay-lead">
-        Работаем с 6:00 до 22:00 — успеете до смены или после работы. Моем и легковые, и грузовые.
-        Вход с вывеской <b>«Мой сам»</b>, это та же площадка на ул. Мира, 13/11.
+        Мойка <b>«Мой сам»</b> — моете сами, без записи и очереди к мастеру. Открыта каждый день
+        с 6:00 до 22:00. Та же площадка на ул. Мира, 13/11.
       </p>
     </div>
 
     <div class="bay-body bay-body--split">
       <div>
-        <h3 class="ops-title">Что делаем</h3>
+        <h3 class="ops-title">Как это происходит</h3>
         <ol class="ops">
-          <li><strong>Мойка кузова</strong><span>Легковые и грузовые.</span></li>
-          <li><strong>Уборка салона</strong><span>Пылесос, влажная уборка, пороги и коврики.</span></li>
-          <li><strong>Мойка двигателя</strong><span>Аккуратно, с защитой электрики.</span></li>
+          <li><strong>Заезжаете в бокс</strong><span>Крайний правый, вывеска «Мой сам».</span></li>
+          <li><strong>Оплачиваете</strong><span>Наличными или картой. От 50 рублей.</span></li>
+          <li><strong>Моете</strong><span>Вода, пена, воск, воздух.</span></li>
+          <li><strong>Пылесосите</strong><span>Бесплатно.</span></li>
         </ol>
+
+        <h3 class="ops-title" style="margin-top:32px">Кто проходит в бокс</h3>
+        <ul class="ticks">
+          <li>Легковые и внедорожники</li>
+          <li>ГАЗели и микроавтобусы</li>
+          <li>Грузовики и КамАЗы</li>
+          <li>Автобусы</li>
+        </ul>
 
         <p class="freebie">
           <b>Пылесос — бесплатно</b>
@@ -726,7 +792,7 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
     </div>
 
     <div class="find-actions">
-      <a class="btn btn--gruz" href="tel:+79997414755">Узнать цену мойки</a>
+      <a class="btn btn--gruz" href="https://yandex.ru/maps/?mode=routes&amp;rtext=~55.845255,56.885389" target="_blank" rel="noopener">Проложить маршрут</a>
     </div>
   </div>
 
@@ -738,9 +804,9 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
       </div>
       <div class="night-note">
         <b>Свет горит до 22:00</b>
-        <p>Приехали поздно — звоните, встретим. Мойка работает каждый день с 6:00 до 22:00,
-           ворота крайнего правого бокса на ул. Мира 13/11.</p>
-        <a class="btn btn--gruz" href="tel:+79997414755">Позвонить на мойку</a>
+        <p>Открыто каждый день с 6:00 до 22:00. Пост без персонала — заезжайте в крайний правый
+           бокс на ул. Мира, 13/11.</p>
+        <a class="btn btn--gruz" href="https://yandex.ru/maps/?mode=routes&amp;rtext=~55.845255,56.885389" target="_blank" rel="noopener">Проложить маршрут</a>
       </div>
     </div>
   </div>
@@ -814,7 +880,7 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
         </div>
         <div class="find-row">
           <dt>Телефон</dt>
-          <dd><a href="tel:+79997414755">+7 (999) 741-47-55</a> — эвакуатор, шиномонтаж, мойка</dd>
+          <dd><a href="tel:+79997414755">+7 (999) 741-47-55</a> — эвакуатор и шиномонтаж</dd>
         </div>
         <div class="find-row">
           <dt>Второй номер</dt>
@@ -859,11 +925,17 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
 
         <div class="install" id="installBlock" hidden>
           <button class="btn btn--line" id="installBtn" type="button">Установить приложение</button>
-          <p class="install-hint" id="installHint" hidden>
-            На iPhone установка только вручную: нажмите <b>«Поделиться»</b> в панели браузера,
-            затем выберите <b>«На экран „Домой“»</b>. Значок появится рядом с остальными приложениями,
-            а страница будет открываться даже без интернета.
-          </p>
+          <div class="install-hint" id="installHint" hidden>
+            <p><b>Как поставить значок на экран</b></p>
+            <ol>
+              <li>Откройте сайт в обычном браузере — Chrome или Safari. Если вы сейчас в Telegram,
+                  WhatsApp или ВКонтакте, нажмите «⋯» и выберите «Открыть в браузере».</li>
+              <li>Android: меню «⋮» → «Установить приложение» (может называться
+                  «Добавить на главный экран»).<br>iPhone: «Поделиться» → «На экран „Домой“».</li>
+            </ol>
+            <p>Значок встанет рядом с остальными приложениями, а страница будет открываться
+               даже без интернета.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -884,8 +956,8 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
           <span class="brand-name">Аслямов</span>
         </div>
         <p class="foot-about">
-          Эвакуатор, шиномонтаж и автомойка в Караиделе. Грузовой шиномонтаж — единственный в районе.
-          Работаем по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе.
+          Эвакуатор, шиномонтаж и автомойка самообслуживания в Караиделе. Грузовой шиномонтаж —
+          единственный в районе. Работаем по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе.
         </p>
       </div>
 
@@ -895,7 +967,7 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
           <li><a href="#evakuator">Эвакуатор 24/7, до 4 тонн</a></li>
           <li><a href="#shinomontazh">Шиномонтаж легковой</a></li>
           <li><a href="#shinomontazh">Грузовой шиномонтаж</a></li>
-          <li><a href="#avtomoyka">Автомойка легковая и грузовая</a></li>
+          <li><a href="#avtomoyka">Автомойка самообслуживания</a></li>
         </ul>
       </div>
 
@@ -954,23 +1026,48 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
 
+  /* Часы считаем по Караиделю, а не по устройству посетителя: позвонить могут
+     из другого часового пояса, а расписание — местное. Если Intl недоступен
+     или часовой пояс не знает, тихо откатываемся на время устройства. */
+  var TZ = null;
+  try {
+    TZ = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Yekaterinburg',
+      hour: '2-digit', minute: '2-digit', hour12: false
+    });
+  } catch (e) { TZ = null; }
+
+  function localNow() {
+    if (TZ) {
+      try {
+        var h = 0, m = 0;
+        TZ.formatToParts(new Date()).forEach(function (part) {
+          if (part.type === 'hour') h = (+part.value) % 24;
+          if (part.type === 'minute') m = +part.value;
+        });
+        return { h: h, m: m };
+      } catch (e) { /* ниже — откат */ }
+    }
+    var d = new Date();
+    return { h: d.getHours(), m: d.getMinutes() };
+  }
+
   function stateAt(now, svc) {
-    var h = now.getHours() + now.getMinutes() / 60;
+    var t = now.h + now.m / 60;
     if (svc.open === 0 && svc.close >= 24) return 'always';
-    return (h >= svc.open && h < svc.close) ? 'open' : 'closed';
+    return (t >= svc.open && t < svc.close) ? 'open' : 'closed';
   }
 
   function hhmm(h) { return h + ':00'; }
 
-  function describe(svc, st) {
+  function describe(svc, st, now) {
     if (st === 'always') return svc.short + ' на связи';
     if (st === 'open')   return svc.short + ' открыт' + (svc.key === 'wash' ? 'а' : '') + ' до ' + hhmm(svc.close);
-    var h = new Date().getHours();
-    return svc.short + (h < svc.open ? ' откроется в ' + hhmm(svc.open) : ' откроется завтра в ' + hhmm(svc.open));
+    return svc.short + (now.h < svc.open ? ' откроется в ' + hhmm(svc.open) : ' откроется завтра в ' + hhmm(svc.open));
   }
 
   function render() {
-    var now = new Date();
+    var now = localNow();
 
     var lamps = document.querySelectorAll('.lamp[data-lamp]');
     for (var i = 0; i < lamps.length; i++) {
@@ -983,8 +1080,8 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
 
     var line = document.getElementById('nowLine');
     if (line) {
-      var parts = SCHEDULE.map(function (s) { return describe(s, stateAt(now, s)); });
-      line.innerHTML = '<b>Сейчас ' + pad(now.getHours()) + ':' + pad(now.getMinutes()) + '</b> · ' +
+      var parts = SCHEDULE.map(function (s) { return describe(s, stateAt(now, s), now); });
+      line.innerHTML = '<b>Сейчас ' + pad(now.h) + ':' + pad(now.m) + '</b> · ' +
                        parts.join(' · ') + '.';
     }
   }
@@ -1094,6 +1191,7 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
     e.preventDefault();
     deferred = e;
     block.hidden = false;
+    btn.textContent = 'Установить приложение';
   });
 
   window.addEventListener('appinstalled', function () {
@@ -1101,13 +1199,23 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
     deferred = null;
   });
 
-  /* iPhone: Apple не даёт вызвать установку из кода — показываем инструкцию */
   var ua = navigator.userAgent;
   var isIOS = /iPad|iPhone|iPod/.test(ua) ||
               (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  if (isIOS) {
+  var isAndroid = /Android/.test(ua);
+  var isMobile = isIOS || isAndroid || /Mobi/.test(ua);
+
+  /* На телефоне блок показывается всегда, даже если событие установки не пришло.
+     Встроенные браузеры Telegram, WhatsApp и ВКонтакте его не шлют никогда —
+     раньше кнопка в них просто исчезала, и человек не понимал, что делать.
+     Теперь при отсутствии события кнопка раскрывает инструкцию. */
+  if (isMobile) {
     block.hidden = false;
-    btn.textContent = 'Установить на iPhone';
+    if (isIOS) {
+      btn.textContent = 'Установить на iPhone';
+    } else {
+      btn.textContent = 'Как установить приложение';
+    }
   }
 
   btn.addEventListener('click', function () {
@@ -1159,9 +1267,25 @@ ym(105880355, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
     { "@type": "Place", "name": "с. Тастуба" }
   ],
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59", "description": "Эвакуатор — круглосуточно" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "09:00", "closes": "18:00", "description": "Шиномонтаж" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "06:00", "closes": "22:00", "description": "Автомойка" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }
+  ],
+  "department": [
+    {
+      "@type": "TireShop",
+      "name": "Шиномонтаж",
+      "telephone": "+79997414755",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "09:00", "closes": "18:00" }
+      ]
+    },
+    {
+      "@type": "AutoWash",
+      "name": "Автомойка самообслуживания «Мой сам»",
+      "telephone": "+79997414755",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "06:00", "closes": "22:00" }
+      ]
+    }
   ],
   "sameAs": [
     "https://t.me/evakuator_karaidel",
@@ -1178,7 +1302,7 @@ ym(105880355, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Эвакуатор 24/7, до 4 тонн", "areaServed": "Караидельский, Мишкинский, Аскинский районы, Тастуба" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Шиномонтаж легковой: замена, балансировка, дошиповка, ремонт порезов, правка дисков" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Грузовой шиномонтаж: грузовики, автобусы, тракторы, спецтехника" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Автомойка легковая и грузовая: кузов, салон, двигатель, пылесос бесплатно" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Автомойка самообслуживания: вода, пена, воск, воздух, пылесос бесплатно. Легковые, ГАЗели, грузовики, автобусы" } }
     ]
   }
 }

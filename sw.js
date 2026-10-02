@@ -4,14 +4,21 @@
  * Задача: клиент в районе со слабой связью должен открыть страницу
  * и увидеть телефон, часы и адрес, даже если сеть не отвечает.
  *
- * Правила кэша выбраны так, чтобы владелец никогда не застрял на старой
- * версии сайта:
- *   — HTML и переходы по странице: сеть в приоритете, кэш только как запас;
- *   — картинки и шрифты: из кэша, но с тихим обновлением в фоне;
- *   — всё чужое (Метрика, карта Яндекса) не трогаем вообще.
+ * Правила кэша:
+ *   — HTML и переходы по странице: сеть в приоритете, кэш только как запас,
+ *     поэтому правки владельца видны сразу, а не через сутки;
+ *   — fonts/, img/ и иконки: из кэша сразу (cache-first);
+ *   — Метрика и карта Яндекса не перехватываются вообще.
+ *
+ * ВАЖНО: при замене файла внутри fonts/, img/ или иконок нужно поднять
+ * версию CACHE — иначе у вернувшихся посетителей останется старая картинка.
+ * Для правок самой страницы этого делать не нужно: HTML идёт по сети.
  */
 
 var CACHE = 'aslyamov-v1';
+
+/* Чужие адреса, к которым service worker не притрагивается */
+var SKIP = ['mc.yandex.ru', 'yandex.ru', 'yandex.net', 'yandex.com'];
 
 var CORE = [
   './',
@@ -54,12 +61,15 @@ function put(request, response) {
 
 self.addEventListener('fetch', function (event) {
   var request = event.request;
-
   if (request.method !== 'GET') return;
 
   var url;
   try { url = new URL(request.url); } catch (e) { return; }
+
+  // Своё — только со своего origin; чужое и карта с Метрикой идут мимо.
   if (url.origin !== self.location.origin) return;
+  if (SKIP.indexOf(url.hostname) !== -1) return;
+  if (url.pathname.indexOf('/map-widget') === 0) return;
 
   // Переход по странице: сначала сеть, иначе — то, что лежит в кэше.
   if (request.mode === 'navigate') {
@@ -75,13 +85,12 @@ self.addEventListener('fetch', function (event) {
     return;
   }
 
-  // Остальное своё: отдаём из кэша сразу, обновляем в фоне.
+  // Шрифты, картинки, иконки: отдаём из кэша сразу, в сеть идём только
+  // если файла там ещё нет.
   event.respondWith(
     caches.match(request).then(function (hit) {
-      var fromNetwork = fetch(request)
-        .then(function (response) { return put(request, response); })
-        .catch(function () { return hit; });
-      return hit || fromNetwork;
+      if (hit) return hit;
+      return fetch(request).then(function (response) { return put(request, response); });
     })
   );
 });
