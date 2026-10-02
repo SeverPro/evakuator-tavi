@@ -31,6 +31,10 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Атрибут hidden должен побеждать любой авторский display:
+   без этого .geo-send { display: flex } перебивает браузерное [hidden] */
+[hidden] { display: none !important; }
+
 :root {
   --pobelka:   #E9EAE6;
   --pobelka-2: #F3F4F1;
@@ -183,7 +187,10 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
   grid-template-rows: repeat(3, auto);
   column-gap: 0;
 }
+/* display: contents убирает коробку, но размер задаём на самом h1:
+   слова его наследуют, и заголовок не остаётся с браузерным кеглем */
 .gate-h1, .gate-meta { display: contents; }
+.gate-h1 { font-size: clamp(2.35rem, 7.2vw, 6rem); }
 
 .gate-word, .gate-note, .plate-cell {
   display: flex; align-items: center;
@@ -192,7 +199,7 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
 }
 .gate-word {
   font-family: var(--mark); font-weight: 800;
-  font-size: clamp(2.35rem, 7.2vw, 6rem);
+  font-size: inherit;
   line-height: 0.95; letter-spacing: -0.012em;
   padding-right: clamp(20px, 3vw, 48px);
 }
@@ -286,15 +293,31 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
    кнопки обязаны быть видны сразу, а не наполовину спрятаны под ней. */
 @media (max-width: 899px) {
   .gate-in { min-height: 0; padding-top: 18px; padding-bottom: 22px; }
-  .gate-word, .gate-note, .plate-cell { padding-top: 12px; padding-bottom: 12px; }
+  .gate-word, .gate-note, .plate-cell { padding-top: 9px; padding-bottom: 9px; }
   .gate-word { padding-bottom: 4px; }
   .gate-note { padding-top: 0; }
   .gate-now { padding-top: 20px; }
-  .gate-foot { margin-top: 14px; padding-top: 14px; gap: 14px; }
+  .gate-foot { margin-top: 10px; padding-top: 10px; gap: 12px; }
   .gate-place span { display: none; }
-  /* звонок на телефоне дублировать не нужно: он всегда под рукой в нижней панели */
-  .gate-actions .btn--gruz { display: none; }
+  /* Звонок на телефоне дублировать не нужно: он всегда под рукой в нижней панели.
+     Только прямой потомок — иначе правило спрячет и кнопку SMS в блоке геолокации. */
+  .gate-actions > .btn--gruz { display: none; }
 }
+
+/* ─── ГЕОЛОКАЦИЯ: «отправить, где я стою» ─────────────── */
+/* Без JS смысла в блоке нет: координаты взять неоткуда */
+.geo { display: none; gap: 12px; }
+.js .geo { display: grid; }
+/* Свёрнутый блок стоит в общем ряду кнопок и высоты не добавляет.
+   На всю ширину разворачивается только после определения места. */
+.gate-actions .geo.is-open, .find-actions .geo.is-open { flex: 1 1 100%; }
+.geo-out { font-size: 15px; line-height: 1.5; color: var(--rezina); max-width: 60ch; }
+.geo-send { display: flex; flex-wrap: wrap; gap: 12px; }
+/* Кнопка — это <button>, а не <a>: нужен курсор и сброс системного фона.
+   Кегль и капс берём из .btn, поэтому без шортката font — он бы их сбросил. */
+button.btn { cursor: pointer; background: transparent; font-family: var(--mark); font-weight: 700; }
+button.btn--gruz { background: var(--gruz); }
+button.btn:disabled { opacity: 0.6; cursor: default; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -632,6 +655,15 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
           <svg width="17" height="17" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1-1a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
           +7 (999) 741-47-55
         </a>
+        <div class="geo">
+          <button class="btn btn--line" type="button" data-geo-btn>Отправить, где я стою</button>
+          <p class="geo-out" data-geo-out role="status" hidden></p>
+          <div class="geo-send" data-geo-send hidden>
+            <a class="btn btn--gruz" data-geo-sms>Отправить SMS</a>
+            <a class="btn btn--line" data-geo-wa target="_blank" rel="noopener">В WhatsApp</a>
+          </div>
+        </div>
+
         <a class="btn btn--line" href="https://wa.me/79997414755" target="_blank" rel="noopener">WhatsApp</a>
         <a class="btn btn--line" href="https://t.me/evakuator_karaidel" target="_blank" rel="noopener">Telegram</a>
       </div>
@@ -685,6 +717,16 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
 
     <div class="find-actions">
       <a class="btn btn--gruz" href="tel:+79997414755">Вызвать эвакуатор</a>
+
+      <div class="geo">
+        <button class="btn btn--line" type="button" data-geo-btn>Отправить, где я стою</button>
+        <p class="geo-out" data-geo-out role="status" hidden></p>
+        <div class="geo-send" data-geo-send hidden>
+          <a class="btn btn--gruz" data-geo-sms>Отправить SMS</a>
+          <a class="btn btn--line" data-geo-wa target="_blank" rel="noopener">В WhatsApp</a>
+        </div>
+      </div>
+
       <a class="btn btn--line" href="https://wa.me/79997414755" target="_blank" rel="noopener">Написать в WhatsApp</a>
     </div>
   </div>
@@ -1147,6 +1189,85 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
   } else {
     [].forEach.call(imgs, show);
   }
+})();
+</script>
+
+<!-- ═══ ГЕОЛОКАЦИЯ: «ОТПРАВИТЬ, ГДЕ Я СТОЮ» ═══ -->
+<script>
+(function () {
+  'use strict';
+
+  var TEL = '+79997414755';
+  var YM_ID = 105880355;
+
+  function goal(name) { if (window.ym) { window.ym(YM_ID, 'reachGoal', name); } }
+
+  function geoInit(root) {
+    var btn  = root.querySelector('[data-geo-btn]');
+    var out  = root.querySelector('[data-geo-out]');
+    var send = root.querySelector('[data-geo-send]');
+    var sms  = root.querySelector('[data-geo-sms]');
+    var wa   = root.querySelector('[data-geo-wa]');
+    if (!btn) return;
+
+    /* Без геолокации кнопка только мешает: координаты взять неоткуда */
+    if (!('geolocation' in navigator)) { btn.hidden = true; return; }
+
+    function say(text) {
+      root.className += ' is-open';   /* разворачиваем блок на всю ширину ряда */
+      if (!out) return;
+      out.hidden = false;
+      out.textContent = text;
+    }
+
+    btn.addEventListener('click', function () {
+      btn.disabled = true;
+      say('Определяем место…');
+
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        var lat = pos.coords.latitude.toFixed(6);
+        var lon = pos.coords.longitude.toFixed(6);
+        var acc = Math.round(pos.coords.accuracy);
+        /* В ссылке Яндекса порядок обратный привычному: сначала долгота */
+        var url = 'https://yandex.ru/maps/?pt=' + lon + ',' + lat + '&z=16&l=map';
+        var msg = 'Нужен эвакуатор. Я здесь: ' + url +
+                  ' (' + lat + ', ' + lon + ', точность ' + acc + ' м)';
+
+        /* iOS не разбирает «?» в sms-ссылке и понимает только «&body=» */
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        if (sms) sms.href = 'sms:' + TEL + (isIOS ? '&body=' : '?&body=') + encodeURIComponent(msg);
+        if (wa)  wa.href  = 'https://wa.me/' + TEL.slice(1) + '?text=' + encodeURIComponent(msg);
+
+        say('Место определено: ' + lat + ', ' + lon + ' (±' + acc + ' м). ' +
+            (acc > 300 ? 'Точность низкая — выйдите из машины и нажмите ещё раз. ' : '') +
+            'Отправьте сообщение или продиктуйте координаты по телефону.');
+
+        if (send) send.hidden = false;
+        btn.disabled = false;
+        btn.textContent = 'Определить ещё раз';
+        /* Результат появляется ниже кнопки и на телефоне уходит за экран —
+           показываем его сами, иначе человек нажмёт и ничего не увидит. */
+        if (out && out.scrollIntoView) {
+          var reduce = window.matchMedia &&
+                       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          out.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+        }
+        goal('geo_ok');
+      }, function (err) {
+        btn.disabled = false;
+        say(err && err.code === 1
+          ? 'Доступ к геолокации запрещён. Разрешите его в настройках браузера или позвоните.'
+          : 'Не получилось определить место. Попробуйте ещё раз или позвоните.');
+        goal('geo_fail');
+      }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 });
+    });
+
+    if (sms) sms.addEventListener('click', function () { goal('geo_sms'); });
+    if (wa)  wa.addEventListener('click',  function () { goal('geo_wa'); });
+  }
+
+  [].forEach.call(document.querySelectorAll('.geo'), geoInit);
 })();
 </script>
 
