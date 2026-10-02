@@ -21,6 +21,7 @@
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="manifest" href="manifest.webmanifest" />
 
 <link rel="preload" as="font" type="font/woff2" href="fonts/fira-sans-condensed-800-cyrillic.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="fonts/golos-text-400-cyrillic.woff2" crossorigin />
@@ -433,6 +434,14 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
 }
 .platforms a:hover { border-color: var(--rezina); }
 .platforms .star { color: var(--stal); font-family: var(--text); font-weight: 400; letter-spacing: 0; text-transform: none; }
+
+/* Установка приложения на телефон */
+.install { margin-top: 18px; padding-top: 18px; border-top: var(--rule); }
+.install-hint {
+  margin-top: 14px; padding: 16px 18px; border: 1px solid var(--beton); border-radius: 2px;
+  background: var(--pobelka-2); font-size: 14px; line-height: 1.6; max-width: 52ch;
+}
+.install-hint b { font-weight: 500; }
 
 /* ─── ПОДВАЛ ────────────────────────────────────────── */
 .foot { background: var(--rezina); color: var(--pobelka); }
@@ -847,6 +856,15 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
           <a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank" rel="noopener">Zoon</a>
           <a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank" rel="noopener">Avito</a>
         </div>
+
+        <div class="install" id="installBlock" hidden>
+          <button class="btn btn--line" id="installBtn" type="button">Установить приложение</button>
+          <p class="install-hint" id="installHint" hidden>
+            На iPhone установка только вручную: нажмите <b>«Поделиться»</b> в панели браузера,
+            затем выберите <b>«На экран „Домой“»</b>. Значок появится рядом с остальными приложениями,
+            а страница будет открываться даже без интернета.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -1032,6 +1050,77 @@ h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.9
   } else {
     [].forEach.call(imgs, show);
   }
+})();
+</script>
+
+<!-- ═══ УСТАНОВКА ПРИЛОЖЕНИЯ ═══ -->
+<script>
+(function () {
+  'use strict';
+
+  /* Офлайн-оболочка: страница открывается, даже когда сети нет.
+     Регистрируем тихо — если не получится, сайт работает как обычно. */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+
+      /* Фотографии ленивые: без прокрутки они в кэш не попадут, и офлайн-страница
+         останется с пустыми рамками. Прогреваем их в фоне — но не за счёт клиента:
+         при экономии трафика и на слабой сети молчим. */
+      var conn = navigator.connection;
+      if (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ''))) return;
+      setTimeout(function () {
+        var imgs = document.querySelectorAll('img[src^="img/"]');
+        [].forEach.call(imgs, function (img) {
+          fetch(img.getAttribute('src')).catch(function () {});
+        });
+      }, 4000);
+    });
+  }
+
+  var block = document.getElementById('installBlock');
+  var btn = document.getElementById('installBtn');
+  var hint = document.getElementById('installHint');
+  if (!block || !btn) return;
+
+  var standalone =
+    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+    window.navigator.standalone === true;
+  if (standalone) return;   /* уже открыто как приложение — предлагать нечего */
+
+  var deferred = null;
+
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferred = e;
+    block.hidden = false;
+  });
+
+  window.addEventListener('appinstalled', function () {
+    block.hidden = true;
+    deferred = null;
+  });
+
+  /* iPhone: Apple не даёт вызвать установку из кода — показываем инструкцию */
+  var ua = navigator.userAgent;
+  var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (isIOS) {
+    block.hidden = false;
+    btn.textContent = 'Установить на iPhone';
+  }
+
+  btn.addEventListener('click', function () {
+    if (deferred) {
+      deferred.prompt();
+      deferred.userChoice.then(function () {
+        deferred = null;
+        block.hidden = true;
+      });
+      return;
+    }
+    if (hint) hint.hidden = !hint.hidden;
+  });
 })();
 </script>
 
