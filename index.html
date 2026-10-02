@@ -509,17 +509,6 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
 .platforms a:hover { border-color: var(--rezina); }
 .platforms .star { color: var(--stal); font-family: var(--text); font-weight: 400; letter-spacing: 0; text-transform: none; }
 
-/* Установка приложения на телефон */
-.install { margin-top: 18px; padding-top: 18px; border-top: var(--rule); }
-.install-hint {
-  margin-top: 14px; padding: 18px 20px; border: 1px solid var(--beton); border-radius: 2px;
-  background: var(--pobelka-2); font-size: 14px; line-height: 1.6; max-width: 56ch;
-}
-.install-hint p + p, .install-hint ol + p { margin-top: 12px; }
-.install-hint b { font-weight: 500; }
-.install-hint ol { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; }
-.install-hint li { padding-left: 4px; }
-
 /* ─── ПОДВАЛ ────────────────────────────────────────── */
 .foot { background: var(--rezina); color: var(--pobelka); }
 .foot-in { max-width: 1280px; margin: 0 auto; padding: clamp(40px, 6vw, 72px) var(--pad) 28px; }
@@ -540,6 +529,12 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
   display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center;
   font-size: 13px; color: var(--beton-2);
 }
+/* Установка приложения: в тёмном подвале рамка и текст — по побелке */
+.foot-pwa { flex: 1 1 100%; }
+.foot-pwa .btn--line { border-color: var(--pobelka); color: var(--pobelka); }
+.foot-pwa .btn--line:hover { background: var(--pobelka); color: var(--rezina); }
+#pwaIos { margin-top: 12px; font-size: 13px; line-height: 1.55; color: var(--beton-2); max-width: 56ch; }
+
 .foot-socials { display: flex; gap: 8px; }
 .foot-socials a {
   width: 40px; height: 40px; border: 1px solid rgba(233,234,230,0.24); border-radius: 2px;
@@ -965,20 +960,6 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
           <a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank" rel="noopener">Avito</a>
         </div>
 
-        <div class="install" id="installBlock" hidden>
-          <button class="btn btn--line" id="installBtn" type="button">Установить приложение</button>
-          <div class="install-hint" id="installHint" hidden>
-            <p><b>Как поставить значок на экран</b></p>
-            <ol>
-              <li>Откройте сайт в обычном браузере — Chrome или Safari. Если вы сейчас в Telegram,
-                  WhatsApp или ВКонтакте, нажмите «⋯» и выберите «Открыть в браузере».</li>
-              <li>Android: меню «⋮» → «Установить приложение» (может называться
-                  «Добавить на главный экран»).<br>iPhone: «Поделиться» → «На экран „Домой“».</li>
-            </ol>
-            <p>Значок встанет рядом с остальными приложениями, а страница будет открываться
-               даже без интернета.</p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -1026,6 +1007,11 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
     </div>
 
     <div class="foot-bottom">
+      <div class="foot-pwa">
+        <button class="btn btn--line" type="button" id="pwaBtn" hidden>Установить на телефон</button>
+        <p id="pwaIos" hidden>На iPhone: «Поделиться» → «На экран „Домой“».</p>
+      </div>
+
       <span>© 2026 Аслямов · Эвакуатор, шиномонтаж и автомойка, Караидель</span>
       <div class="foot-socials">
         <a href="https://vk.com/id792775410" target="_blank" rel="noopener" title="ВКонтакте" aria-label="ВКонтакте">
@@ -1300,60 +1286,52 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
     });
   }
 
-  var block = document.getElementById('installBlock');
-  var btn = document.getElementById('installBtn');
-  var hint = document.getElementById('installHint');
-  if (!block || !btn) return;
-
-  var standalone =
-    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
-    window.navigator.standalone === true;
-  if (standalone) return;   /* уже открыто как приложение — предлагать нечего */
-
   var deferred = null;
+  var pwaBtn = document.getElementById('pwaBtn');
+  var pwaHint = document.getElementById('pwaIos');
+  if (!pwaBtn) return;
 
   window.addEventListener('beforeinstallprompt', function (e) {
     e.preventDefault();
     deferred = e;
-    block.hidden = false;
-    btn.textContent = 'Установить приложение';
+    pwaBtn.hidden = false;
+    pwaBtn.textContent = 'Установить на телефон';
   });
 
-  window.addEventListener('appinstalled', function () {
-    block.hidden = true;
-    deferred = null;
+  pwaBtn.addEventListener('click', function () {
+    if (!deferred) { if (pwaHint) pwaHint.hidden = !pwaHint.hidden; return; }
+    deferred.prompt();
+    deferred.userChoice.then(function (r) {
+      if (window.ym) { window.ym(105880355, 'reachGoal', 'pwa_' + r.outcome); }
+      deferred = null;
+      pwaBtn.hidden = true;
+    });
   });
 
-  var ua = navigator.userAgent;
-  var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+  window.addEventListener('appinstalled', function () { pwaBtn.hidden = true; });
+
+  var standalone = window.navigator.standalone ||
+    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+  if (standalone) return;   /* уже открыто как приложение — предлагать нечего */
+
+  // iPhone: своя инструкция, установку из кода Apple не разрешает
+  var isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
               (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  var isAndroid = /Android/.test(ua);
-  var isMobile = isIOS || isAndroid || /Mobi/.test(ua);
 
-  /* На телефоне блок показывается всегда, даже если событие установки не пришло.
-     Встроенные браузеры Telegram, WhatsApp и ВКонтакте его не шлют никогда —
-     раньше кнопка в них просто исчезала, и человек не понимал, что делать.
-     Теперь при отсутствии события кнопка раскрывает инструкцию. */
+  /* Встроенные браузеры Telegram, WhatsApp и ВКонтакте событие установки
+     не шлют никогда. Раньше кнопка в них просто не появлялась, и человек
+     не понимал, что делать. Поэтому на телефоне показываем её всегда,
+     а по нажатию раскрываем инструкцию. */
+  var isMobile = isIos || /Android/.test(navigator.userAgent) || /Mobi/.test(navigator.userAgent);
   if (isMobile) {
-    block.hidden = false;
-    if (isIOS) {
-      btn.textContent = 'Установить на iPhone';
-    } else {
-      btn.textContent = 'Как установить приложение';
+    pwaBtn.hidden = false;
+    if (pwaHint) {
+      pwaHint.textContent = isIos
+        ? 'На iPhone: «Поделиться» → «На экран „Домой“».'
+        : 'В меню браузера «⋮» выберите «Установить приложение». Если сайт открыт ' +
+          'в Telegram или WhatsApp, сначала нажмите «⋯» → «Открыть в браузере».';
     }
   }
-
-  btn.addEventListener('click', function () {
-    if (deferred) {
-      deferred.prompt();
-      deferred.userChoice.then(function () {
-        deferred = null;
-        block.hidden = true;
-      });
-      return;
-    }
-    if (hint) hint.hidden = !hint.hidden;
-  });
 })();
 </script>
 
