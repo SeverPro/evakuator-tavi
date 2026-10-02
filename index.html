@@ -1,1566 +1,1081 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Аслямов — эвакуатор 24/7 и шиномонтаж в Караиделе. Работаем по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе. Грузовой шиномонтаж — единственный в районе." />
-  <meta name="keywords" content="эвакуатор Караидель, шиномонтаж Караидель, эвакуатор 24/7, грузовой шиномонтаж Башкортостан, эвакуатор Мишкинский район, шиномонтаж Аскинский район, Тастуба эвакуатор, Аслямов" />
-  <title>Аслямов — Эвакуатор и шиномонтаж, Караидель</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Golos+Text:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black: #111110;
-      --white: #F8F6F1;
-      --accent: #E85D24;
-      --accent-dark: #C44A18;
-      --gray-100: #F0EDE6;
-      --gray-200: #E0DDD6;
-      --gray-400: #9C9A94;
-      --gray-600: #5C5A56;
-      --font-display: 'Unbounded', sans-serif;
-      --font-body: 'Golos Text', sans-serif;
-      --radius: 4px;
-      --radius-lg: 12px;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--white);
-      color: var(--black);
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 40px;
-      background: rgba(248,246,241,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gray-200);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .logo-badge {
-      width: 44px;
-      height: 44px;
-      background: var(--black);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .logo-name {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 16px;
-      letter-spacing: 2px;
-      color: var(--black);
-      text-transform: uppercase;
-    }
-
-    .logo-tagline {
-      font-family: var(--font-body);
-      font-size: 11px;
-      color: var(--gray-600);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .btn-call {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent);
-      color: white;
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      padding: 12px 24px;
-      border-radius: var(--radius);
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .btn-call:hover { background: var(--accent-dark); }
-
-    .btn-wa {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1.5px solid var(--black);
-      color: var(--black);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 13px;
-      padding: 11px 20px;
-      border-radius: var(--radius);
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .btn-wa:hover { background: var(--black); color: var(--white); }
-
-    /* ── HERO ── */
-    .hero {
-      height: 580px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 84px;
-      overflow: hidden;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .hero-wrapper {
-      overflow: hidden;
-      background: var(--white);
-    }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 80px 60px 80px 40px;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 28px;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 2px;
-      background: var(--accent);
-    }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(42px, 5vw, 68px);
-      line-height: 1.05;
-      letter-spacing: -1px;
-      margin-bottom: 24px;
-    }
-
-    .hero-title em {
-      font-style: normal;
-      color: var(--accent);
-    }
-
-    .hero-desc {
-      font-size: 17px;
-      line-height: 1.7;
-      color: var(--gray-600);
-      max-width: 420px;
-      margin-bottom: 40px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 14px;
-      padding: 16px 32px;
-      border-radius: var(--radius);
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .btn-primary:hover { background: var(--accent); }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1.5px solid var(--gray-200);
-      color: var(--black);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 14px;
-      padding: 15px 28px;
-      border-radius: var(--radius);
-      text-decoration: none;
-      transition: border-color 0.2s;
-    }
-
-    .btn-secondary:hover { border-color: var(--black); }
-
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid var(--gray-200);
-    }
-
-    .stat-item {}
-    .stat-num {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 32px;
-      color: var(--black);
-    }
-    .stat-label {
-      font-size: 12px;
-      color: var(--gray-400);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .hero-right {
-      background: var(--black);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      opacity: 0.85;
-    }
-
-    .hero-badge {
-      position: absolute;
-      bottom: 40px;
-      left: 40px;
-      background: var(--accent);
-      color: white;
-      padding: 16px 24px;
-      border-radius: var(--radius-lg);
-    }
-
-    .hero-badge-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 28px;
-      line-height: 1;
-    }
-
-    .hero-badge-sub {
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0.85;
-      margin-top: 4px;
-    }
-
-    .hero-placeholder {
-      width: 100%;
-      height: 100%;
-      min-height: 500px;
-      background: var(--black);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      color: var(--gray-400);
-    }
-
-    .hero-placeholder svg { opacity: 0.3; }
-    .hero-placeholder p { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
-
-    /* ── TICKER ── */
-    .ticker {
-      background: var(--accent);
-      color: white;
-      overflow: hidden;
-      padding: 14px 0;
-    }
-
-    .ticker-track {
-      display: flex;
-      gap: 0;
-      animation: ticker 20s linear infinite;
-      white-space: nowrap;
-    }
-
-    .ticker-item {
-      font-family: var(--font-display);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 0 40px;
-      display: inline-flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .ticker-item::after {
-      content: '◆';
-      font-size: 8px;
-    }
-
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ── SERVICES ── */
-    .section {
-      padding: 100px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 60px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(28px, 3.5vw, 44px);
-      line-height: 1.1;
-      letter-spacing: -0.5px;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: var(--gray-200);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .service-card {
-      background: var(--white);
-      padding: 56px 48px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px;
-      height: 0;
-      background: var(--accent);
-      transition: height 0.4s ease;
-    }
-
-    .service-card:hover::before { height: 100%; }
-
-    .service-num {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 80px;
-      line-height: 1;
-      color: var(--gray-100);
-      position: absolute;
-      top: 24px;
-      right: 32px;
-      transition: color 0.3s;
-    }
-
-    .service-card:hover .service-num { color: var(--gray-200); }
-
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 28px;
-    }
-
-    .service-title {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 22px;
-      margin-bottom: 16px;
-      letter-spacing: -0.3px;
-    }
-
-    .service-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .service-list li {
-      font-size: 15px;
-      color: var(--gray-600);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .service-list li::before {
-      content: '';
-      display: block;
-      width: 16px;
-      height: 1.5px;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .service-hours {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 28px;
-      background: var(--gray-100);
-      padding: 8px 14px;
-      border-radius: 99px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--gray-600);
-      letter-spacing: 0.5px;
-    }
-
-    .service-hours .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22C55E;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    /* ── WHY ── */
-    .why-section {
-      background: var(--black);
-      color: var(--white);
-      padding: 100px 40px;
-    }
-
-    .why-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      margin-top: 60px;
-      background: #2A2A28;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .why-card {
-      background: #1A1A18;
-      padding: 48px 36px;
-      position: relative;
-    }
-
-    .why-card:hover { background: #222220; }
-
-    .why-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--accent);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-
-    .why-title {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 18px;
-      margin-bottom: 12px;
-      color: var(--white);
-    }
-
-    .why-desc {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #888885;
-    }
-
-    /* ── TELEGRAM ── */
-    .tg-section {
-      padding: 100px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .tg-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .tg-info {}
-
-    .tg-channel-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--gray-100);
-      border: 1px solid var(--gray-200);
-      padding: 10px 16px;
-      border-radius: 99px;
-      margin-top: 28px;
-      text-decoration: none;
-      color: var(--black);
-      font-size: 13px;
-      font-weight: 500;
-      transition: background 0.2s;
-    }
-
-    .tg-channel-badge:hover { background: var(--gray-200); }
-
-    .tg-channel-badge svg { flex-shrink: 0; }
-
-    .tg-feed {
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .tg-feed-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--gray-200);
-      background: var(--gray-100);
-    }
-
-    .tg-avatar {
-      width: 36px;
-      height: 36px;
-      background: var(--black);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .tg-channel-name {
-      font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .tg-channel-sub {
-      font-size: 11px;
-      color: var(--gray-400);
-    }
-
-    .tg-widget-container {
-      min-height: 400px;
-    }
-
-    /* ── MAP ── */
-    .map-section {
-      background: var(--gray-100);
-      padding: 100px 40px;
-    }
-
-    .map-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .map-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 40px;
-      margin-top: 60px;
-      align-items: start;
-    }
-
-    .map-info {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .map-detail {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-
-    .map-detail-icon {
-      width: 36px;
-      height: 36px;
-      background: white;
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .map-detail-label {
-      font-size: 11px;
-      color: var(--gray-400);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .map-detail-value {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--black);
-    }
-
-    .map-detail-value a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .map-frame {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      height: 420px;
-      border: 1px solid var(--gray-200);
-    }
-
-    .map-frame iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    /* ── REVIEWS ── */
-    .reviews-section {
-      padding: 100px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .reviews-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 40px;
-      border: 1.5px solid var(--black);
-      color: var(--black);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 14px;
-      padding: 16px 32px;
-      border-radius: var(--radius);
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .reviews-link:hover { background: var(--black); color: var(--white); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black);
-      color: var(--white);
-      padding: 60px 40px 40px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding-bottom: 48px;
-      border-bottom: 1px solid #2A2A28;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .footer-logo-badge {
-      width: 48px;
-      height: 48px;
-      background: white;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .footer-name {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .footer-sub {
-      font-size: 12px;
-      color: #666660;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .footer-link-group {}
-    .footer-link-title {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #666660;
-      margin-bottom: 16px;
-    }
-
-    .footer-link-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .footer-link-list a {
-      font-size: 14px;
-      color: #AAAAAA;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-link-list a:hover { color: white; }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 32px;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-copy {
-      font-size: 13px;
-      color: #555550;
-    }
-
-    .footer-socials {
-      display: flex;
-      gap: 12px;
-    }
-
-    .footer-social {
-      width: 36px;
-      height: 36px;
-      background: #2A2A28;
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .footer-social:hover { background: var(--accent); }
-
-    /* ── MOBILE ── */
-    @media (max-width: 900px) {
-      nav { padding: 16px 20px; }
-      .nav-cta .btn-wa { display: none; }
-      .btn-call { padding: 10px 18px; font-size: 12px; }
-
-      .hero { grid-template-columns: 1fr; height: auto; min-height: auto; }
-      .hero-wrapper { padding: 0; }
-      .hero-left { padding: 60px 20px 40px; }
-      .hero-right { min-height: 300px; }
-      .hero-stats { gap: 24px; flex-wrap: wrap; }
-
-      .services-grid { grid-template-columns: 1fr; }
-      .service-card { padding: 40px 28px; }
-
-      .why-grid { grid-template-columns: 1fr; }
-
-      .tg-wrapper { grid-template-columns: 1fr; gap: 32px; }
-
-      .map-grid { grid-template-columns: 1fr; }
-
-      .section { padding: 60px 20px; }
-      .why-section { padding: 60px 20px; }
-      .map-section { padding: 60px 20px; }
-      .tg-section { padding: 60px 20px; }
-      .reviews-section { padding: 60px 20px; }
-
-      footer { padding: 48px 20px 32px; }
-      .footer-top { gap: 32px; }
-
-      .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-    }
-
-    /* ── TRUCK ── */
-    .truck-section {
-      background: var(--black);
-      color: var(--white);
-      padding: 100px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .truck-section::before {
-      content: '18+';
-      position: absolute;
-      right: -20px;
-      top: 50%;
-      transform: translateY(-50%) rotate(90deg);
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 180px;
-      color: rgba(255,255,255,0.03);
-      pointer-events: none;
-      letter-spacing: -8px;
-    }
-
-    .truck-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .truck-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      margin-top: 60px;
-    }
-
-    .truck-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent);
-      color: white;
-      font-family: var(--font-display);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 8px 16px;
-      border-radius: 99px;
-      margin-bottom: 28px;
-    }
-
-    .truck-badge::before {
-      content: '';
-      display: block;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: white;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    .truck-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(32px, 4vw, 52px);
-      line-height: 1.05;
-      letter-spacing: -1px;
-      margin-bottom: 20px;
-    }
-
-    .truck-title span { color: var(--accent); }
-
-    .truck-desc {
-      font-size: 16px;
-      line-height: 1.7;
-      color: #888885;
-      margin-bottom: 36px;
-    }
-
-    .truck-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 40px;
-    }
-
-    .truck-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 15px;
-      color: #CCCCCA;
-      line-height: 1.5;
-    }
-
-    .truck-list li::before {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1.5px;
-      background: var(--accent);
-      margin-top: 11px;
-      flex-shrink: 0;
-    }
-
-    .truck-visual {
-      position: relative;
-    }
-
-    .truck-photo {
-      width: 100%;
-      border-radius: var(--radius-lg);
-      display: block;
-      object-fit: cover;
-      aspect-ratio: 4/3;
-    }
-
-    .truck-photo-placeholder {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: #1A1A18;
-      border-radius: var(--radius-lg);
-      border: 1px solid #2A2A28;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      color: #444;
-    }
-
-    .truck-stat-pill {
-      position: absolute;
-      bottom: -20px;
-      left: -20px;
-      background: var(--accent);
-      color: white;
-      padding: 20px 28px;
-      border-radius: var(--radius-lg);
-    }
-
-    .truck-stat-num {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 36px;
-      line-height: 1;
-    }
-
-    .truck-stat-label {
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      opacity: 0.85;
-      margin-top: 4px;
-    }
-
-    @media (max-width: 900px) {
-      .truck-section { padding: 60px 20px; }
-      .truck-grid { grid-template-columns: 1fr; gap: 40px; }
-      .truck-stat-pill { bottom: -12px; left: 12px; }
-    }
-
-    /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>document.documentElement.className += ' js';</script>
+
+<title>Эвакуатор, шиномонтаж и автомойка в Караиделе — Аслямов</title>
+<meta name="description" content="Аслямов, Караидель: эвакуатор круглосуточно до 4 тонн, шиномонтаж легковой и грузовой, автомойка с 6:00 до 22:00. Ул. Мира, 13/11. Грузовой шиномонтаж — единственный в районе." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#E9EAE6" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:url" content="https://evakuator.aslyamov24.ru/" />
+<meta property="og:title" content="Эвакуатор, шиномонтаж и автомойка в Караиделе — Аслямов" />
+<meta property="og:description" content="Три службы в одном месте на ул. Мира, 13/11. Эвакуатор круглосуточно, шиномонтаж легковой и грузовой, автомойка до 22:00." />
+<meta property="og:image" content="https://evakuator.aslyamov24.ru/img/box-tire.webp" />
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+<link rel="preload" as="font" type="font/woff2" href="fonts/fira-sans-condensed-800-cyrillic.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="fonts/golos-text-400-cyrillic.woff2" crossorigin />
+<link rel="stylesheet" href="fonts/fonts.css" />
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --pobelka:   #E9EAE6;
+  --pobelka-2: #F3F4F1;
+  --beton:     #CFD2CC;
+  --beton-2:   #B4B8B1;
+  --stal:      #5F6560;
+  --rezina:    #16181A;
+  --rezina-2:  #2B2E31;
+  --gruz:      #E85D24;  /* заливка кнопок: графит по оранжевому — 5,1:1 */
+  --gruz-d:    #C4470F;  /* крупный текст и ховер заливки — 4,1:1 */
+  --gruz-t:    #A83A0C;  /* оранжевый текст обычного кегля по побелке — 5,3:1 */
+  --razmetka:  #E8B21E;
+
+  --mark: 'Fira Sans Condensed', 'Arial Narrow', sans-serif;
+  --text: 'Golos Text', system-ui, sans-serif;
+
+  --pad: clamp(20px, 5vw, 72px);
+  --rail: 60px;
+  --rule: 1px solid var(--beton);
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  font-family: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  background: var(--pobelka);
+  color: var(--rezina);
+  padding-left: 0;
+}
+@media (min-width: 1100px) { body { padding-left: var(--rail); } }
+
+::selection { background: var(--razmetka); color: var(--rezina); }
+html { caret-color: var(--gruz); }
+* { scrollbar-color: var(--beton-2) var(--pobelka); scrollbar-width: thin; }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--pobelka); }
+::-webkit-scrollbar-thumb { background: var(--beton-2); border: 3px solid var(--pobelka); }
+::-webkit-scrollbar-thumb:hover { background: var(--stal); }
+
+:focus-visible { outline: 2px solid var(--gruz); outline-offset: 3px; }
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 var(--pad); }
+
+h1, h2, h3, .mark { font-family: var(--mark); font-weight: 800; line-height: 0.94; letter-spacing: 0.005em; }
+
+/* ─── ШАПКА ─────────────────────────────────────────── */
+.topbar {
+  position: sticky; top: 0; z-index: 60;
+  background: var(--pobelka);
+  border-bottom: var(--rule);
+}
+.topbar-in {
+  max-width: 1280px; margin: 0 auto; padding: 0 var(--pad);
+  height: 68px; display: flex; align-items: center; gap: 24px;
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+.brand svg { display: block; }
+.brand-name {
+  font-family: var(--mark); font-weight: 800; font-size: 21px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+.topbar-meta {
+  margin-left: auto; display: none; align-items: center; gap: 28px;
+  font-size: 13px; color: var(--stal);
+}
+@media (min-width: 900px) { .topbar-meta { display: flex; } }
+.topbar-meta address { font-style: normal; }
+.topbar-tel {
+  font-family: var(--mark); font-weight: 700; font-size: 19px;
+  letter-spacing: 0.02em; text-decoration: none; color: var(--rezina);
+  font-variant-numeric: tabular-nums;
+}
+.topbar-tel:hover { color: var(--gruz-t); }
+.topbar-call {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gruz); color: var(--rezina); text-decoration: none;
+  font-family: var(--mark); font-weight: 700; font-size: 15px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 11px 18px; border-radius: 2px;
+}
+.topbar-call:hover { background: var(--gruz-d); color: #FFFFFF; }
+@media (max-width: 899px) {
+  .topbar-call { display: none; }
+  .brand-name { font-size: 18px; letter-spacing: 0.1em; }
+  /* палец на морозе: зона нажатия не меньше 48 px */
+  .topbar-tel { font-size: 16px; padding: 12px 0; }
+  .topbar-in { gap: 12px; height: 60px; }
+}
+
+/* ─── РАЗМЕТКА: боковая рельса ──────────────────────── */
+.rail { display: none; }
+@media (min-width: 1100px) {
+  .rail {
+    display: block; position: fixed; left: 0; top: 0; bottom: 0;
+    width: var(--rail); z-index: 70;
+    background: var(--pobelka); border-right: var(--rule);
+  }
+}
+.rail-track { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--beton); }
+.rail-fill  { position: absolute; left: 0; top: 0; width: 3px; height: 0; background: var(--razmetka); }
+.rail-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  left: 0; right: 0; display: flex; flex-direction: column;
+}
+.rail-link {
+  display: flex; align-items: center; justify-content: center;
+  height: 58px; text-decoration: none; color: var(--stal);
+  border-left: 3px solid transparent; position: relative;
+}
+.rail-link svg { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.rail-link span {
+  position: absolute; left: calc(100% + 10px); white-space: nowrap;
+  font-family: var(--mark); font-weight: 700; font-size: 12px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--rezina); color: var(--pobelka);
+  padding: 6px 10px; border-radius: 2px;
+  opacity: 0; pointer-events: none; transition: opacity 0.16s ease;
+}
+.rail-link:hover { color: var(--rezina); background: var(--pobelka-2); }
+.rail-link:hover span { opacity: 1; }
+.rail-link[aria-current="true"] { color: var(--rezina); background: var(--razmetka); border-left-color: var(--rezina); }
+
+/* ─── ПЕРВЫЙ ЭКРАН ──────────────────────────────────── */
+.gate { border-bottom: var(--rule); }
+.gate-in {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 0;
+}
+/* Фото уходит в правый край экрана, текст остаётся в колонке 1280 */
+@media (min-width: 900px) {
+  .gate-in {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    padding-left: max(var(--pad), calc((100% - 1280px) / 2));
+    min-height: calc(100vh - 68px);
+  }
+}
+
+.gate-text { padding: clamp(32px, 6vw, 72px) var(--pad) clamp(28px, 4vw, 56px); display: flex; flex-direction: column; }
+@media (min-width: 900px) { .gate-text { padding-left: 0; padding-right: clamp(24px, 4vw, 64px); } }
+.gate-h1 { font-size: clamp(2.6rem, 8.4vw, 5.4rem); letter-spacing: -0.01em; }
+.gate-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.gate-row + .gate-row { margin-top: 2px; }
+.gate-word { font-family: inherit; font-weight: inherit; }
+.gate-where {
+  display: block; margin-top: 18px;
+  font-family: var(--text); font-weight: 400; font-size: clamp(14px, 1.5vw, 16px);
+  letter-spacing: 0; line-height: 1.5; color: var(--stal);
+}
+
+.plate {
+  flex-shrink: 0; margin-left: auto;
+  font-family: var(--mark); font-weight: 700; font-size: clamp(11px, 1.1vw, 13px);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--rezina); background: var(--pobelka-2);
+  border: 1px solid var(--beton); border-radius: 2px;
+  padding: 6px 9px; display: inline-flex; align-items: center; gap: 8px;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+  align-self: center;
+}
+/* на телефонах бирка уходит под своё слово и встаёт по левому краю */
+@media (max-width: 480px) {
+  .gate-row { flex-direction: column; align-items: flex-start; }
+  .gate-row + .gate-row { margin-top: 14px; }
+  .plate { margin-left: 0; align-self: flex-start; }
+}
+.lamp { width: 9px; height: 9px; border-radius: 50%; background: transparent; box-shadow: inset 0 0 0 1.5px var(--beton-2); flex-shrink: 0; }
+.lamp[data-on="1"] { background: var(--razmetka); box-shadow: none; }
+
+.gate-now {
+  margin-top: clamp(24px, 3vw, 36px);
+  padding-top: 18px; border-top: var(--rule);
+  font-size: 15px; line-height: 1.65; color: var(--rezina);
+  max-width: 56ch; text-wrap: pretty;
+}
+.gate-now b { font-family: var(--mark); font-weight: 700; font-size: 17px; font-variant-numeric: tabular-nums; }
+
+.gate-actions { margin-top: auto; padding-top: clamp(24px, 3vw, 36px); display: flex; flex-wrap: wrap; gap: 12px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--mark); font-weight: 700; font-size: 17px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 17px 26px; border-radius: 2px; text-decoration: none;
+  border: 1px solid transparent; font-variant-numeric: tabular-nums;
+  max-width: 100%; text-align: center;
+  transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+}
+.btn svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.btn--gruz { background: var(--gruz); color: var(--rezina); }
+.btn--gruz:hover { background: var(--gruz-d); color: #FFFFFF; }
+.btn--line { border-color: var(--rezina); color: var(--rezina); }
+.btn--line:hover { background: var(--rezina); color: var(--pobelka); }
+.btn--wide { width: 100%; }
+
+.gate-photo { position: relative; min-height: 320px; background: var(--beton); }
+@media (min-width: 900px) { .gate-photo { border-left: var(--rule); } }
+.gate-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; position: absolute; inset: 0; }
+@media (max-width: 899px) { .gate-photo { aspect-ratio: 4 / 3; min-height: 0; } .gate-photo img { position: static; aspect-ratio: 4 / 3; } }
+.gate-caption {
+  position: absolute; left: 0; bottom: 0; right: 0;
+  background: var(--rezina); color: var(--pobelka);
+  font-family: var(--mark); font-weight: 600; font-size: 13px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 11px 16px; display: flex; justify-content: space-between; gap: 12px;
+}
+@media (max-width: 899px) { .gate-caption { position: static; } }
+
+/* ─── ЗОНА УСЛУГИ ───────────────────────────────────── */
+.bay { border-bottom: var(--rule); scroll-margin-top: 68px; }
+.bay-in { max-width: 1280px; margin: 0 auto; padding: clamp(48px, 7vw, 96px) var(--pad); }
+.bay-head { display: grid; gap: 18px; margin-bottom: clamp(28px, 4vw, 48px); }
+@media (min-width: 900px) { .bay-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; gap: 48px; } }
+.bay-name { font-size: clamp(2.1rem, 6vw, 4rem); }
+.bay-name em { font-style: normal; color: var(--gruz-t); }
+.bay-lead { font-size: clamp(15px, 1.6vw, 18px); line-height: 1.6; max-width: 60ch; }
+.bay-lead b { font-weight: 500; background: var(--razmetka); padding: 1px 5px; border-radius: 2px; }
+
+.bay-body { display: grid; gap: clamp(24px, 3vw, 40px); }
+@media (min-width: 900px) { .bay-body--split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+
+.ops-title, .sub-title {
+  font-family: var(--mark); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--stal);
+  padding-bottom: 10px; border-bottom: var(--rule); margin-bottom: 18px;
+}
+.ops { list-style: none; counter-reset: op; }
+.ops li {
+  counter-increment: op; position: relative;
+  padding: 14px 0 14px 44px; border-bottom: var(--rule);
+  font-size: 16px; line-height: 1.55;
+}
+.ops li:last-child { border-bottom: 0; }
+.ops li::before {
+  content: counter(op); position: absolute; left: 0; top: 15px;
+  width: 26px; height: 26px; background: var(--razmetka); color: var(--rezina);
+  font-family: var(--mark); font-weight: 700; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; border-radius: 2px;
+}
+.ops li strong { font-weight: 500; }
+.ops li span { display: block; color: var(--stal); font-size: 14px; margin-top: 2px; }
+
+/* бесплатный пылесос — табличка разметки, самое выгодное на виду */
+.freebie {
+  margin-top: 22px; padding: 18px 20px; border-radius: 2px;
+  background: var(--razmetka); color: var(--rezina); display: grid; gap: 2px;
+}
+.freebie b { font-family: var(--mark); font-weight: 800; font-size: 21px; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; }
+.freebie span { font-size: 14px; }
+
+.figure { display: grid; gap: 10px; }
+.figure img { width: 100%; border-radius: 2px; background: var(--beton); }
+.figure figcaption { font-size: 13px; color: var(--stal); line-height: 1.5; }
+
+/* пара фотографий в зоне эвакуатора */
+.tow-pair { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+.tow-pair .figure--tall { grid-row: span 2; }
+@media (max-width: 640px) { .tow-pair { grid-template-columns: 1fr; } .tow-pair .figure--tall { grid-row: auto; } }
+
+/* два бокса: легковой / грузовой */
+.bays2 { display: grid; gap: clamp(20px, 3vw, 32px); }
+@media (min-width: 780px) { .bays2 { grid-template-columns: 1fr 1fr; } }
+.baybox { border: 1px solid var(--beton); border-radius: 2px; background: var(--pobelka-2); display: flex; flex-direction: column; }
+.baybox--lead { border-color: var(--rezina); }
+.baybox-head {
+  padding: 20px; border-bottom: var(--rule);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.baybox--lead .baybox-head { border-bottom-color: var(--rezina); }
+.baybox-name { font-family: var(--mark); font-weight: 800; font-size: 24px; letter-spacing: 0.02em; text-transform: uppercase; }
+.baybox-mark {
+  font-family: var(--mark); font-weight: 700; font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; background: var(--rezina); color: var(--pobelka);
+  padding: 6px 10px; border-radius: 2px;
+}
+.baybox-body { padding: 4px 20px 20px; flex: 1; }
+.baybox .figure { padding: 0 20px 20px; }
+.baybox .figure img { aspect-ratio: 4 / 3; object-fit: cover; }
+
+.ticks { list-style: none; }
+.ticks li { position: relative; padding: 11px 0 11px 26px; border-bottom: var(--rule); font-size: 15px; line-height: 1.5; }
+.ticks li:last-child { border-bottom: 0; }
+.ticks li::before {
+  content: ''; position: absolute; left: 0; top: 18px;
+  width: 10px; height: 10px; border-radius: 2px; background: var(--razmetka);
+}
+
+/* ─── НОЧНАЯ СМЕНА (мойка) ──────────────────────────── */
+.night { background: var(--rezina); }
+.night-in { max-width: 1280px; margin: 0 auto; display: grid; }
+@media (max-width: 819px) { .night-in { grid-template-columns: 1fr; } }
+@media (min-width: 820px) { .night-in { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.night-photo { min-height: 300px; }
+@media (max-width: 819px) { .night-photo { aspect-ratio: 3 / 2; min-height: 0; } }
+.night-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 34%; position: absolute; inset: 0; }
+.night-photo { position: relative; }
+.night-note {
+  padding: clamp(32px, 5vw, 64px) var(--pad);
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 18px;
+}
+.night-note b {
+  font-family: var(--mark); font-weight: 800; font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  color: var(--pobelka); text-transform: uppercase; letter-spacing: 0.01em; line-height: 1;
+}
+.night-note p { color: var(--beton-2); font-size: 16px; line-height: 1.6; max-width: 44ch; }
+
+/* ─── ПРАВИЛА ───────────────────────────────────────── */
+.rules { background: var(--rezina); color: var(--pobelka); }
+.rules-in { max-width: 1280px; margin: 0 auto; padding: clamp(48px, 7vw, 88px) var(--pad); }
+.rules h2 { font-size: clamp(1.9rem, 4.6vw, 3rem); color: var(--pobelka); margin-bottom: clamp(24px, 3vw, 36px); }
+.rules-list { list-style: none; display: grid; gap: 0; }
+@media (min-width: 760px) { .rules-list { grid-template-columns: 1fr 1fr; column-gap: 56px; } }
+.rules-list li {
+  padding: 18px 0 18px 30px; position: relative;
+  border-bottom: 1px solid rgba(233,234,230,0.16);
+  font-size: 16px; line-height: 1.55;
+}
+.rules-list li::before {
+  content: ''; position: absolute; left: 0; top: 24px;
+  width: 14px; height: 4px; background: var(--razmetka); border-radius: 1px;
+}
+.rules-list b { font-weight: 500; display: block; }
+.rules-list span { color: var(--beton-2); font-size: 14px; }
+
+/* ─── ИЗ БОКСА ──────────────────────────────────────── */
+.board { max-width: 1280px; margin: 0 auto; padding: clamp(48px, 7vw, 88px) var(--pad); }
+.board h2 { font-size: clamp(1.9rem, 4.6vw, 3rem); margin-bottom: clamp(24px, 3vw, 36px); }
+.board-list { list-style: none; }
+.board-item { padding: 22px 0; border-bottom: var(--rule); display: grid; gap: 8px; }
+@media (min-width: 820px) { .board-item { grid-template-columns: 190px minmax(0, 1fr); gap: 32px; } }
+.board-item:first-child { border-top: var(--rule); }
+.board-date {
+  font-family: var(--mark); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--stal);
+  font-variant-numeric: tabular-nums; padding-top: 3px;
+}
+.board-text { font-size: 16px; line-height: 1.6; max-width: 68ch; }
+.board-text b { font-weight: 500; }
+.board-text a { color: var(--gruz-t); text-underline-offset: 3px; }
+.board-note {
+  margin-top: 28px; padding: 20px 22px; border: 1px solid var(--beton);
+  border-radius: 2px; background: var(--pobelka-2);
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: space-between;
+}
+.board-note p { font-size: 15px; line-height: 1.55; max-width: 62ch; }
+
+/* ─── ГДЕ НАС НАЙТИ ─────────────────────────────────── */
+.find-in { max-width: 1280px; margin: 0 auto; padding: clamp(48px, 7vw, 88px) var(--pad); }
+.find-in h2 { font-size: clamp(1.9rem, 4.6vw, 3rem); margin-bottom: clamp(24px, 3vw, 36px); }
+.find-grid { display: grid; gap: clamp(28px, 4vw, 48px); }
+@media (min-width: 900px) { .find-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } }
+.find-dl { display: grid; gap: 0; }
+.find-row { padding: 16px 0; border-bottom: var(--rule); display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 16px; align-items: baseline; }
+.find-row:first-child { border-top: var(--rule); }
+@media (max-width: 560px) { .find-row { grid-template-columns: minmax(0, 1fr); gap: 6px; } }
+.find-row dt {
+  font-family: var(--mark); font-weight: 700; font-size: 12px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--stal);
+}
+.find-row dd { font-size: 16px; line-height: 1.55; }
+.find-row dd a { text-decoration: none; border-bottom: 1px solid var(--beton-2); font-variant-numeric: tabular-nums; }
+.find-row dd a:hover { border-bottom-color: var(--gruz); color: var(--gruz-t); }
+.hours { list-style: none; display: grid; gap: 4px; }
+.hours li { display: flex; justify-content: space-between; gap: 16px; max-width: 320px; font-variant-numeric: tabular-nums; }
+.hours li em { font-style: normal; color: var(--stal); }
+.find-actions { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
+.find-map { border: 1px solid var(--beton); border-radius: 2px; overflow: hidden; background: var(--beton); min-height: 340px; }
+.find-map iframe { width: 100%; height: 100%; min-height: 340px; border: 0; display: block; }
+.building { margin-bottom: clamp(24px, 3vw, 36px); }
+.building img { width: 100%; border-radius: 2px; border: 1px solid var(--beton); }
+.building figcaption { margin-top: 10px; font-size: 13px; color: var(--stal); }
+
+.platforms { margin-top: 26px; padding-top: 20px; border-top: var(--rule); display: flex; flex-wrap: wrap; gap: 8px; }
+.platforms a {
+  font-family: var(--mark); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  border: 1px solid var(--beton); border-radius: 2px; padding: 9px 13px;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.platforms a:hover { border-color: var(--rezina); }
+.platforms .star { color: var(--stal); font-family: var(--text); font-weight: 400; letter-spacing: 0; text-transform: none; }
+
+/* ─── ПОДВАЛ ────────────────────────────────────────── */
+.foot { background: var(--rezina); color: var(--pobelka); }
+.foot-in { max-width: 1280px; margin: 0 auto; padding: clamp(40px, 6vw, 72px) var(--pad) 28px; }
+.foot-top { display: grid; gap: 32px; }
+@media (min-width: 820px) { .foot-top { grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; } }
+.foot-brand { display: flex; align-items: center; gap: 12px; }
+.foot-brand .brand-name { color: var(--pobelka); }
+.foot-about { margin-top: 18px; font-size: 14px; line-height: 1.65; color: var(--beton-2); max-width: 34ch; }
+.foot-title {
+  font-family: var(--mark); font-weight: 700; font-size: 12px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--beton-2); margin-bottom: 14px;
+}
+.foot-list { list-style: none; display: grid; gap: 9px; font-size: 15px; }
+.foot-list a { text-decoration: none; color: var(--pobelka); border-bottom: 1px solid transparent; }
+.foot-list a:hover { border-bottom-color: var(--razmetka); }
+.foot-bottom {
+  margin-top: 44px; padding-top: 20px; border-top: 1px solid rgba(233,234,230,0.16);
+  display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center;
+  font-size: 13px; color: var(--beton-2);
+}
+.foot-socials { display: flex; gap: 8px; }
+.foot-socials a {
+  width: 40px; height: 40px; border: 1px solid rgba(233,234,230,0.24); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center; color: var(--pobelka);
+}
+.foot-socials a:hover { background: var(--pobelka); color: var(--rezina); border-color: var(--pobelka); }
+.foot-socials svg { fill: currentColor; }
+
+/* ─── ПАНЕЛЬ ЗВОНКА НА МОБИЛЬНОМ ────────────────────── */
+.callbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--beton); border-top: 1px solid var(--beton);
+}
+.callbar a {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 16px 10px; text-decoration: none;
+  font-family: var(--mark); font-weight: 700; font-size: 16px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.callbar svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.callbar .cb-call { background: var(--gruz); color: var(--rezina); }
+.callbar .cb-wa { background: var(--rezina); color: var(--pobelka); }
+@media (min-width: 900px) { .callbar { display: none; } }
+@media (max-width: 899px) { body { padding-bottom: 58px; } }
+
+/* ─── ПОЯВЛЕНИЕ ФОТО ────────────────────────────────── */
+/* Скрываем только при работающем JS: без него фотографии обязаны быть видны */
+.js .reveal-img { clip-path: inset(0 0 100% 0); transition: clip-path 0.75s cubic-bezier(0.16, 1, 0.3, 1); }
+.js .reveal-img.is-in { clip-path: inset(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) { .js .reveal-img { clip-path: none; transition: none; } }
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <div class="logo-badge">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <path d="M6 22 L14 6 L22 22" stroke="white" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-        <path d="M9.5 16 L18.5 16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="14" cy="22" r="2.5" fill="#E85D24"/>
-      </svg>
-    </div>
-    <div class="logo-text">
-      <span class="logo-name">Аслямов</span>
-      <span class="logo-tagline">Эвакуатор · Шиномонтаж</span>
-    </div>
-  </a>
-  <div class="nav-cta">
-    <a href="https://wa.me/79997414755" target="_blank" class="btn-wa">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
+<!-- ═══ РЕЛЬСА ═══ -->
+<nav class="rail" aria-label="Разделы страницы">
+  <div class="rail-track"><div class="rail-fill" id="railFill"></div></div>
+  <div class="rail-nav">
+    <a class="rail-link" href="#evakuator" data-station="evakuator">
+      <span>Эвакуатор</span>
+      <svg width="24" height="24" viewBox="0 0 24 24"><path d="M2 16h11V7H2zM13 10h4l4 4v2h-8z"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg>
     </a>
-    <a href="tel:+79997414755" class="btn-call">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 9.93a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      Позвонить
+    <a class="rail-link" href="#shinomontazh" data-station="shinomontazh">
+      <span>Шиномонтаж</span>
+      <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.8M12 17.2V21M3 12h3.8M17.2 12H21"/></svg>
+    </a>
+    <a class="rail-link" href="#avtomoyka" data-station="avtomoyka">
+      <span>Автомойка</span>
+      <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 3s6 6.6 6 10.6A6 6 0 0 1 6 13.6C6 9.6 12 3 12 3z"/></svg>
+    </a>
+    <a class="rail-link" href="#gde-my" data-station="gde-my">
+      <span>Где мы</span>
+      <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
     </a>
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero-wrapper">
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Караидель · Круглосуточно</div>
-    <h1 class="hero-title">
-      Эвакуатор<br>и шино&shy;<em>монтаж</em>
-    </h1>
-    <p class="hero-desc">
-      Подача в любую точку: Караидельский, Мишкинский, Аскинский районы, Тастуба и трассы. Без повреждений, без скрытых доплат. Работаем 24/7 — звоните в любое время.
-    </p>
-    <div class="hero-actions">
-      <a href="tel:+79997414755" class="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 9.93a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        +7 (999) 741-47-55
-      </a>
-      <a href="https://wa.me/79997414755" target="_blank" class="btn-secondary">
-        Написать в WhatsApp
-      </a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">Эвакуатор</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">4т</div>
-        <div class="stat-label">Грузоподъёмность</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">0₽</div>
-        <div class="stat-label">Скрытых доплат</div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-placeholder" style="padding:0;overflow:hidden;min-height:500px;">
-      <img 
-        src="photo_2025-12-16_21-18-00.jpg" 
-        alt="Эвакуатор Аслямов Караидель — Hyundai HD78 на дороге в лесу"
-        class="hero-img"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-      >
-      <div style="display:none;width:100%;height:100%;min-height:500px;background:var(--black);flex-direction:column;align-items:center;justify-content:center;gap:16px;color:#555">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-          <rect x="8" y="28" width="52" height="28" rx="4" stroke="white" stroke-width="2"/>
-          <rect x="44" y="18" width="24" height="22" rx="3" stroke="white" stroke-width="2"/>
-          <circle cx="22" cy="60" r="8" stroke="white" stroke-width="2"/>
-          <circle cx="22" cy="60" r="3.5" fill="white"/>
-          <circle cx="52" cy="60" r="8" stroke="white" stroke-width="2"/>
-          <circle cx="52" cy="60" r="3.5" fill="white"/>
-        </svg>
-        <p style="font-size:13px;letter-spacing:1px;text-transform:uppercase">Фото загружается</p>
-      </div>
-    </div>
-    <div class="hero-badge">
-      <div class="hero-badge-title">Аслямов</div>
-      <div class="hero-badge-sub">Надёжная помощь</div>
-    </div>
-  </div>
-</section>
-</div>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ticker-item">Эвакуатор 24/7</span>
-    <span class="ticker-item">Шиномонтаж без очередей</span>
-    <span class="ticker-item">До 4 тонн</span>
-    <span class="ticker-item">Без скрытых доплат</span>
-    <span class="ticker-item">Грузовой шиномонтаж</span>
-    <span class="ticker-item">Единственный в районе</span>
-    <span class="ticker-item">Ремонт боковых порезов</span>
-    <span class="ticker-item">Дошиповка зимней резины</span>
-    <span class="ticker-item">Спецтехника и тракторы</span>
-    <span class="ticker-item">Эвакуатор 24/7</span>
-    <span class="ticker-item">Шиномонтаж без очередей</span>
-    <span class="ticker-item">До 4 тонн</span>
-    <span class="ticker-item">Без скрытых доплат</span>
-    <span class="ticker-item">Грузовой шиномонтаж</span>
-    <span class="ticker-item">Единственный в районе</span>
-    <span class="ticker-item">Ремонт боковых порезов</span>
-    <span class="ticker-item">Дошиповка зимней резины</span>
-    <span class="ticker-item">Спецтехника и тракторы</span>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<div class="section" id="services">
-  <div class="section-header reveal">
-    <div>
-      <div class="section-label">Услуги</div>
-      <h2 class="section-title">Что мы делаем</h2>
-    </div>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-num">01</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none">
-        <rect x="4" y="16" width="32" height="18" rx="3" stroke="#E85D24" stroke-width="2"/>
-        <rect x="28" y="10" width="16" height="14" rx="2" stroke="#E85D24" stroke-width="2"/>
-        <circle cx="11" cy="37" r="5" stroke="var(--black)" stroke-width="2"/>
-        <circle cx="11" cy="37" r="2" fill="var(--black)"/>
-        <circle cx="31" cy="37" r="5" stroke="var(--black)" stroke-width="2"/>
-        <circle cx="31" cy="37" r="2" fill="var(--black)"/>
-        <path d="M34 16 L44 6" stroke="#E85D24" stroke-width="2" stroke-linecap="round"/>
-        <path d="M44 6 L44 18" stroke="#E85D24" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2"/>
+<!-- ═══ ШАПКА ═══ -->
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#top">
+      <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M6 22 L14 6 L22 22" stroke="#16181A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M9.5 16 L18.5 16" stroke="#16181A" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="14" cy="22" r="2.5" fill="#E85D24"/>
       </svg>
-      <h3 class="service-title">Эвакуатор</h3>
-      <ul class="service-list">
-        <li>Грузоподъёмность до 4 тонн</li>
-        <li>Подача по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе</li>
-        <li>Доставка без повреждений</li>
-        <li>Работаем по всему Башкортостану</li>
-      </ul>
-      <div style="margin-top: 16px;">
-        <img 
-          src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/photo_2025-04-04_15-17-43.webp"
-          alt="Эвакуатор Аслямов Караидель"
-          style="width:100%;border-radius:8px;object-fit:cover;object-position:center 40%;height:260px;display:block"
-          onerror="this.style.display='none'"
-        >
-      </div>
-      <div class="service-hours"><span class="dot"></span> Работаем круглосуточно</div>
+      <span class="brand-name">Аслямов</span>
+    </a>
+    <div class="topbar-meta">
+      <address>с. Караидель, ул. Мира, 13/11</address>
     </div>
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-num">02</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none">
-        <circle cx="24" cy="24" r="16" stroke="#E85D24" stroke-width="2"/>
-        <circle cx="24" cy="24" r="8" stroke="var(--black)" stroke-width="2"/>
-        <circle cx="24" cy="24" r="3" fill="#E85D24"/>
-        <path d="M24 8 L24 4" stroke="#E85D24" stroke-width="2" stroke-linecap="round"/>
-        <path d="M24 44 L24 40" stroke="#E85D24" stroke-width="2" stroke-linecap="round"/>
-        <path d="M8 24 L4 24" stroke="#E85D24" stroke-width="2" stroke-linecap="round"/>
-        <path d="M44 24 L40 24" stroke="#E85D24" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-      <h3 class="service-title">Шиномонтаж</h3>
-      <ul class="service-list">
-        <li>Замена и балансировка шин</li>
-        <li>Дошиповка зимней резины</li>
-        <li>Ремонт боковых порезов</li>
-        <li>Правка литых и штампованных дисков</li>
-        <li>Грузовой шиномонтаж и спецтехника</li>
-      </ul>
-      <div style="margin-top: 16px;">
-        <img 
-          src="https://raw.githubusercontent.com/SeverPro/evakuator-tavi/main/IMG_6030.webp" 
-          alt="Шиномонтаж Аслямов Караидель"
-          style="width:100%;border-radius:8px;object-fit:cover;object-position:center 40%;height:260px;display:block"
-          onerror="this.style.display='none'"
-        >
-      </div>
-      <div class="service-hours"><span class="dot"></span> 9:00 — 20:00 ежедневно</div>
-    </div>
+    <a class="topbar-tel" href="tel:+79997414755">+7 (999) 741-47-55</a>
+    <a class="topbar-call" href="tel:+79997414755">
+      <svg width="15" height="15" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1-1a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      Позвонить
+    </a>
   </div>
-</div>
+</header>
 
-<!-- TRUCK TIRE SERVICE -->
-<section class="truck-section" id="truck">
-  <div class="truck-inner">
-    <div class="truck-grid">
-      <div class="reveal">
-        <div class="truck-badge">Единственный в районе</div>
-        <h2 class="truck-title">Грузовой<br><span>шиномонтаж</span></h2>
-        <p class="truck-desc">
-          Обслуживаем грузовики, автобусы и спецтехнику. Современное оборудование, удобный заезд — всё для того, чтобы ваша техника быстро вернулась в работу.
-        </p>
-        <ul class="truck-list">
-          <li>Монтаж и демонтаж шин для грузовиков и спецтехники</li>
-          <li>Балансировка колёс — плавный ход и долгий ресурс</li>
-          <li>Ремонт шин, замена колёсных дисков</li>
-          <li>Проверка и регулировка давления в шинах</li>
-          <li>Тракторы, комбайны, строительная спецтехника</li>
-        </ul>
-        <a href="tel:+79997414755" class="btn-primary" style="display:inline-flex;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 9.93a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Записаться на грузовой шиномонтаж
-        </a>
-      </div>
-      <div class="truck-visual reveal reveal-delay-2">
-        <!-- Замените на фото грузового шиномонтажа когда будет -->
-        <div class="truck-photo-placeholder" style="padding:0;overflow:hidden;">
-          <img 
-            src="photo_2026-02-15_11-34-07.jpg"
-            alt="Грузовой шиномонтаж Аслямов Караидель — шиномонтаж трактора и спецтехники"
-            style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--radius-lg);"
-          >
-        </div>
-        <div class="truck-stat-pill">
-          <div class="truck-stat-num">1</div>
-          <div class="truck-stat-label">в районе</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ═══ ПЕРВЫЙ ЭКРАН ═══ -->
+<section class="gate" id="top">
+  <div class="gate-in">
+    <div class="gate-text">
+      <h1 class="gate-h1" aria-label="Аслямов — эвакуатор, шиномонтаж и автомойка в Караиделе">
+        <span class="gate-row"><span class="gate-word">Эвакуатор</span><span class="plate">круглосуточно <span class="lamp" data-lamp="tow"></span></span></span>
+        <span class="gate-row"><span class="gate-word">Шиномонтаж</span><span class="plate">9:00–18:00 <span class="lamp" data-lamp="tire"></span></span></span>
+        <span class="gate-row"><span class="gate-word">Автомойка</span><span class="plate">6:00–22:00 <span class="lamp" data-lamp="wash"></span></span></span>
+        <span class="gate-where">с. Караидель, ул. Мира, 13/11<br>Караидельский, Мишкинский, Аскинский районы, Тастуба и трассы</span>
+      </h1>
 
-<!-- WHY -->
-<section class="why-section" id="about">
-  <div class="why-inner">
-    <div class="reveal">
-      <div class="section-label" style="color: #E85D24;">Почему мы</div>
-      <h2 class="section-title" style="color: white;">Доверие строится<br>на деле</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="why-title">Круглосуточно</div>
-        <div class="why-desc">Эвакуатор работает без выходных и праздников. Ночь, ранее утро, праздник — позвоните, приедем.</div>
-      </div>
-      <div class="why-card reveal reveal-delay-1">
-        <div class="why-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div class="why-title">Без скрытых доплат</div>
-        <div class="why-desc">Цену называем сразу. Никаких сюрпризов по приезду — цена при звонке равна цене по факту.</div>
-      </div>
-      <div class="why-card reveal reveal-delay-2">
-        <div class="why-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="why-title">Бережная перевозка</div>
-        <div class="why-desc">Автомобиль загружается и перевозится без царапин. Платформа оборудована нужными крепежами.</div>
-      </div>
-      <div class="why-card reveal reveal-delay-3">
-        <div class="why-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div class="why-title">Знаем район</div>
-        <div class="why-desc">Работаем по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе. Быстро найдём вас и доберёмся по любой трассе.</div>
-      </div>
-      <div class="why-card reveal reveal-delay-4">
-        <div class="why-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 9.93a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        </div>
-        <div class="why-title">Быстрая связь</div>
-        <div class="why-desc">Звонок или WhatsApp — отвечаем сразу. Не нужно ждать — объясним стоимость и время подачи.</div>
-      </div>
-      <div class="why-card reveal reveal-delay-5">
-        <div class="why-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        </div>
-        <div class="why-title">Личная ответственность</div>
-        <div class="why-desc">Аслямов — не компания-посредник. Личная ответственность владельца за каждый выезд.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- НОВОСТИ -->
-<div class="tg-section" id="news">
-  <div class="tg-wrapper">
-    <div class="tg-info reveal">
-      <div class="section-label">Актуально</div>
-      <h2 class="section-title">Новости<br>и обновления</h2>
-      <p style="margin-top: 20px; font-size: 15px; line-height: 1.7; color: var(--gray-600);">
-        Следите за акциями, новинками и жизнью сервиса в нашем Telegram-канале.
+      <p class="gate-now" id="nowLine">
+        <b>Эвакуатор</b> — круглосуточно, без выходных. <b>Шиномонтаж</b> — с 9:00 до 18:00.
+        <b>Автомойка</b> — с 6:00 до 22:00. Позвоните — назовём цену сразу.
       </p>
-      <a href="https://t.me/evakuator_karaidel" target="_blank" class="tg-channel-badge">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#229ED9"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
-        @evakuator_karaidel
-      </a>
-    </div>
-    <div class="reveal reveal-delay-2">
-      <div style="display:flex;flex-direction:column;gap:16px;">
 
-        <article style="border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:24px;background:var(--white);">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-            <div style="width:32px;height:32px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
-            </div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:12px;font-weight:600;">Эвакуатор Аслямов</div>
-              <div style="font-size:11px;color:var(--gray-400);">15 февраля 2026</div>
-            </div>
-          </div>
-          <p style="font-size:14px;line-height:1.7;color:var(--gray-600);">
-            <strong style="color:var(--black);">Грузовой шиномонтаж в Караиделе</strong> — монтаж и демонтаж шин для грузовиков, автобусов и спецтехники. Балансировка колёс, ремонт шин, проверка давления. Современное оборудование, удобный заезд. Адрес: ул. Мира, 13/11.
-          </p>
-        </article>
-
-        <article style="border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:24px;background:var(--white);">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-            <div style="width:32px;height:32px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
-            </div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:12px;font-weight:600;">Эвакуатор Аслямов</div>
-              <div style="font-size:11px;color:var(--gray-400);">19 января 2026</div>
-            </div>
-          </div>
-          <p style="font-size:14px;line-height:1.7;color:var(--gray-600);">
-            <strong style="color:var(--black);">Сдаются тёплые производственные боксы</strong> в Караиделе, ул. Мира 13/11 — долгосрочно и посуточно. Бокс №1: 11×10 м, ворота 4×4 м. Бокс №2: 10×5 м, ворота 3×2,5 м. Подходит для автосервиса, кузовного ремонта, спецтехники. Звоните: 8 987 584-19-83.
-          </p>
-        </article>
-
-        <article style="border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:24px;background:var(--white);">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-            <div style="width:32px;height:32px;background:var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
-            </div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:12px;font-weight:600;">Эвакуатор Аслямов</div>
-              <div style="font-size:11px;color:var(--gray-400);">30 декабря 2025</div>
-            </div>
-          </div>
-          <p style="font-size:14px;line-height:1.7;color:var(--gray-600);">
-            <strong style="color:var(--black);">Переехали в новое помещение!</strong> Тёплый, светлый шиномонтаж с современным оборудованием — теперь на ул. Мира 13/11 в Караиделе. Работаем быстрее и комфортнее. Спасибо всем, кто с нами — в новом году ровных дорог и надёжной техники!
-          </p>
-        </article>
-
-        <a href="https://t.me/evakuator_karaidel" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border:1.5px dashed var(--gray-200);border-radius:var(--radius-lg);color:var(--gray-400);font-size:13px;text-decoration:none;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--gray-200)';this.style.color='var(--gray-400)'">
-          Все новости в Telegram-канале
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <div class="gate-actions">
+        <a class="btn btn--gruz" href="tel:+79997414755">
+          <svg width="17" height="17" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1-1a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          +7 (999) 741-47-55
         </a>
-
+        <a class="btn btn--line" href="https://wa.me/79997414755" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn--line" href="https://t.me/evakuator_karaidel" target="_blank" rel="noopener">Telegram</a>
       </div>
+    </div>
+
+    <div class="gate-photo">
+      <img src="img/box-tire.webp" width="900" height="1200"
+           alt="Грузовой шиномонтаж Аслямов в Караиделе: тракторное колесо в станке внутри бокса"
+           fetchpriority="high" />
+      <div class="gate-caption"><span>Наш бокс, ул. Мира 13/11</span><span>Грузовой · Спецтехника</span></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- MAP -->
-<section class="map-section" id="contacts">
-  <div class="map-inner">
-    <div class="reveal">
-      <div class="section-label">Контакты</div>
-      <h2 class="section-title">Где нас найти</h2>
+<!-- ═══ ЗОНА 1: ЭВАКУАТОР ═══ -->
+<section class="bay" id="evakuator">
+  <div class="bay-in">
+    <div class="bay-head">
+      <h2 class="bay-name">Эвакуатор <em>24/7</em></h2>
+      <p class="bay-lead">
+        Подъём до 4 тонн. Приезжаем в любое время суток по Караидельскому, Мишкинскому и Аскинскому районам,
+        в Тастубу и на трассы. <b>Цену называем по телефону сразу</b>, до выезда.
+      </p>
     </div>
-    <div class="map-grid">
-      <div class="map-info">
-        <div class="map-detail reveal">
-          <div class="map-detail-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <div class="map-detail-label">Адрес</div>
-            <div class="map-detail-value">с. Караидель, ул. Мира, 13/11</div>
-          </div>
-        </div>
-        <div class="map-detail reveal reveal-delay-1">
-          <div class="map-detail-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.9 9.93 19.79 19.79 0 01.83 5.26 2 2 0 012.81 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 10.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 18.92z"/></svg>
-          </div>
-          <div>
-            <div class="map-detail-label">Телефон</div>
-            <div class="map-detail-value"><a href="tel:+79997414755">+7 (999) 741-47-55</a></div>
-          </div>
-        </div>
-        <div class="map-detail reveal reveal-delay-2">
-          <div class="map-detail-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#229ED9"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
-          </div>
-          <div>
-            <div class="map-detail-label">Telegram / WhatsApp</div>
-            <div class="map-detail-value"><a href="https://wa.me/79997414755" target="_blank">+7 (999) 741-47-55</a></div>
-          </div>
-        </div>
-        <div class="map-detail reveal reveal-delay-3">
-          <div class="map-detail-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <div class="map-detail-label">Часы работы</div>
-            <div class="map-detail-value">Эвакуатор — 24/7<br>Шиномонтаж — 9:00–20:00</div>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-4" style="margin-top: 8px;">
-          <a href="https://yandex.ru/maps/?mode=routes&rtext=~55.845255,56.885389" target="_blank" class="btn-primary" style="display: inline-flex;">
-            Проложить маршрут
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
+
+    <div class="bay-body bay-body--split">
+      <div>
+        <h3 class="ops-title">Как это происходит</h3>
+        <ol class="ops">
+          <li><strong>Звоните</strong><span>Говорите, где стоите и что случилось. Сразу называем цену и время подачи.</span></li>
+          <li><strong>Выезжаем</strong><span>Ночь, выходной, праздник — позвоните, приедем.</span></li>
+          <li><strong>Грузим и крепим</strong><span>Платформа с лебёдкой и ремнями. Перевозим без повреждений.</span></li>
+          <li><strong>Везём куда нужно</strong><span>До дома, до сервиса, до нужного адреса по району и дальше.</span></li>
+        </ol>
+
+        <h3 class="ops-title" style="margin-top:32px">Кого возим</h3>
+        <ul class="ticks">
+          <li>Легковые и внедорожники</li>
+          <li>Микроавтобусы и ГАЗели</li>
+          <li>Грузовые до 4 тонн</li>
+          <li>Технику после ДТП и заглохшую на трассе</li>
+        </ul>
       </div>
-      <div class="map-frame reveal reveal-delay-1">
-        <iframe src="https://yandex.ru/map-widget/v1/?ll=56.885389%2C55.845255&z=15&pt=56.885389%2C55.845255,pm2rdm&l=map" allowfullscreen loading="lazy"></iframe>
+
+      <div class="tow-pair">
+        <figure class="figure figure--tall">
+          <img class="reveal-img" src="img/tow-forest.webp" width="800" height="1067"
+               alt="Эвакуатор Аслямов перевозит легковой автомобиль по грунтовой дороге" loading="lazy" />
+        </figure>
+        <figure class="figure">
+          <img class="reveal-img" src="img/tow-road.webp" width="600" height="800"
+               alt="Эвакуатор с внедорожником на трассе" loading="lazy" />
+        </figure>
+        <figure class="figure">
+          <img class="reveal-img" src="img/building.webp" width="960" height="510"
+               alt="Здание сервиса Аслямов в Караиделе: вход в шиномонтаж и в автомойку" loading="lazy" />
+          <figcaption>Одна площадка на ул. Мира, 13/11: шиномонтаж и мойка под одной крышей, эвакуатор — на выезде.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="find-actions">
+      <a class="btn btn--gruz" href="tel:+79997414755">Вызвать эвакуатор</a>
+      <a class="btn btn--line" href="https://wa.me/79997414755" target="_blank" rel="noopener">Написать в WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ЗОНА 2: ШИНОМОНТАЖ ═══ -->
+<section class="bay" id="shinomontazh">
+  <div class="bay-in">
+    <div class="bay-head">
+      <h2 class="bay-name">Шиномонтаж</h2>
+      <p class="bay-lead">
+        Два бокса на выбор — легковой и грузовой. Делаем сезонную смену, балансировку, ремонт порезов
+        и правку дисков. Работаем с 9:00 до 18:00. В сезон бывает очередь — позвоните заранее, подскажем время.
+      </p>
+    </div>
+
+    <div class="bays2">
+      <article class="baybox">
+        <div class="baybox-head">
+          <h3 class="baybox-name">Легковой</h3>
+          <span class="baybox-mark">9:00–18:00</span>
+        </div>
+        <div class="baybox-body">
+          <ul class="ticks">
+            <li>Замена и балансировка колёс</li>
+            <li>Дошиповка зимней резины</li>
+            <li>Ремонт боковых порезов</li>
+            <li>Правка литых и штампованных дисков</li>
+            <li>Проверка и подкачка давления</li>
+          </ul>
+        </div>
+        <figure class="figure">
+          <img class="reveal-img" src="img/tire-car.webp" width="735" height="1008"
+               alt="Шиномонтажник за станком монтирует легковое колесо" loading="lazy" />
+        </figure>
+      </article>
+
+      <article class="baybox baybox--lead">
+        <div class="baybox-head">
+          <h3 class="baybox-name">Грузовой</h3>
+          <span class="baybox-mark">Единственный в районе</span>
+        </div>
+        <div class="baybox-body">
+          <ul class="ticks">
+            <li>Грузовики, автобусы, прицепы</li>
+            <li>Тракторы, комбайны, спецтехника</li>
+            <li>Монтаж и демонтаж больших колёс</li>
+            <li>Балансировка и замена дисков</li>
+            <li>Ремонт шин, регулировка давления</li>
+          </ul>
+        </div>
+        <figure class="figure">
+          <img class="reveal-img" src="img/box-tire.webp" width="900" height="1200"
+               alt="Тракторное колесо в грузовом шиномонтажном станке" loading="lazy" />
+        </figure>
+      </article>
+    </div>
+
+    <div class="find-actions">
+      <a class="btn btn--gruz" href="tel:+79997414755">Записаться на шиномонтаж</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ЗОНА 3: АВТОМОЙКА ═══ -->
+<section class="bay" id="avtomoyka">
+  <div class="bay-in">
+    <div class="bay-head">
+      <h2 class="bay-name">Автомойка</h2>
+      <p class="bay-lead">
+        Работаем с 6:00 до 22:00 — успеете до смены или после работы. Моем и легковые, и грузовые.
+        Вход с вывеской <b>«Мой сам»</b>, это та же площадка на ул. Мира, 13/11.
+      </p>
+    </div>
+
+    <div class="bay-body bay-body--split">
+      <div>
+        <h3 class="ops-title">Что делаем</h3>
+        <ol class="ops">
+          <li><strong>Мойка кузова</strong><span>Легковые и грузовые.</span></li>
+          <li><strong>Уборка салона</strong><span>Пылесос, влажная уборка, пороги и коврики.</span></li>
+          <li><strong>Мойка двигателя</strong><span>Аккуратно, с защитой электрики.</span></li>
+        </ol>
+
+        <p class="freebie">
+          <b>Пылесос — бесплатно</b>
+          <span>К любой мойке, без доплаты.</span>
+        </p>
+      </div>
+
+      <figure class="figure">
+        <img class="reveal-img" src="img/wash-bay.webp" width="900" height="1200"
+             alt="Легковой автомобиль в боксе автомойки «Мой сам» в Караиделе" loading="lazy" />
+        <figcaption>Бокс мойки: светлый, с водоотводом по полу. Заезд с ул. Мира.</figcaption>
+      </figure>
+    </div>
+
+    <div class="find-actions">
+      <a class="btn btn--gruz" href="tel:+79997414755">Узнать цену мойки</a>
+    </div>
+  </div>
+
+  <div class="night">
+    <div class="night-in">
+      <div class="night-photo">
+        <img class="reveal-img" src="img/wash-night.webp" width="960" height="650"
+             alt="Автомойка «Мой сам» ночью: светящаяся вывеска и открытые ворота бокса" loading="lazy" />
+      </div>
+      <div class="night-note">
+        <b>Свет горит до 22:00</b>
+        <p>Приехали поздно — звоните, встретим. Мойка работает каждый день с 6:00 до 22:00,
+           ворота крайнего правого бокса на ул. Мира 13/11.</p>
+        <a class="btn btn--gruz" href="tel:+79997414755">Позвонить на мойку</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
-<div class="reviews-section reveal">
-  <div class="section-label">Отзывы</div>
-  <h2 class="section-title">Нам доверяют</h2>
-  <p style="margin-top: 16px; font-size: 16px; color: var(--gray-600); max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7;">
-    Читайте отзывы реальных клиентов на Яндекс Картах и других платформах.
-  </p>
-  <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
-    <a href="https://yandex.ru/maps/org/shinomontazh/163637405636/reviews/" target="_blank" class="reviews-link">
-      Отзывы на Яндекс Картах
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-    <a href="https://2gis.ru/firm/70000001100425663" target="_blank" class="reviews-link">
-      Профиль в 2ГИС
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-    <a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank" class="reviews-link">
-      Профиль на Zoon
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
+<!-- ═══ ПРАВИЛА ═══ -->
+<section class="rules">
+  <div class="rules-in">
+    <h2>Как мы работаем</h2>
+    <ul class="rules-list">
+      <li><b>Цену называем сразу по телефону</b><span>Та же цена, что назвали — та и на месте. Скрытых доплат нет.</span></li>
+      <li><b>Эвакуатор — круглосуточно</b><span>Ночь, праздник, метель. Позвонили — выехали.</span></li>
+      <li><b>Везём без повреждений</b><span>Платформа с лебёдкой и крепёжом, машина приезжает целой.</span></li>
+      <li><b>Знаем район, а не карту в телефоне</b><span>Караидельский, Мишкинский, Аскинский районы, Тастуба, трассы.</span></li>
+      <li><b>Отвечаем на звонок, а не в очередь</b><span>Один владелец, один телефон. Скажем цену, время и что делать дальше.</span></li>
+      <li><b>Работу принимает Аслямов лично</b><span>Это не посредники и не диспетчерская служба.</span></li>
+    </ul>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand">
-          <div class="footer-logo-badge">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path d="M6 22 L14 6 L22 22" stroke="#111110" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-              <path d="M9.5 16 L18.5 16" stroke="#111110" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="14" cy="22" r="2.5" fill="#E85D24"/>
-            </svg>
-          </div>
-          <div>
-            <div class="footer-name">Аслямов</div>
-            <div class="footer-sub">Эвакуатор · Шиномонтаж</div>
-          </div>
-        </div>
-        <p style="margin-top: 20px; font-size: 13px; color: #666660; max-width: 280px; line-height: 1.7;">
-          Надёжная помощь на дороге. Работаем по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе.
-        </p>
+<!-- ═══ ИЗ БОКСА ═══ -->
+<section class="board" id="iz-boksa">
+  <h2>Из бокса</h2>
+  <ul class="board-list">
+    <li class="board-item">
+      <div class="board-date">15 февраля 2026</div>
+      <div class="board-text">
+        <b>Открыли грузовой шиномонтаж.</b> Монтаж и демонтаж шин для грузовиков, автобусов и спецтехники.
+        Балансировка, ремонт, проверка давления. Ул. Мира 13/11 — заезд со стороны мойки.
       </div>
-      <div class="footer-links">
-        <div class="footer-link-group">
-          <div class="footer-link-title">Услуги</div>
-          <ul class="footer-link-list">
-            <li><a href="#services">Эвакуатор 24/7</a></li>
-            <li><a href="#services">Шиномонтаж легковой</a></li>
-            <li><a href="#truck">Грузовой шиномонтаж</a></li>
-          </ul>
+    </li>
+    <li class="board-item">
+      <div class="board-date">19 января 2026</div>
+      <div class="board-text">
+        <b>Сдаются тёплые производственные боксы</b> на ул. Мира 13/11 — долгосрочно и посуточно.
+        Бокс №1: 11×10 м, ворота 4×4 м. Бокс №2: 10×5 м, ворота 3×2,5 м.
+        Под автосервис, кузовной ремонт, спецтехнику. Телефон: <a href="tel:+79875841983">+7 (987) 584-19-83</a>.
+      </div>
+    </li>
+    <li class="board-item">
+      <div class="board-date">30 декабря 2025</div>
+      <div class="board-text">
+        <b>Переехали в новое помещение.</b> Тёплый светлый бокс с современным оборудованием — теперь на ул. Мира 13/11.
+        Работаем быстрее и комфортнее. Спасибо всем, кто с нами.
+      </div>
+    </li>
+  </ul>
+
+  <div class="board-note">
+    <p>Акции и новости выходят в Telegram — там же отвечаем на вопросы по ценам и записи.</p>
+    <a class="btn btn--line" href="https://t.me/evakuator_karaidel" target="_blank" rel="noopener">Открыть канал</a>
+  </div>
+</section>
+
+<!-- ═══ ГДЕ НАС НАЙТИ ═══ -->
+<section class="bay" id="gde-my">
+  <div class="find-in">
+    <h2>Где нас найти</h2>
+
+    <figure class="building">
+      <img class="reveal-img" src="img/building.webp" width="960" height="510"
+           alt="Здание на ул. Мира 13/11 в Караиделе: слева вход в шиномонтаж, справа — автомойка «Мой сам»" loading="lazy" />
+      <figcaption>Крайний правый бокс — мойка «Мой сам», левее — шиномонтаж. Эвакуатор выезжает отсюда же.</figcaption>
+    </figure>
+
+    <div class="find-grid">
+      <dl class="find-dl">
+        <div class="find-row">
+          <dt>Адрес</dt>
+          <dd>с. Караидель, ул. Мира, 13/11</dd>
         </div>
-        <div class="footer-link-group">
-          <div class="footer-link-title">Контакты</div>
-          <ul class="footer-link-list">
-            <li><a href="tel:+79997414755">+7 (999) 741-47-55</a></li>
-            <li><a href="https://wa.me/79997414755" target="_blank">WhatsApp</a></li>
-            <li><a href="https://t.me/evakuator_karaidel" target="_blank">Telegram</a></li>
-          </ul>
+        <div class="find-row">
+          <dt>Телефон</dt>
+          <dd><a href="tel:+79997414755">+7 (999) 741-47-55</a> — эвакуатор, шиномонтаж, мойка</dd>
         </div>
-        <div class="footer-link-group">
-          <div class="footer-link-title">Мы на платформах</div>
-          <ul class="footer-link-list">
-            <li><a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank">Zoon</a></li>
-            <li><a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank">Avito</a></li>
-            <li><a href="https://yandex.ru/maps/org/shinomontazh/163637405636/" target="_blank">Яндекс Карты</a></li>
-            <li><a href="https://2gis.ru/firm/70000001100425663" target="_blank">2ГИС</a></li>
-          </ul>
+        <div class="find-row">
+          <dt>Второй номер</dt>
+          <dd><a href="tel:+79875841983">+7 (987) 584-19-83</a> — аренда боксов</dd>
+        </div>
+        <div class="find-row">
+          <dt>Часы работы</dt>
+          <dd>
+            <ul class="hours">
+              <li>Эвакуатор <em>круглосуточно</em></li>
+              <li>Шиномонтаж <em>9:00–18:00</em></li>
+              <li>Автомойка <em>6:00–22:00</em></li>
+            </ul>
+          </dd>
+        </div>
+        <div class="find-row">
+          <dt>Написать</dt>
+          <dd><a href="https://wa.me/79997414755" target="_blank" rel="noopener">WhatsApp</a> · <a href="https://t.me/evakuator_karaidel" target="_blank" rel="noopener">Telegram</a></dd>
+        </div>
+      </dl>
+
+      <div>
+        <div class="find-map">
+          <iframe src="https://yandex.ru/map-widget/v1/?ll=56.885389%2C55.845255&amp;z=16&amp;pt=56.885389%2C55.845255,pm2rdm&amp;l=map"
+                  loading="lazy" title="Карта: Аслямов, с. Караидель, ул. Мира 13/11"></iframe>
+        </div>
+        <div class="find-actions">
+          <a class="btn btn--gruz" href="https://yandex.ru/maps/?mode=routes&amp;rtext=~55.845255,56.885389" target="_blank" rel="noopener">Проложить маршрут</a>
+        </div>
+
+        <div class="platforms">
+          <a href="https://yandex.ru/maps/org/shinomontazh/13629509059/" target="_blank" rel="noopener">
+            Яндекс Карты <span class="star">5,0 · 26 отзывов</span>
+          </a>
+          <a href="https://yandex.ru/maps/org/avtomoyka/47041275601/" target="_blank" rel="noopener">
+            Автомойка на Картах <span class="star">4,4 · 8 отзывов</span>
+          </a>
+          <a href="https://2gis.ru/firm/70000001100425663" target="_blank" rel="noopener">2ГИС</a>
+          <a href="https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/" target="_blank" rel="noopener">Zoon</a>
+          <a href="https://www.avito.ru/karaidel/predlozheniya_uslug/arenda_i_uslugi_gruzovogo_evakuatora_2260317660" target="_blank" rel="noopener">Avito</a>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Аслямов. Эвакуатор и шиномонтаж, Караидель</div>
-      <div class="footer-socials">
-        <a href="https://vk.com/id792775410" target="_blank" class="footer-social" title="ВКонтакте">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.79h-1.67c-.63 0-.82-.5-1.96-1.64-1-.96-1.44-.96-1.69-.96-.34 0-.44.1-.44.57v1.5c0 .41-.13.65-1.2.65-1.77 0-3.73-1.07-5.11-3.07C4.64 10.08 4.14 8 4.14 7.6c0-.25.1-.49.57-.49h1.67c.43 0 .59.19.75.65.82 2.38 2.19 4.47 2.76 4.47.21 0 .31-.1.31-.65V9.64c-.07-1.16-.68-1.26-.68-1.67 0-.2.16-.41.43-.41h2.63c.37 0 .49.2.49.62v3.33c0 .37.16.49.26.49.21 0 .38-.12.76-.5 1.18-1.32 2.02-3.35 2.02-3.35.11-.25.31-.49.74-.49h1.67c.5 0 .61.26.5.62-.21.96-2.25 3.86-2.25 3.86-.17.28-.23.41 0 .72.17.23.72.72 1.09 1.15.68.77 1.2 1.41 1.34 1.85.14.44-.09.67-.5.67z"/></svg>
+  </div>
+</section>
+
+<!-- ═══ ПОДВАЛ ═══ -->
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">
+          <svg width="30" height="30" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M6 22 L14 6 L22 22" stroke="#E9EAE6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M9.5 16 L18.5 16" stroke="#E9EAE6" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="14" cy="22" r="2.5" fill="#E85D24"/>
+          </svg>
+          <span class="brand-name">Аслямов</span>
+        </div>
+        <p class="foot-about">
+          Эвакуатор, шиномонтаж и автомойка в Караиделе. Грузовой шиномонтаж — единственный в районе.
+          Работаем по Караидельскому, Мишкинскому, Аскинскому районам и Тастубе.
+        </p>
+      </div>
+
+      <div>
+        <div class="foot-title">Услуги</div>
+        <ul class="foot-list">
+          <li><a href="#evakuator">Эвакуатор 24/7, до 4 тонн</a></li>
+          <li><a href="#shinomontazh">Шиномонтаж легковой</a></li>
+          <li><a href="#shinomontazh">Грузовой шиномонтаж</a></li>
+          <li><a href="#avtomoyka">Автомойка легковая и грузовая</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="foot-title">Связаться</div>
+        <ul class="foot-list">
+          <li><a href="tel:+79997414755">+7 (999) 741-47-55</a></li>
+          <li><a href="tel:+79875841983">+7 (987) 584-19-83 — боксы</a></li>
+          <li><a href="https://wa.me/79997414755" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://t.me/evakuator_karaidel" target="_blank" rel="noopener">Telegram</a></li>
+          <li>с. Караидель, ул. Мира, 13/11</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Аслямов · Эвакуатор, шиномонтаж и автомойка, Караидель</span>
+      <div class="foot-socials">
+        <a href="https://vk.com/id792775410" target="_blank" rel="noopener" title="ВКонтакте" aria-label="ВКонтакте">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M15.1 2H8.9C3.3 2 2 3.3 2 8.9v6.1C2 20.7 3.3 22 8.9 22h6.1c5.6 0 6.9-1.3 6.9-6.9V8.9C22 3.3 20.7 2 15.1 2zm3.1 13.8h-1.7c-.6 0-.8-.5-2-1.6-1-1-1.4-1-1.7-1-.3 0-.4.1-.4.6v1.5c0 .4-.1.6-1.2.6-1.8 0-3.7-1.1-5.1-3.1-2-2.8-2.5-4.8-2.5-5.2 0-.2.1-.5.6-.5h1.7c.4 0 .6.2.8.6.8 2.4 2.2 4.5 2.8 4.5.2 0 .3-.1.3-.6V9.6c-.1-1.2-.7-1.3-.7-1.7 0-.2.2-.4.4-.4h2.6c.4 0 .5.2.5.6v3.3c0 .4.2.5.3.5.2 0 .4-.1.8-.5 1.2-1.3 2-3.3 2-3.3.1-.3.3-.5.7-.5h1.7c.5 0 .6.3.5.6-.2 1-2.3 3.9-2.3 3.9-.2.3-.2.4 0 .7.2.2.7.7 1.1 1.1.7.8 1.2 1.4 1.3 1.9.1.4-.1.7-.5.7z"/></svg>
         </a>
-        <a href="https://t.me/evakuator_karaidel" target="_blank" class="footer-social" title="Telegram">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.013 9.487c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.24 14.933l-2.95-.924c-.64-.203-.654-.64.136-.948l11.527-4.443c.535-.194 1.003.13.609.63z"/></svg>
+        <a href="https://t.me/evakuator_karaidel" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.6 8.2l-2 9.5c-.1.7-.5.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3.1 5.6-5c.2-.2-.1-.3-.4-.1l-6.9 4.3-3-.9c-.6-.2-.7-.6.1-.9l11.5-4.4c.5-.2 1 .1.6.6z"/></svg>
         </a>
-        <a href="https://wa.me/79997414755" target="_blank" class="footer-social" title="WhatsApp">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <a href="https://wa.me/79997414755" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3M12 21.8c-1.7 0-3.4-.5-4.9-1.4l-.4-.2-3.6 1 1-3.5-.2-.4A9.7 9.7 0 0 1 2.2 12a9.8 9.8 0 0 1 9.8-9.8c2.6 0 5 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9 9.8 9.8 0 0 1-9.8 9.8M12 0C5.4 0 0 5.4 0 12c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.7c1.7.9 3.7 1.4 5.7 1.4 6.6 0 12-5.4 12-12S18.6 0 12 0"/></svg>
         </a>
       </div>
     </div>
   </div>
 </footer>
 
+<!-- ═══ ПАНЕЛЬ ЗВОНКА ═══ -->
+<div class="callbar">
+  <a class="cb-call" href="tel:+79997414755">
+    <svg width="17" height="17" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1-1a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+    Позвонить
+  </a>
+  <a class="cb-wa" href="https://wa.me/79997414755" target="_blank" rel="noopener">
+    <svg width="17" height="17" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 20.5l1.6-4.7A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<!-- ═══ РАСПИСАНИЕ И ЖИВОЕ СОСТОЯНИЕ ═══ -->
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+(function () {
+  'use strict';
+
+  /* Расписание: эвакуатор — круглосуточно; шиномонтаж 9–18; мойка 6–22 */
+  var SCHEDULE = [
+    { key: 'tow',  name: 'Эвакуатор',   short: 'эвакуатор',  open: 0,  close: 24 },
+    { key: 'tire', name: 'Шиномонтаж', short: 'шиномонтаж', open: 9,  close: 18 },
+    { key: 'wash', name: 'Автомойка',  short: 'мойка',      open: 6,  close: 22 }
+  ];
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  function stateAt(now, svc) {
+    var h = now.getHours() + now.getMinutes() / 60;
+    if (svc.open === 0 && svc.close >= 24) return 'always';
+    return (h >= svc.open && h < svc.close) ? 'open' : 'closed';
+  }
+
+  function hhmm(h) { return h + ':00'; }
+
+  function describe(svc, st) {
+    if (st === 'always') return svc.short + ' на связи';
+    if (st === 'open')   return svc.short + ' открыт' + (svc.key === 'wash' ? 'а' : '') + ' до ' + hhmm(svc.close);
+    var h = new Date().getHours();
+    return svc.short + (h < svc.open ? ' откроется в ' + hhmm(svc.open) : ' откроется завтра в ' + hhmm(svc.open));
+  }
+
+  function render() {
+    var now = new Date();
+
+    var lamps = document.querySelectorAll('.lamp[data-lamp]');
+    for (var i = 0; i < lamps.length; i++) {
+      var key = lamps[i].getAttribute('data-lamp');
+      var svc = SCHEDULE.filter(function (s) { return s.key === key; })[0];
+      if (!svc) continue;
+      var st = stateAt(now, svc);
+      lamps[i].setAttribute('data-on', st === 'closed' ? '0' : '1');
+    }
+
+    var line = document.getElementById('nowLine');
+    if (line) {
+      var parts = SCHEDULE.map(function (s) { return describe(s, stateAt(now, s)); });
+      line.innerHTML = '<b>Сейчас ' + pad(now.getHours()) + ':' + pad(now.getMinutes()) + '</b> · ' +
+                       parts.join(' · ') + '.';
+    }
+  }
+
+  render();
+  setInterval(render, 30000);
+
+  /* Рельса: разметка заполняется по мере прокрутки, станция подсвечивается */
+  var fill = document.getElementById('railFill');
+  var links = [].slice.call(document.querySelectorAll('.rail-link'));
+  var stations = links.map(function (a) {
+    return { el: a, target: document.getElementById(a.getAttribute('href').slice(1)) };
+  }).filter(function (s) { return s.target; });
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      if (fill) fill.style.height = (p * 100) + '%';
+
+      var probe = window.innerHeight * 0.34;
+      var current = null;
+      stations.forEach(function (s) {
+        if (s.target.getBoundingClientRect().top <= probe) current = s;
+      });
+      stations.forEach(function (s) {
+        s.el.setAttribute('aria-current', s === current ? 'true' : 'false');
+      });
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* Появление фотографий.
+     Наблюдаем контейнер, а не саму картинку: clip-path обнуляет видимую
+     область, и IntersectionObserver на самой картинке не сработал бы. */
+  var imgs = document.querySelectorAll('.reveal-img');
+  function show(el) { el.classList.add('is-in'); }
+
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        if (e.target.classList.contains('reveal-img')) {
+          show(e.target);
+        } else {
+          [].forEach.call(e.target.querySelectorAll('.reveal-img'), show);
+        }
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+
+    [].forEach.call(imgs, function (el) {
+      var host = el.parentElement;
+      if (host && host !== document.body) { io.observe(host); } else { show(el); }
+    });
+  } else {
+    [].forEach.call(imgs, show);
+  }
+})();
+</script>
+
+<!-- ═══ ЯНДЕКС.МЕТРИКА ═══ -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){
+  m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+})(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=105880355', 'ym');
+ym(105880355, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/105880355" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["AutomotiveBusiness", "LocalBusiness"],
+  "name": "Аслямов — эвакуатор, шиномонтаж и автомойка",
+  "url": "https://evakuator.aslyamov24.ru/",
+  "image": "https://evakuator.aslyamov24.ru/img/box-tire.webp",
+  "telephone": "+79997414755",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Мира, 13/11",
+    "addressLocality": "Караидель",
+    "addressRegion": "Республика Башкортостан",
+    "addressCountry": "RU"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 55.845255, "longitude": 56.885389 },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Караидельский район" },
+    { "@type": "AdministrativeArea", "name": "Мишкинский район" },
+    { "@type": "AdministrativeArea", "name": "Аскинский район" },
+    { "@type": "Place", "name": "с. Тастуба" }
+  ],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59", "description": "Эвакуатор — круглосуточно" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "09:00", "closes": "18:00", "description": "Шиномонтаж" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "06:00", "closes": "22:00", "description": "Автомойка" }
+  ],
+  "sameAs": [
+    "https://t.me/evakuator_karaidel",
+    "https://vk.com/id792775410",
+    "https://yandex.ru/maps/org/shinomontazh/13629509059/",
+    "https://yandex.ru/maps/org/avtomoyka/47041275601/",
+    "https://2gis.ru/firm/70000001100425663",
+    "https://zoon.ru/ufa/autoservice/shinomontazh_i_evakuator_v_karaidele/"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Услуги",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Эвакуатор 24/7, до 4 тонн", "areaServed": "Караидельский, Мишкинский, Аскинский районы, Тастуба" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Шиномонтаж легковой: замена, балансировка, дошиповка, ремонт порезов, правка дисков" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Грузовой шиномонтаж: грузовики, автобусы, тракторы, спецтехника" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Автомойка легковая и грузовая: кузов, салон, двигатель, пылесос бесплатно" } }
+    ]
+  }
+}
 </script>
 
 </body>
