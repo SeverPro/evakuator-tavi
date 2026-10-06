@@ -210,16 +210,6 @@ button { font: inherit; color: inherit; }
   text-decoration: underline; text-underline-offset: 3px; padding: 4px 0;
 }
 
-/* Копирование текста для MAX: MAX не принимает готовый текст из ссылки */
-.copy { display: grid; gap: 8px; border-top: 1px solid var(--liniya-2); padding-top: 12px; }
-.copy-t { font-size: 14px; line-height: 1.5; color: var(--tekst); }
-.copy-area {
-  width: 100%; resize: none; font: 400 13px/1.5 var(--text);
-  color: var(--tekst); background: var(--ugol);
-  border: 1px solid var(--liniya-2); border-radius: 2px; padding: 10px;
-}
-.copy-msg { font-size: 13px; color: var(--razmetka); }
-
 /* ─── ПРЕИМУЩЕСТВА ──────────────────────────────────── */
 .feats {
   list-style: none; margin-top: 24px;
@@ -365,10 +355,6 @@ button { font: inherit; color: inherit; }
         <p class="geo-ok-sub">Куда отправить вашу геолокацию?</p>
         <p class="geo-acc" data-geo-acc hidden></p>
 
-        <a class="btn btn--line" data-geo-max data-max-link data-goal="click_max" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.8-.8L3 21l1.9-5.3a8.4 8.4 0 1 1 16.1-4.2z"/></svg>
-          Отправить в MAX
-        </a>
         <a class="btn btn--line" data-geo-wa data-goal="click_whatsapp" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.8-.8L3 21l1.9-5.3a8.4 8.4 0 1 1 16.1-4.2z"/></svg>
           Отправить в WhatsApp
@@ -377,13 +363,6 @@ button { font: inherit; color: inherit; }
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
           Отправить SMS
         </a>
-
-        <div class="copy" data-geo-copy data-max-hide hidden>
-          <p class="copy-t">Для MAX: скопируйте текст и вставьте его в чат.</p>
-          <textarea class="copy-area" data-geo-text readonly rows="4" aria-label="Текст сообщения с координатами"></textarea>
-          <button class="btn btn--line" type="button" data-geo-copied>Скопировать текст</button>
-          <p class="copy-msg" data-geo-copy-msg role="status" hidden></p>
-        </div>
 
         <a class="btn btn--line" href="tel:+79997414755" data-goal="click_phone">Позвонить</a>
         <p class="geo-note">WhatsApp и SMS откроются с готовым текстом — останется нажать «Отправить».</p>
@@ -396,10 +375,6 @@ button { font: inherit; color: inherit; }
         Другие способы связи <span class="more-arr" aria-hidden="true">→</span>
       </button>
       <div class="more-panel" id="more-panel" hidden>
-        <a class="btn btn--line" data-max-link data-goal="click_max" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.8-.8L3 21l1.9-5.3a8.4 8.4 0 1 1 16.1-4.2z"/></svg>
-          Написать в MAX
-        </a>
         <a class="btn btn--line" href="https://wa.me/79997414755?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9C%D0%BD%D0%B5%20%D0%BD%D1%83%D0%B6%D0%B5%D0%BD%20%D1%8D%D0%B2%D0%B0%D0%BA%D1%83%D0%B0%D1%82%D0%BE%D1%80." data-goal="click_whatsapp" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.8-.8L3 21l1.9-5.3a8.4 8.4 0 1 1 16.1-4.2z"/></svg>
           Написать в WhatsApp
@@ -476,15 +451,6 @@ button { font: inherit; color: inherit; }
   </button>
 </nav>
 
-<!-- ═══ ССЫЛКА НА MAX ═══
-     MAX не принимает готовый текст через ссылку, а телефон в ссылку
-     не подставляется: личная ссылка вида https://max.ru/u/… берётся
-     в приложении (Профиль → QR у фото → «Скопировать ссылку»).
-     Пока строка пустая, кнопки MAX скрыты — неверная ссылка хуже, чем её отсутствие. -->
-<script>
-var MAX_URL = '';
-</script>
-
 <!-- ═══ ЦЕЛИ МЕТРИКИ И ВСПОМОГАТЕЛЬНЫЕ КНОПКИ ═══ -->
 <script>
 (function () {
@@ -497,13 +463,6 @@ var MAX_URL = '';
   [].forEach.call(document.querySelectorAll('[data-goal]'), function (el) {
     el.addEventListener('click', function () { goal(el.getAttribute('data-goal')); });
   });
-
-  /* Кнопки MAX: включаем, только когда владелец дал ссылку на свой профиль */
-  if (typeof MAX_URL === 'string' && MAX_URL) {
-    [].forEach.call(document.querySelectorAll('[data-max-link]'), function (a) { a.href = MAX_URL; });
-  } else {
-    [].forEach.call(document.querySelectorAll('[data-max-link], [data-max-hide]'), function (el) { el.hidden = true; });
-  }
 
   /* «Другие способы связи»: разворачиваем список каналов */
   var moreBtn = document.querySelector('[data-more-btn]');
@@ -542,8 +501,7 @@ var MAX_URL = '';
 
 <!-- ═══ ГЕОЛОКАЦИЯ: «ОТПРАВИТЬ МОЁ МЕСТОПОЛОЖЕНИЕ» ═══
      Сайт не отправляет сообщение сам: он берёт координаты и готовит
-     ссылки sms: и wa.me. Отправляет человек — в своём приложении.
-     MAX текст из ссылки не принимает: там нужна кнопка «Скопировать». -->
+     ссылки sms: и wa.me. Отправляет человек — в своём приложении. -->
 <script>
 (function () {
   'use strict';
@@ -566,11 +524,6 @@ var MAX_URL = '';
   var again = document.querySelector('[data-geo-again]');
   var sms  = document.querySelector('[data-geo-sms]');
   var wa   = document.querySelector('[data-geo-wa]');
-  var maxA = document.querySelector('[data-geo-max]');
-  var copy = document.querySelector('[data-geo-copy]');
-  var copyArea = document.querySelector('[data-geo-text]');
-  var copyBtn  = document.querySelector('[data-geo-copied]');
-  var copyMsg  = document.querySelector('[data-geo-copy-msg]');
   var dockGeo = document.querySelector('[data-dock-geo]');
   var LABEL = lbl ? lbl.textContent : '';
 
@@ -604,8 +557,6 @@ var MAX_URL = '';
                   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       if (sms) sms.href = 'sms:' + TEL + (isIOS ? '&body=' : '?&body=') + encodeURIComponent(msg);
       if (wa)  wa.href  = 'https://wa.me/' + TEL.slice(1) + '?text=' + encodeURIComponent(msg);
-      if (copyArea) copyArea.value = msg;
-      if (copyMsg) copyMsg.hidden = true;
 
       if (out) out.hidden = true;
       if (btn) btn.hidden = true;
@@ -648,26 +599,6 @@ var MAX_URL = '';
     dockGeo.addEventListener('click', function () {
       start();
       if (geo && geo.scrollIntoView) geo.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    });
-  }
-
-  /* MAX: ссылка открывает чат, текст показываем для копирования —
-     во внешнюю ссылку MAX готовый текст не зашить */
-  if (maxA) {
-    maxA.addEventListener('click', function () {
-      if (copy) copy.hidden = false;
-    });
-  }
-  if (copyBtn) {
-    copyBtn.addEventListener('click', function () {
-      var text = copyArea ? copyArea.value : '';
-      function ok() { if (copyMsg) { copyMsg.hidden = false; copyMsg.textContent = 'Текст скопирован'; } }
-      function fail() { if (copyArea) { copyArea.focus(); copyArea.select(); } if (copyMsg) { copyMsg.hidden = false; copyMsg.textContent = 'Выделите текст и скопируйте вручную'; } }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(ok, fail);
-      } else if (copyArea) {
-        try { copyArea.focus(); copyArea.select(); document.execCommand('copy'); ok(); } catch (e) { fail(); }
-      } else { fail(); }
     });
   }
 
