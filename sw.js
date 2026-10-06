@@ -23,7 +23,7 @@ var SKIP = ['mc.yandex.ru', 'yandex.ru', 'yandex.net', 'yandex.com'];
 var CORE = [
   './',
   './index.html',
-  './vizitka.html',
+  './vizitka/',
   './fonts/fonts.css',
   './fonts/fira-sans-condensed-800-cyrillic.woff2',
   './fonts/golos-text-400-cyrillic.woff2',
