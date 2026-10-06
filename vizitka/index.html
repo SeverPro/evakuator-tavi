@@ -5,19 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <script>document.documentElement.className += ' js';</script>
 
-<title>Эвакуатор в Караиделе — Аслямов, круглосуточно</title>
-<meta name="description" content="Позвоните — назову цену сразу. Или нажмите «Отправить, где я стою»: координаты уйдут в WhatsApp или SMS. До 4 тонн, круглосуточно, Караидель и районы." />
+<title>Эвакуатор 24/7 Караидель — вызвать эвакуатор</title>
+<meta name="description" content="Эвакуатор 24/7 в Караидели и районах. Вызвать эвакуатор, отправить геолокацию и связаться с водителем." />
 <meta name="robots" content="noindex, follow" />
-<meta name="theme-color" content="#E9EAE6" />
+<meta name="theme-color" content="#0E1116" />
 
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="ru_RU" />
+<meta property="og:site_name" content="Аслямов" />
 <meta property="og:url" content="https://evakuator.aslyamov24.ru/vizitka/" />
-<meta property="og:title" content="Эвакуатор в Караиделе — Аслямов, круглосуточно" />
-<meta property="og:description" content="Нажмите «Отправить, где я стою» — координаты уйдут мне в WhatsApp или SMS. Подъём до 4 тонн, 24/7." />
+<meta property="og:title" content="Эвакуатор 24/7 Караидель" />
+<meta property="og:description" content="Вызвать эвакуатор, отправить геолокацию и связаться с водителем. До 4 тонн, Караидель и районы, круглосуточно." />
 <meta property="og:image" content="https://evakuator.aslyamov24.ru/img/og.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Эвакуатор Аслямов — с. Караидель, ул. Мира, 13/11" />
 
 <link rel="canonical" href="https://evakuator.aslyamov24.ru/vizitka/" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -31,26 +33,31 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* Атрибут hidden должен побеждать любой авторский display:
-   без этого .geo-send { display: flex } перебивает браузерное [hidden] */
+   без этого .geo-send { display: grid } перебивает браузерное [hidden] */
 [hidden] { display: none !important; }
 
 :root {
-  --pobelka:   #E9EAE6;
-  --pobelka-2: #F3F4F1;
-  --beton:     #CFD2CC;
-  --beton-2:   #B4B8B1;
-  --stal:      #5F6560;
-  --rezina:    #16181A;
-  --gruz:      #E85D24;
-  --gruz-d:    #C4470F;
-  --gruz-t:    #A83A0C;
-  --razmetka:  #E8B21E;
+  /* Тёмная «ночная смена»: графит цеха + синий станков.
+     Оранжевый маячок и жёлтая разметка остаются акцентами бренда. */
+  --ugol:      #0E1116;   /* фон страницы */
+  --poderzh:   #171B22;   /* панели, тихие кнопки */
+  --poderzh-2: #1F242C;   /* ховер тихих кнопок */
+  --liniya:    #2A303A;   /* разделители */
+  --liniya-2:  #3E4652;   /* рамки кнопок */
+  --tekst:     #F2F3F1;   /* основной текст — 17:1 на фоне */
+  --tekst-2:   #A7AFBA;   /* вторичный текст — 8,5:1 */
+  --sin:       #2F6FE4;   /* заливка главных кнопок, белый текст — 4,65:1 */
+  --sin-d:     #1E5FD0;   /* ховер заливки */
+  --sin-t:     #6FA8FF;   /* синий текст на тёмном */
+  --sin-fon:   #16202F;   /* подложка блока геолокации */
+  --krasny:    #FF6B6B;   /* только ошибки — 6,8:1 на фоне */
+  --razmetka:  #E8B21E;   /* маркеры и лампа «круглосуточно» */
 
   --mark: 'Fira Sans Condensed', 'Arial Narrow', sans-serif;
   --text: 'Golos Text', system-ui, sans-serif;
 
-  --pad: clamp(20px, 5vw, 40px);
-  --rule: 1px solid var(--beton);
+  --pad: clamp(18px, 5vw, 36px);
+  --rule: 1px solid var(--liniya);
 }
 
 html { -webkit-text-size-adjust: 100%; }
@@ -58,17 +65,18 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--text);
   font-size: 16px;
-  line-height: 1.6;
-  background: var(--pobelka);
-  color: var(--rezina);
+  line-height: 1.55;
+  background: var(--ugol);
+  color: var(--tekst);
+  min-height: 100svh;
 }
 
-::selection { background: var(--razmetka); color: var(--rezina); }
-html { caret-color: var(--gruz); }
-:focus-visible { outline: 2px solid var(--gruz); outline-offset: 3px; }
+::selection { background: var(--sin); color: #FFFFFF; }
+:focus-visible { outline: 2px solid var(--sin-t); outline-offset: 3px; }
 
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
+button { font: inherit; color: inherit; }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -78,14 +86,13 @@ a { color: inherit; }
 /* ─── КАРТОЧКА ──────────────────────────────────────── */
 .card {
   max-width: 600px; margin: 0 auto;
-  min-height: 100svh;
-  padding: clamp(20px, 5vw, 44px) var(--pad) calc(28px + env(safe-area-inset-bottom));
+  padding: clamp(16px, 4vw, 32px) var(--pad) 28px;
   display: flex; flex-direction: column;
 }
 
 .card-top {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; padding-bottom: 16px; border-bottom: var(--rule);
+  gap: 16px; padding-bottom: 14px; border-bottom: var(--rule);
 }
 .brand { display: flex; align-items: center; gap: 10px; }
 .brand svg { display: block; }
@@ -97,68 +104,209 @@ a { color: inherit; }
 .plate {
   font-family: var(--mark); font-weight: 700; font-size: 12px;
   letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--rezina); background: var(--pobelka-2);
-  border: 1px solid var(--beton); border-radius: 2px;
+  color: var(--tekst); background: var(--poderzh);
+  border: 1px solid var(--liniya-2); border-radius: 2px;
   padding: 7px 10px; display: inline-flex; align-items: center; gap: 8px;
   white-space: nowrap;
 }
-.lamp { width: 9px; height: 9px; border-radius: 50%; background: transparent; box-shadow: inset 0 0 0 1.5px var(--beton-2); flex-shrink: 0; }
-.lamp[data-on="1"] { background: var(--razmetka); box-shadow: none; }
+.lamp {
+  width: 9px; height: 9px; border-radius: 50%; background: var(--razmetka);
+  box-shadow: 0 0 0 3px rgba(232, 178, 30, 0.18); flex-shrink: 0;
+}
+
+/* ─── ПЕРВЫЙ ЭКРАН ──────────────────────────────────── */
+.hero { margin-top: 18px; }
+.hero img {
+  width: 100%; aspect-ratio: 640 / 280; object-fit: cover;
+  border: 1px solid var(--liniya-2); border-radius: 2px;
+}
 
 .card-h1 {
-  margin-top: clamp(22px, 4vw, 34px);
-  font-family: var(--mark); font-weight: 800; line-height: 0.94;
-  letter-spacing: 0.005em;
-  font-size: clamp(2.6rem, 11vw, 4.2rem);
+  margin-top: 18px;
+  font-family: var(--mark); font-weight: 800; line-height: 0.96;
+  letter-spacing: 0.005em; text-transform: uppercase;
+  font-size: clamp(2.2rem, 10vw, 3.4rem);
 }
-.card-h1 em { font-style: normal; color: var(--gruz-t); }
+.card-h1 em { font-style: normal; color: var(--sin-t); }
 
-.card-sub { margin-top: 14px; font-size: 15px; line-height: 1.6; }
-.card-lead { margin-top: 8px; font-size: 15px; line-height: 1.6; color: var(--stal); }
+.card-sub {
+  margin-top: 8px; font-size: 15px; line-height: 1.5;
+  color: var(--tekst-2); font-variant-numeric: tabular-nums;
+}
 
 /* ─── КНОПКИ ────────────────────────────────────────── */
-.acts { margin-top: clamp(20px, 4vw, 30px); display: grid; gap: 12px; }
+.acts { margin-top: 22px; display: grid; gap: 12px; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   font-family: var(--mark); font-weight: 700; font-size: 17px;
   letter-spacing: 0.05em; text-transform: uppercase;
-  padding: 17px 26px; border-radius: 2px; text-decoration: none;
-  border: 1px solid transparent; font-variant-numeric: tabular-nums;
-  max-width: 100%; text-align: center;
+  min-height: 56px; padding: 13px 20px;
+  border-radius: 2px; text-decoration: none; text-align: center;
+  border: 1px solid transparent; cursor: pointer;
   transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
 }
-.btn svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.btn--gruz { background: var(--gruz); color: var(--rezina); }
-.btn--gruz:hover { background: var(--gruz-d); color: #FFFFFF; }
-.btn--line { border-color: var(--rezina); color: var(--rezina); }
-.btn--line:hover { background: var(--rezina); color: var(--pobelka); }
+.btn svg { flex-shrink: 0; }
 .btn--wide { width: 100%; }
 
-/* Кнопка — это <button>, а не <a>: нужен курсор и сброс системного фона.
-   Кегль и капс берём из .btn, поэтому без шортката font — он бы их сбросил. */
-button.btn { cursor: pointer; background: transparent; font-family: var(--mark); font-weight: 700; }
-button.btn--gruz { background: var(--gruz); }
-button.btn:disabled { opacity: 0.6; cursor: default; }
+.btn--call {
+  background: var(--sin); color: #FFFFFF;
+  font-size: 19px; min-height: 68px; flex-direction: column; gap: 2px;
+}
+.btn--call:hover { background: var(--sin-d); }
+.btn--call .btn-num {
+  font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.92); font-variant-numeric: tabular-nums;
+}
+.btn--call .btn-line { display: inline-flex; align-items: center; gap: 9px; }
 
-/* ─── ГЕОЛОКАЦИЯ: «отправить, где я стою» ──────────── */
-/* Без JS смысла в блоке нет: координаты взять неоткуда */
-.geo { display: none; gap: 12px; }
-.js .geo { display: grid; }
-.geo-out { font-size: 15px; line-height: 1.55; color: var(--rezina); }
-.geo-send { display: flex; flex-wrap: wrap; gap: 12px; }
-.geo-send .btn { flex: 1 1 140px; }
+.btn--geo {
+  background: var(--sin-fon); color: var(--tekst);
+  border-color: var(--sin); min-height: 64px; font-size: 17px;
+}
+.btn--geo:hover { background: #1B2839; }
+
+.btn--line { background: var(--poderzh); border-color: var(--liniya-2); color: var(--tekst); }
+.btn--line:hover { background: var(--poderzh-2); }
+
+.btn:disabled { opacity: 0.65; cursor: default; }
+
+/* «Другие способы связи» */
+.more-arr { transition: transform 0.14s ease; }
+.more-panel { display: grid; gap: 10px; margin-top: 10px; }
+.more-panel .btn { min-height: 52px; font-size: 15px; }
+
+/* ─── ГЕОЛОКАЦИЯ ────────────────────────────────────── */
+.geo { display: grid; gap: 10px; scroll-margin: 90px 0; }
+.geo-hint { font-size: 14px; line-height: 1.5; color: var(--tekst-2); }
+.geo-out {
+  font-size: 15px; line-height: 1.5; color: var(--tekst);
+  border-left: 3px solid var(--razmetka); padding-left: 12px;
+}
+.geo-err {
+  display: grid; gap: 10px;
+  border: 1px solid var(--krasny); border-radius: 2px; padding: 14px;
+}
+.geo-err p { font-size: 15px; line-height: 1.5; color: var(--krasny); }
+.geo-err-acts { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+.geo-err-acts .btn { min-height: 52px; font-size: 15px; }
+
+.geo-send {
+  display: grid; gap: 10px;
+  border: 1px solid var(--sin); background: var(--sin-fon);
+  border-radius: 2px; padding: 16px;
+}
+.geo-send .btn { min-height: 54px; font-size: 16px; }
+.geo-ok {
+  font-family: var(--mark); font-weight: 700; font-size: 18px;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--tekst);
+}
+.geo-ok-sub { font-size: 15px; color: var(--tekst-2); margin-top: -4px; }
+.geo-acc { font-size: 14px; line-height: 1.5; color: var(--razmetka); }
+.geo-note { font-size: 13px; line-height: 1.5; color: var(--tekst-2); }
+.geo-again {
+  justify-self: start; background: none; border: 0; cursor: pointer;
+  color: var(--sin-t); font-size: 14px; font-weight: 500;
+  text-decoration: underline; text-underline-offset: 3px; padding: 4px 0;
+}
+
+/* Копирование текста для MAX: MAX не принимает готовый текст из ссылки */
+.copy { display: grid; gap: 8px; border-top: 1px solid var(--liniya-2); padding-top: 12px; }
+.copy-t { font-size: 14px; line-height: 1.5; color: var(--tekst); }
+.copy-area {
+  width: 100%; resize: none; font: 400 13px/1.5 var(--text);
+  color: var(--tekst); background: var(--ugol);
+  border: 1px solid var(--liniya-2); border-radius: 2px; padding: 10px;
+}
+.copy-msg { font-size: 13px; color: var(--razmetka); }
+
+/* ─── ПРЕИМУЩЕСТВА ──────────────────────────────────── */
+.feats {
+  list-style: none; margin-top: 24px;
+  border: 1px solid var(--liniya); border-radius: 2px;
+  background: var(--poderzh);
+}
+.feats li {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 16px; font-size: 15px;
+}
+.feats li + li { border-top: var(--rule); }
+.feats svg { color: var(--razmetka); flex-shrink: 0; }
+.feats b { font-family: var(--mark); font-weight: 700; font-size: 16px; letter-spacing: 0.03em; }
+
+/* ─── РАЙОНЫ ────────────────────────────────────────── */
+.zones { margin-top: 26px; }
+.zones h2 {
+  font-family: var(--mark); font-weight: 700; font-size: 14px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--tekst-2);
+}
+.zones ul { list-style: none; margin-top: 10px; display: grid; gap: 7px; }
+.zones li {
+  position: relative; padding-left: 20px; font-size: 15px; line-height: 1.45;
+}
+.zones li::before {
+  content: ''; position: absolute; left: 0; top: 7px;
+  width: 8px; height: 8px; background: var(--razmetka);
+}
+
+/* ─── СОХРАНИТЬ КОНТАКТ И АДРЕС ─────────────────────── */
+.save { margin-top: 26px; }
+.save-note { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--tekst-2); }
+
+.addr {
+  margin-top: 20px; display: flex; align-items: flex-start; gap: 10px;
+  font-size: 15px; line-height: 1.5;
+}
+.addr svg { color: var(--sin-t); flex-shrink: 0; margin-top: 2px; }
+.addr a { color: var(--sin-t); text-underline-offset: 3px; }
+.addr span { color: var(--tekst-2); }
 
 /* ─── ПОДВАЛ ────────────────────────────────────────── */
-.card-foot { margin-top: auto; padding-top: clamp(22px, 4vw, 34px); }
-.card-foot-in {
-  border-top: var(--rule); padding-top: 16px;
-  display: grid; gap: 6px; font-size: 14px; line-height: 1.55; color: var(--stal);
+.foot { margin-top: 30px; padding-top: 18px; border-top: var(--rule); }
+.foot-t {
+  font-family: var(--mark); font-weight: 700; font-size: 14px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--tekst-2);
 }
-.card-foot a { color: var(--rezina); }
+.foot-links { margin-top: 10px; display: grid; gap: 8px; grid-template-columns: 1fr 1fr; }
+.foot-links a {
+  display: grid; gap: 3px; padding: 12px 14px; text-decoration: none;
+  border: 1px solid var(--liniya); border-radius: 2px; background: var(--poderzh);
+  font-family: var(--mark); font-weight: 700; font-size: 15px; letter-spacing: 0.03em;
+}
+.foot-links a:hover { background: var(--poderzh-2); }
+.foot-links span { font-family: var(--text); font-weight: 400; font-size: 13px; color: var(--tekst-2); }
+.foot-site {
+  display: inline-block; margin-top: 14px; font-size: 14px;
+  color: var(--sin-t); text-underline-offset: 3px;
+}
 
-@media (max-width: 400px) {
-  .card-top { align-items: flex-start; flex-direction: column; gap: 12px; }
+/* ─── НИЖНЯЯ ПАНЕЛЬ (мобильные) ─────────────────────── */
+.dock { display: none; }
+
+@media (max-width: 719px) {
+  body { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
+
+  .dock {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    background: rgba(14, 17, 22, 0.97);
+    border-top: 1px solid var(--liniya-2);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .dock a, .dock button {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 3px; min-height: 62px; padding: 6px 4px;
+    background: none; border: 0; text-decoration: none; cursor: pointer;
+    font-size: 12.5px; line-height: 1.2; color: var(--tekst);
+  }
+  .dock a:active, .dock button:active { background: var(--poderzh-2); }
+  .dock .dock-call { color: var(--sin-t); font-weight: 500; }
+  .dock svg { color: var(--tekst-2); }
+  .dock .dock-call svg { color: var(--sin-t); }
+}
+
+@media (max-width: 340px) {
+  .geo-err-acts { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -168,48 +316,234 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
   <header class="card-top">
     <span class="brand">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M6 22 L14 6 L22 22" stroke="#16181A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-        <path d="M9.5 16 L18.5 16" stroke="#16181A" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M6 22 L14 6 L22 22" stroke="#F2F3F1" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M9.5 16 L18.5 16" stroke="#F2F3F1" stroke-width="2.5" stroke-linecap="round"/>
         <circle cx="14" cy="22" r="2.5" fill="#E85D24"/>
       </svg>
       <span class="brand-name">Аслямов</span>
     </span>
-    <span class="plate">круглосуточно <span class="lamp" data-on="1"></span></span>
+    <span class="plate">круглосуточно <span class="lamp"></span></span>
   </header>
 
+  <figure class="hero">
+    <img src="tow.webp" width="640" height="280" fetchpriority="high"
+         alt="Эвакуатор Аслямов везёт легковой автомобиль по грунтовой дороге" />
+  </figure>
+
   <h1 class="card-h1">Эвакуатор <em>24/7</em></h1>
-  <p class="card-sub">До 4 тонн. Караидельский, Мишкинский, Аскинский районы, Тастуба и трассы.</p>
-  <p class="card-lead">Застряли, заглохли или после ДТП? Позвоните — скажу цену сразу, до выезда.
-    Если говорить неудобно, отправьте своё место кнопкой ниже.</p>
+  <p class="card-sub">Караидель и районы · до 4 тонн</p>
 
   <div class="acts">
-    <a class="btn btn--gruz btn--wide" href="tel:+79997414755">
-      <svg width="17" height="17" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1-1a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-      +7 (999) 741-47-55
+    <a class="btn btn--call" href="tel:+79997414755" data-goal="click_phone">
+      <span class="btn-line">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1-1a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span>Позвонить</span>
+      </span>
+      <span class="btn-num">+7 (999) 741-47-55</span>
     </a>
 
-    <div class="geo">
-      <button class="btn btn--line btn--wide" type="button" data-geo-btn>Отправить, где я стою</button>
+    <div class="geo" data-geo>
+      <button class="btn btn--geo btn--wide" type="button" data-geo-btn>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <span data-geo-label>Отправить моё местоположение</span>
+      </button>
+
+      <p class="geo-hint" data-geo-hint>Не знаете, где находитесь? Отправьте геолокацию — мы определим ваше место.</p>
+
       <p class="geo-out" data-geo-out role="status" hidden></p>
+
+      <div class="geo-err" data-geo-err hidden>
+        <p data-geo-err-text></p>
+        <div class="geo-err-acts">
+          <button class="btn btn--geo" type="button" data-geo-retry>Попробовать ещё раз</button>
+          <a class="btn btn--line" href="tel:+79997414755" data-goal="click_phone">Позвонить</a>
+        </div>
+      </div>
+
       <div class="geo-send" data-geo-send hidden>
-        <a class="btn btn--gruz" data-geo-sms>Отправить SMS</a>
-        <a class="btn btn--line" data-geo-wa target="_blank" rel="noopener">В WhatsApp</a>
+        <p class="geo-ok">✓ Местоположение определено</p>
+        <p class="geo-ok-sub">Куда отправить вашу геолокацию?</p>
+        <p class="geo-acc" data-geo-acc hidden></p>
+
+        <a class="btn btn--line" data-geo-max data-max-link data-goal="click_max" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.8-.8L3 21l1.9-5.3a8.4 8.4 0 1 1 16.1-4.2z"/></svg>
+          Отправить в MAX
+        </a>
+        <a class="btn btn--line" data-geo-wa data-goal="click_whatsapp" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.8-.8L3 21l1.9-5.3a8.4 8.4 0 1 1 16.1-4.2z"/></svg>
+          Отправить в WhatsApp
+        </a>
+        <a class="btn btn--line" data-geo-sms data-goal="click_sms">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
+          Отправить SMS
+        </a>
+
+        <div class="copy" data-geo-copy data-max-hide hidden>
+          <p class="copy-t">Для MAX: скопируйте текст и вставьте его в чат.</p>
+          <textarea class="copy-area" data-geo-text readonly rows="4" aria-label="Текст сообщения с координатами"></textarea>
+          <button class="btn btn--line" type="button" data-geo-copied>Скопировать текст</button>
+          <p class="copy-msg" data-geo-copy-msg role="status" hidden></p>
+        </div>
+
+        <a class="btn btn--line" href="tel:+79997414755" data-goal="click_phone">Позвонить</a>
+        <p class="geo-note">WhatsApp и SMS откроются с готовым текстом — останется нажать «Отправить».</p>
+        <button class="geo-again" type="button" data-geo-again>Определить ещё раз</button>
       </div>
     </div>
 
-    <a class="btn btn--line btn--wide" href="https://wa.me/79997414755" target="_blank" rel="noopener">Написать в WhatsApp</a>
+    <div class="more">
+      <button class="btn btn--line btn--wide" type="button" data-more-btn aria-expanded="false" aria-controls="more-panel">
+        Другие способы связи <span class="more-arr" aria-hidden="true">→</span>
+      </button>
+      <div class="more-panel" id="more-panel" hidden>
+        <a class="btn btn--line" data-max-link data-goal="click_max" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.8-.8L3 21l1.9-5.3a8.4 8.4 0 1 1 16.1-4.2z"/></svg>
+          Написать в MAX
+        </a>
+        <a class="btn btn--line" href="https://wa.me/79997414755?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9C%D0%BD%D0%B5%20%D0%BD%D1%83%D0%B6%D0%B5%D0%BD%20%D1%8D%D0%B2%D0%B0%D0%BA%D1%83%D0%B0%D1%82%D0%BE%D1%80." data-goal="click_whatsapp" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.8-.8L3 21l1.9-5.3a8.4 8.4 0 1 1 16.1-4.2z"/></svg>
+          Написать в WhatsApp
+        </a>
+        <a class="btn btn--line" data-sms-link data-goal="click_sms">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
+          Отправить SMS
+        </a>
+      </div>
+    </div>
   </div>
 
-  <footer class="card-foot">
-    <div class="card-foot-in">
-      <p>с. Караидель, ул. Мира, 13/11</p>
-      <p>Шиномонтаж 9:00–18:00 · Автомойка самообслуживания 6:00–22:00</p>
-      <p><a href="/">Все услуги и адрес на сайте</a></p>
+  <ul class="feats">
+    <li>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16V7h10v9"/><path d="M13 10h4l3.5 3.5V16H17"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="15.5" cy="17.5" r="1.8"/></svg>
+      <b>До 4 тонн</b>
+    </li>
+    <li>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+      <b>Караидель и районы</b>
+    </li>
+    <li>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+      <b>Работаем круглосуточно</b>
+    </li>
+  </ul>
+
+  <section class="zones">
+    <h2>Работаем</h2>
+    <ul>
+      <li>Караидельский район</li>
+      <li>Мишкинский район</li>
+      <li>Аскинский район</li>
+      <li>Тастуба</li>
+      <li>Трассы и населённые пункты поблизости</li>
+    </ul>
+  </section>
+
+  <div class="save">
+    <a class="btn btn--line btn--wide" href="evakuator.vcf" download="Эвакуатор-24-7-Караидель.vcf" data-goal="click_save_contact">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      Сохранить номер
+    </a>
+    <p class="save-note">Контакт «Эвакуатор 24/7 — Караидель»: телефон и адрес.</p>
+  </div>
+
+  <p class="addr">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+    <span>с. Караидель, ул. Мира, 13/11 — <a href="https://yandex.ru/maps/?mode=routes&amp;rtext=~55.845255,56.885389" target="_blank" rel="noopener">проложить маршрут</a></span>
+  </p>
+
+  <footer class="foot">
+    <p class="foot-t">Также у нас</p>
+    <div class="foot-links">
+      <a href="/#shinomontazh">Шиномонтаж <span>легковой и грузовой, 9:00–18:00</span></a>
+      <a href="/#avtomoyka">Автомойка <span>самообслуживания, 6:00–22:00</span></a>
     </div>
+    <a class="foot-site" href="/">Все услуги и адрес на сайте →</a>
   </footer>
 </main>
 
-<!-- ═══ ГЕОЛОКАЦИЯ: «ОТПРАВИТЬ, ГДЕ Я СТОЮ» ═══ -->
+<nav class="dock" aria-label="Быстрые действия">
+  <a class="dock-call" href="tel:+79997414755" data-goal="click_phone">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1-1a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+    Позвонить
+  </a>
+  <button type="button" data-dock-geo>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+    Отправить гео
+  </button>
+  <button type="button" data-dock-more>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.9 8.9 0 0 1-3.8-.8L3 21l1.9-5.3a8.4 8.4 0 1 1 16.1-4.2z"/></svg>
+    Связь
+  </button>
+</nav>
+
+<!-- ═══ ССЫЛКА НА MAX ═══
+     MAX не принимает готовый текст через ссылку, а телефон в ссылку
+     не подставляется: личная ссылка вида https://max.ru/u/… берётся
+     в приложении (Профиль → QR у фото → «Скопировать ссылку»).
+     Пока строка пустая, кнопки MAX скрыты — неверная ссылка хуже, чем её отсутствие. -->
+<script>
+var MAX_URL = '';
+</script>
+
+<!-- ═══ ЦЕЛИ МЕТРИКИ И ВСПОМОГАТЕЛЬНЫЕ КНОПКИ ═══ -->
+<script>
+(function () {
+  'use strict';
+
+  var TEL = '+79997414755';
+  var YM_ID = 105880355;
+  function goal(name) { if (window.ym) { window.ym(YM_ID, 'reachGoal', name); } }
+
+  [].forEach.call(document.querySelectorAll('[data-goal]'), function (el) {
+    el.addEventListener('click', function () { goal(el.getAttribute('data-goal')); });
+  });
+
+  /* Кнопки MAX: включаем, только когда владелец дал ссылку на свой профиль */
+  if (typeof MAX_URL === 'string' && MAX_URL) {
+    [].forEach.call(document.querySelectorAll('[data-max-link]'), function (a) { a.href = MAX_URL; });
+  } else {
+    [].forEach.call(document.querySelectorAll('[data-max-link], [data-max-hide]'), function (el) { el.hidden = true; });
+  }
+
+  /* «Другие способы связи»: разворачиваем список каналов */
+  var moreBtn = document.querySelector('[data-more-btn]');
+  var morePanel = document.getElementById('more-panel');
+  function toggleMore(open) {
+    if (!morePanel || !moreBtn) return;
+    morePanel.hidden = !open;
+    moreBtn.setAttribute('aria-expanded', String(open));
+    var arr = moreBtn.querySelector('.more-arr');
+    if (arr) arr.textContent = open ? '↓' : '→';
+  }
+  if (moreBtn) {
+    moreBtn.addEventListener('click', function () { toggleMore(morePanel.hidden); });
+  }
+
+  /* SMS без координат: готовое приветствие. Разделитель как в логике
+     геолокации: iOS понимает только «&body=», остальные — «?&body=» */
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var smsHello = 'Здравствуйте! Мне нужен эвакуатор.';
+  [].forEach.call(document.querySelectorAll('[data-sms-link]'), function (a) {
+    a.href = 'sms:' + TEL + (isIOS ? '&body=' : '?&body=') + encodeURIComponent(smsHello);
+  });
+
+  /* Кнопка «Связь» в нижней панели: открыть каналы и показать их */
+  var dockMore = document.querySelector('[data-dock-more]');
+  if (dockMore) {
+    dockMore.addEventListener('click', function () {
+      toggleMore(true);
+      var more = document.querySelector('.more');
+      if (more && more.scrollIntoView) more.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    });
+  }
+})();
+</script>
+
+<!-- ═══ ГЕОЛОКАЦИЯ: «ОТПРАВИТЬ МОЁ МЕСТОПОЛОЖЕНИЕ» ═══
+     Сайт не отправляет сообщение сам: он берёт координаты и готовит
+     ссылки sms: и wa.me. Отправляет человек — в своём приложении.
+     MAX текст из ссылки не принимает: там нужна кнопка «Скопировать». -->
 <script>
 (function () {
   'use strict';
@@ -219,19 +553,42 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
 
   function goal(name) { if (window.ym) { window.ym(YM_ID, 'reachGoal', name); } }
 
+  var geo  = document.querySelector('[data-geo]');
   var btn  = document.querySelector('[data-geo-btn]');
+  var lbl  = document.querySelector('[data-geo-label]');
+  var hint = document.querySelector('[data-geo-hint]');
   var out  = document.querySelector('[data-geo-out]');
+  var err  = document.querySelector('[data-geo-err]');
+  var errT = document.querySelector('[data-geo-err-text]');
+  var retry = document.querySelector('[data-geo-retry]');
   var send = document.querySelector('[data-geo-send]');
+  var accP = document.querySelector('[data-geo-acc]');
+  var again = document.querySelector('[data-geo-again]');
   var sms  = document.querySelector('[data-geo-sms]');
   var wa   = document.querySelector('[data-geo-wa]');
-  if (!btn) return;
+  var maxA = document.querySelector('[data-geo-max]');
+  var copy = document.querySelector('[data-geo-copy]');
+  var copyArea = document.querySelector('[data-geo-text]');
+  var copyBtn  = document.querySelector('[data-geo-copied]');
+  var copyMsg  = document.querySelector('[data-geo-copy-msg]');
+  var dockGeo = document.querySelector('[data-dock-geo]');
+  var LABEL = lbl ? lbl.textContent : '';
 
-  /* Без геолокации кнопка только мешает: координаты взять неоткуда */
-  if (!('geolocation' in navigator)) { btn.hidden = true; return; }
+  /* Без геолокации кнопки только мешают: координаты взять неоткуда */
+  if (!('geolocation' in navigator)) {
+    if (btn) btn.hidden = true;
+    if (hint) hint.hidden = true;
+    if (dockGeo) dockGeo.hidden = true;
+    return;
+  }
 
-  btn.addEventListener('click', function () {
-    btn.disabled = true;
-    if (out) { out.hidden = false; out.textContent = 'Определяем место…'; }
+  function start() {
+    goal('click_location');
+    if (btn) { btn.disabled = true; if (lbl) lbl.textContent = 'Определяем местоположение…'; }
+    if (hint) hint.hidden = true;
+    if (err) err.hidden = true;
+    if (send) send.hidden = true;
+    if (out) { out.hidden = false; out.textContent = 'Определяем ваше местоположение…'; }
 
     navigator.geolocation.getCurrentPosition(function (pos) {
       var lat = pos.coords.latitude.toFixed(6);
@@ -239,7 +596,7 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
       var acc = Math.round(pos.coords.accuracy);
       /* В ссылке Яндекса порядок обратный привычному: сначала долгота */
       var url = 'https://yandex.ru/maps/?pt=' + lon + ',' + lat + '&z=16&l=map';
-      var msg = 'Нужен эвакуатор. Я здесь: ' + url +
+      var msg = 'Здравствуйте! Мне нужен эвакуатор. Моё местоположение: ' + url +
                 ' (' + lat + ', ' + lon + ', точность ' + acc + ' м)';
 
       /* iOS не разбирает «?» в sms-ссылке и понимает только «&body=» */
@@ -247,27 +604,72 @@ button.btn:disabled { opacity: 0.6; cursor: default; }
                   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       if (sms) sms.href = 'sms:' + TEL + (isIOS ? '&body=' : '?&body=') + encodeURIComponent(msg);
       if (wa)  wa.href  = 'https://wa.me/' + TEL.slice(1) + '?text=' + encodeURIComponent(msg);
+      if (copyArea) copyArea.value = msg;
+      if (copyMsg) copyMsg.hidden = true;
 
-      /* Сайт не может отправить сообщение сам — он только готовит его.
-         Пишем это прямо, иначе человек нажимает кнопку и ждёт, что уже ушло. */
-      if (out) out.textContent = 'Координаты готовы: ' + lat + ', ' + lon + ' (±' + acc + ' м). ' +
-        (acc > 300 ? 'Точность низкая — выйдите из машины и нажмите ещё раз. ' : '') +
-        'Осталось отправить: выберите SMS или WhatsApp — откроется приложение ' +
-        'с готовым текстом на номер +7 (999) 741-47-55, там нажмите «Отправить». ' +
-        'Или продиктуйте координаты по телефону.';
-
+      if (out) out.hidden = true;
+      if (btn) btn.hidden = true;
+      if (accP) {
+        accP.hidden = acc <= 300;
+        accP.textContent = 'Точность низкая (±' + acc + ' м). Выйдите из машины и нажмите «Определить ещё раз».';
+      }
       if (send) send.hidden = false;
-      btn.disabled = false;
-      btn.textContent = 'Определить ещё раз';
+
+      /* Результат появляется ниже кнопки и на телефоне уходит за экран —
+         показываем его сами, иначе человек нажмёт и ничего не увидит. */
+      if (send && send.scrollIntoView) {
+        var reduce = window.matchMedia &&
+                     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        send.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+      }
+      goal('location_success');
       goal('geo_ok');
-    }, function (err) {
-      btn.disabled = false;
-      if (out) out.textContent = err && err.code === 1
-        ? 'Доступ к геолокации запрещён. Разрешите его в настройках браузера или позвоните.'
-        : 'Не получилось определить место. Попробуйте ещё раз или позвоните.';
+    }, function (errObj) {
+      if (btn) { btn.disabled = false; if (lbl) lbl.textContent = LABEL; }
+      if (out) out.hidden = true;
+      if (errT) {
+        errT.textContent = (errObj && errObj.code === 1)
+          ? 'Не удалось получить местоположение. Разрешите доступ к геолокации в настройках браузера или позвоните нам.'
+          : 'Не удалось определить точное местоположение. Попробуйте ещё раз или позвоните нам.';
+      }
+      if (err) err.hidden = false;
+      goal('location_error');
       goal('geo_fail');
     }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 });
-  });
+  }
+
+  if (btn) btn.addEventListener('click', start);
+  if (retry) retry.addEventListener('click', start);
+  if (again) again.addEventListener('click', start);
+
+  /* Кнопка в нижней панели: сначала запрашиваем геолокацию (жест не теряем),
+     потом показываем блок с результатом. */
+  if (dockGeo) {
+    dockGeo.addEventListener('click', function () {
+      start();
+      if (geo && geo.scrollIntoView) geo.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    });
+  }
+
+  /* MAX: ссылка открывает чат, текст показываем для копирования —
+     во внешнюю ссылку MAX готовый текст не зашить */
+  if (maxA) {
+    maxA.addEventListener('click', function () {
+      if (copy) copy.hidden = false;
+    });
+  }
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var text = copyArea ? copyArea.value : '';
+      function ok() { if (copyMsg) { copyMsg.hidden = false; copyMsg.textContent = 'Текст скопирован'; } }
+      function fail() { if (copyArea) { copyArea.focus(); copyArea.select(); } if (copyMsg) { copyMsg.hidden = false; copyMsg.textContent = 'Выделите текст и скопируйте вручную'; } }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(ok, fail);
+      } else if (copyArea) {
+        try { copyArea.focus(); copyArea.select(); document.execCommand('copy'); ok(); } catch (e) { fail(); }
+      } else { fail(); }
+    });
+  }
 
   if (sms) sms.addEventListener('click', function () { goal('geo_sms'); });
   if (wa)  wa.addEventListener('click',  function () { goal('geo_wa'); });
